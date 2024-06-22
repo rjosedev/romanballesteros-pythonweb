@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Operators</h1>
+
+<ul>
+  {% for operator in operators %}
+  <li>
+    <a href="{% url 'operator_detail' device.id %}">
+      {{operator.id}} - {{operator.operatorId}} {{operator.name}}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{{case.id}} {{case.name}}
+
+{{error}}
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.as_p}}
+
+  <section>
+    <img 
+      src="{{ case.caseImage.url }}"
+      alt="{{ case.name }}"
+    />
+  <button>
+    Update
+  </button>
+</form>
+
+<form action="{% url 'case_delete' case.id %}" method="POST">
+  {% csrf_token %}
+  <button>
+    Delete
+  </button>
+</form>
+
+{% endblock %}

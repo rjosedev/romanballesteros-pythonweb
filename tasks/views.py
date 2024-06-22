@@ -277,3 +277,95 @@ def device_delete(request, device_id):
     if request.method == 'POST':
         device.delete()
         return redirect('devices')
+
+
+
+
+### OPERATOR ###
+
+@login_required
+def operators(request):
+    operators = Operator.objects.filter()
+    return render(request, 'operators.html', {"operators": operators})
+
+@login_required
+def operator_create(request):
+    if request.method == "GET":
+        return render(request, 'operator_create.html', {"form": OperatorForm})
+    else:
+        try:
+            form = OperatorForm(request.POST, request.FILES)
+            new_operator = form.save(commit=False)
+            new_operator.user = request.user
+            new_operator.save()
+            return redirect('operators')
+        except ValueError:
+            return render(request, 'operator_create.html', {"form": OperatorForm, "error": "Error creating operator."})
+
+@login_required
+def operator_detail(request, operator_id):
+    if request.method == 'GET':
+        operator = get_object_or_404(Operator, pk=operator_id)
+        form = OperatorForm(instance=operator)
+        return render(request, 'operator_detail.html', {'operator': operator, 'form': form})
+    else:
+        try:
+            operator = get_object_or_404(Operator, pk=operator_id)
+            form = OperatorForm(request.POST, request.FILES, instance=operator)
+            form.save()
+            return redirect('operators')
+        except ValueError:
+            return render(request, 'operator_detail.html', {'operator': operator, 'form': form, 'error': 'Error updating operator.'})
+
+@login_required
+def operator_delete(request, operator_id):
+    operator = get_object_or_404(Operator, pk=operator_id)
+    if request.method == 'POST':
+        operator.delete()
+        return redirect('operators')
+
+
+
+
+### CASE ###
+
+@login_required
+def cases(request):
+    cases = Case.objects.filter()
+    return render(request, 'cases.html', {"cases": cases})
+
+@login_required
+def case_create(request):
+    if request.method == "GET":
+        return render(request, 'case_create.html', {"form": CaseForm})
+    else:
+        try:
+            form = CaseForm(request.POST, request.FILES)
+            new_case = form.save(commit=False)
+            new_case.user = request.user
+            new_case.save()
+            return redirect('cases')
+        except ValueError:
+            return render(request, 'case_create.html', {"form": CaseForm, "error": "Error creating case."})
+
+@login_required
+def case_detail(request, case_id):
+    if request.method == 'GET':
+        case = get_object_or_404(Case, pk=case_id)
+        form = CaseForm(instance=case)
+        return render(request, 'case_detail.html', {'case': case, 'form': form})
+    else:
+        try:
+            case = get_object_or_404(Case, pk=case_id)
+            form = CaseForm(request.POST, request.FILES, instance=case)
+            form.save()
+            return redirect('cases')
+        except ValueError:
+            return render(request, 'case_detail.html', {'case': case, 'form': form, 'error': 'Error updating case.'})
+
+@login_required
+def case_delete(request, case_id):
+    case = get_object_or_404(Case, pk=case_id)
+    if request.method == 'POST':
+        case.delete()
+        return redirect('cases')

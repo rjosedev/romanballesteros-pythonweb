@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Cases</h1>
+
+<ul>
+  {% for case in cases %}
+  <li>
+    <a href="{% url 'case_detail' case.id %}">
+      {{case.id}} - {{case.caseId}} {{case.name}}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

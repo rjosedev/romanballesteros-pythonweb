@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{{operator.id}} {{operator.name}}
+
+{{error}}
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.as_p}}
+
+  <section>
+    <img 
+      src="{{ operator.operatorImage.url }}"
+      alt="{{ operator.name }}"
+    />
+  <button>
+    Update
+  </button>
+</form>
+
+<form action="{% url 'operator_delete' operator.id %}" method="POST">
+  {% csrf_token %}
+  <button>
+    Delete
+  </button>
+</form>
+
+{% endblock %}
