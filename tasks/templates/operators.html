@@ -7,8 +7,8 @@
 <ul>
   {% for operator in operators %}
   <li>
-    <a href="{% url 'operator_detail' device.id %}">
-      {{operator.id}} - {{operator.operatorId}} {{operator.name}}
+    <a href="{% url 'operator_detail' operator.id %}">
+      {{operator.id}} - {{operator.operatorId}} {{operator.firstName}} {{operator.lastName}} {{operator.email}} {{operator.contact}} {{operator.backOffice}} 
     </a>
   </li>
   {% endfor %}

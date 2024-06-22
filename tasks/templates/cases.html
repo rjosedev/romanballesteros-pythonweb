@@ -8,7 +8,7 @@
   {% for case in cases %}
   <li>
     <a href="{% url 'case_detail' case.id %}">
-      {{case.id}} - {{case.caseId}} {{case.name}}
+      {{case.id}} - {{case.caseId}} {{case.description}}
     </a>
   </li>
   {% endfor %}

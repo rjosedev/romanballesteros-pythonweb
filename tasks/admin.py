@@ -17,4 +17,19 @@ class VendorAdmin(admin.ModelAdmin):
 
 admin.site.register(Vendor, VendorAdmin)
 
+class DeviceAdmin(admin.ModelAdmin):
+  readonly_fields = ('name', )
+
+admin.site.register(Device, DeviceAdmin)
+
+class OperatorAdmin(admin.ModelAdmin):
+  readonly_fields = ('firstName', )
+
+admin.site.register(Operator, OperatorAdmin)
+
+class CaseAdmin(admin.ModelAdmin):
+  readonly_fields = ('description', )
+
+admin.site.register(Case, CaseAdmin)
+
 admin.site.register(Avatar)

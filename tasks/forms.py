@@ -37,7 +37,7 @@ class OperatorForm(ModelForm):
 class CaseForm(ModelForm):
     class Meta:
         model = Case
-        fields = ['caseId', 'description', 'severity', 'caseCreated', 'caseClosed', 'site', 'vendor', 'device', 'operator', 'caseImage']
+        fields = ['caseId', 'description', 'severity', 'site', 'vendor', 'device', 'operator', 'caseImage']
 
 class UserEditForm(UserChangeForm):
 

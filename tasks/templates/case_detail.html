@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{{case.id}} {{case.name}}
+{{case.id}} {{case.description}}
 
 {{error}}
 
@@ -13,7 +13,7 @@
   <section>
     <img 
       src="{{ case.caseImage.url }}"
-      alt="{{ case.name }}"
+      alt="{{ case.description }}"
     />
   <button>
     Update

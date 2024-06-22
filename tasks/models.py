@@ -97,12 +97,17 @@ class Operator(models.Model):
     unique_together = ('operatorId', 'firstName', 'lastName')
 
 class Case(models.Model):
-  severities = ((1, "Not classified"), (2, "Information"), (3, "Warning"), (4, "Average"), (5, "High"), (6, "Disaster"))
+  SEVERITIES = (
+    ('1', "Not classified"),
+    ('2', "Information"),
+    ('3', "Warning"),
+    ('4', "Average"),
+    ('5', "High"),
+    ('6', "Disaster")
+  )
   caseId = models.CharField(max_length=6)
   description = models.CharField(max_length=20)
-  severity = models.CharField(choices=severities, max_length=2, default=0)
-  caseCreated = models.DateField()
-  caseClosed = models.BooleanField()
+  severity = models.CharField(choices=SEVERITIES, max_length=2, null=True)
   site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True)
   vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, null=True)
   device = models.ForeignKey(Device, on_delete=models.CASCADE, null=True)
@@ -110,14 +115,14 @@ class Case(models.Model):
   caseImage = models.ImageField(upload_to='cases', blank=True, null=True)
     
   def __str__(self):
-    return f'{self.caseId} - {self.description} - {self.severity} - {self.caseCreated} - {self.caseClosed} - {self.site} - {self.vendor} - {self.device} - {self.operator}'
+    return f'{self.caseId} - {self.description} - {self.severity} - {self.site} - {self.vendor} - {self.device} - {self.operator}'
 
   class Meta():
 
     verbose_name = 'Case'
     verbose_name_plural = 'Cases'
-    ordering = ('caseId', 'description', 'severity', 'caseCreated')
-    unique_together = ('caseId', 'description', 'severity', 'caseCreated')
+    ordering = ('caseId', 'description')
+    unique_together = ('caseId', 'description')
 
 class Avatar(models.Model):
 
