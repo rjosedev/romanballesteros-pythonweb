@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2>Case > Table</h2>
+
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>db.sqlite3 ID</th>
+                <th>Case ID</th>
+                <th>Description</th>
+                <th>Severity</th>
+                <th>Site</th>
+                <th>Vendor</th>
+                <th>Device</th>
+                <th>Operator</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for case in cases %}
+            <tr>
+                <td>{{ case.id }}</td>
+                <td>{{ case.caseId }}</td>
+                <td>{{ case.description }}</td>
+                <td>{{ case.severity }}</td>
+                <td>{{ case.site }}</td>
+                <td>{{ case.vendor }}</td>
+                <td>{{ case.device }}</td>
+                <td>{{ case.operator }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -54,18 +54,21 @@ urlpatterns = [
 
     ### DEVICE ###
     path('devices/', views.devices, name='devices'),
+    path('device_table/', views.device_table, name='device_table'),
     path('device_create/', views.device_create, name='device_create'),
     path('devices/<int:device_id>', views.device_detail, name='device_detail'),
     path('devices/<int:device_id>/delete', views.device_delete, name='device_delete'),
 
     ### OPERATOR ###
     path('operators/', views.operators, name='operators'),
+    path('operator_table/', views.operator_table, name='operator_table'),
     path('operator_create/', views.operator_create, name='operator_create'),
     path('operators/<int:operator_id>', views.operator_detail, name='operator_detail'),
     path('operators/<int:operator_id>/delete', views.operator_delete, name='operator_delete'),
     
     ### CASE ###
     path('cases/', views.cases, name='cases'),
+    path('case_table/', views.case_table, name='case_table'),
     path('case_create/', views.case_create, name='case_create'),
     path('cases/<int:case_id>', views.case_detail, name='case_detail'),
     path('cases/<int:case_id>/delete', views.case_delete, name='case_delete'),

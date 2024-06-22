@@ -253,6 +253,11 @@ def devices(request):
     return render(request, 'devices.html', {"devices": devices})
 
 @login_required
+def device_table(request):
+    devices = Device.objects.all()
+    return render(request, 'device_table.html', {'devices': devices})
+
+@login_required
 def device_create(request):
     if request.method == "GET":
         return render(request, 'device_create.html', {"form": DeviceForm})
@@ -299,6 +304,11 @@ def operators(request):
     return render(request, 'operators.html', {"operators": operators})
 
 @login_required
+def operator_table(request):
+    operators = Operator.objects.all()
+    return render(request, 'operator_table.html', {'operators': operators})
+
+@login_required
 def operator_create(request):
     if request.method == "GET":
         return render(request, 'operator_create.html', {"form": OperatorForm})
@@ -343,6 +353,11 @@ def operator_delete(request, operator_id):
 def cases(request):
     cases = Case.objects.filter()
     return render(request, 'cases.html', {"cases": cases})
+
+@login_required
+def case_table(request):
+    cases = Case.objects.all()
+    return render(request, 'case_table.html', {'cases': cases})
 
 @login_required
 def case_create(request):
