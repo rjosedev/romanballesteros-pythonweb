@@ -149,9 +149,9 @@ def sites(request):
     return render(request, 'sites.html', {"sites": sites})
 
 @login_required
-def site_list(request):
+def site_table(request):
     sites = Site.objects.all()
-    return render(request, 'site_list.html', {'sites': sites})
+    return render(request, 'site_table.html', {'sites': sites})
 
 @login_required
 def site_create(request):
@@ -200,6 +200,11 @@ def site_delete(request, site_id):
 def vendors(request):
     vendors = Vendor.objects.filter()
     return render(request, 'vendors.html', {"vendors": vendors})
+
+@login_required
+def vendor_table(request):
+    vendors = Vendor.objects.all()
+    return render(request, 'vendor_table.html', {'vendors': vendors})
 
 @login_required
 def vendor_create(request):

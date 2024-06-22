@@ -40,13 +40,14 @@ urlpatterns = [
 
     ### SITE ###
     path('sites/', views.sites, name='sites'),
-    path('site_list/', views.site_list, name='site_list'),
+    path('site_table/', views.site_table, name='site_table'),
     path('site_create/', views.site_create, name='site_create'),
     path('sites/<int:site_id>', views.site_detail, name='site_detail'),
     path('sites/<int:site_id>/delete', views.site_delete, name='site_delete'),
 
     ### VENDOR ###
     path('vendors/', views.vendors, name='vendors'),
+    path('vendor_table/', views.vendor_table, name='vendor_table'),
     path('vendor_create/', views.vendor_create, name='vendor_create'),
     path('vendors/<int:vendor_id>', views.vendor_detail, name='vendor_detail'),
     path('vendors/<int:vendor_id>/delete', views.vendor_delete, name='vendor_delete'),
