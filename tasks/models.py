@@ -26,7 +26,7 @@ class Site(models.Model):
   siteImage = models.ImageField(upload_to='sites', blank=True, null=True) # default=""
   
   def __str__(self):
-    return self.siteId + ' - ' + self.name
+    return self.name + ' - ' + self.country
   
   class Meta():
     verbose_name = 'Site'
@@ -43,7 +43,7 @@ class Vendor(models.Model):
   vendorImage = models.ImageField(upload_to='vendors', blank=True, null=True)
 
   def __str__(self):
-    return self.vendorId + ' - ' + self.name
+    return self.name
   
   class Meta():
 
@@ -65,7 +65,7 @@ class Device(models.Model):
   deviceImage = models.ImageField(upload_to='devices', blank=True, null=True)
 
   def __str__(self):
-    return self.deviceId + ' - ' + self.name
+    return f'{self.name} - {self.category} - {self.model}'
 
   class Meta():
 
@@ -87,7 +87,7 @@ class Operator(models.Model):
   # site = models.ForeignKey(Site, on_delete=models.CASCADE)
     
   def __str__(self):
-    return self.operatorId + ' - ' + self.firstName + ' - ' + self.lastName
+    return self.firstName + ' ' + self.lastName + ' - ' + self.backOffice + ' - ' + self.user.username
 
   class Meta():
 

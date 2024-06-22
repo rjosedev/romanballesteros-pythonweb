@@ -8,7 +8,7 @@
   {% for vendor in vendors %}
   <li>
     <a href="{% url 'vendor_detail' vendor.id %}">
-      {{vendor.id}} - {{vendor.vendorId}} {{vendor.name}} {{vendor.email}} {{vendor.contact}}
+      {{vendor.id}} - {{vendor.vendorId}} - {{vendor.name}} - {{vendor.email}} - {{vendor.contact}}
     </a>
   </li>
   {% endfor %}
