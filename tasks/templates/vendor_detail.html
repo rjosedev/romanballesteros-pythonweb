@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{{vendor.id}} {{vendor.name}}
+
+{{error}}
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.as_p}}
+
+  <section>
+    <img 
+      src="{{ vendor.vendorImage.url }}"
+      alt="{{ vendor.name }}"
+    />
+  <button>
+    Update
+  </button>
+</form>
+
+<form action="{% url 'vendor_delete' vendor.id %}" method="POST">
+  {% csrf_token %}
+  <button>
+    Delete
+  </button>
+</form>
+
+{% endblock %}

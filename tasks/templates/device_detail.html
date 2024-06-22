@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{{device.id}} {{device.name}}
+
+{{error}}
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.as_p}}
+
+  <section>
+    <img 
+      src="{{ device.deviceImage.url }}"
+      alt="{{ device.name }}"
+    />
+  <button>
+    Update
+  </button>
+</form>
+
+<form action="{% url 'device_delete' device.id %}" method="POST">
+  {% csrf_token %}
+  <button>
+    Delete
+  </button>
+</form>
+
+{% endblock %}

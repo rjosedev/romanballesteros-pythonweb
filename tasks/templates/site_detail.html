@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{{site.id}} {{site.name}}
+
+{{error}}
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.as_p}}
+
+  <section>
+    <img 
+      src="{{ site.siteImage.url }}"
+      alt="{{ site.name }}"
+    />
+  <button>
+    Update
+  </button>
+</form>
+
+<form action="{% url 'site_delete' site.id %}" method="POST">
+  {% csrf_token %}
+  <button>
+    Delete
+  </button>
+</form>
+
+{% endblock %}

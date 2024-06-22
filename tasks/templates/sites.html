@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Sites</h1>
+
+<ul>
+  {% for site in sites %}
+  <li>
+    <a href="{% url 'site_detail' site.id %}">
+      {{site.id}} - {{site.siteId}} {{site.name}} {{site.address}} {{site.city}} {{site.country}} {{site.switchowner}} {{site.contact}}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
