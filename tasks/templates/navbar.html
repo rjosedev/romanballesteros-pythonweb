@@ -9,6 +9,9 @@
         <li class="nav-item">
           <a href="/" class="nav-link">Home</a>
         </li>
+        <li class="nav-item"></li>
+          <a href="/about" class="nav-link">About</a>
+        </li>
         {% if user.is_authenticated %}
         <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
           <ul class="navbar-nav">
@@ -18,6 +21,7 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a class="dropdown-item" href="{% url 'tasks' %}">Link / Edit / Delete</a></li>
+                <li><a class="dropdown-item" href="{% url 'task_table' %}">Table</a></li>
                 <li><a class="dropdown-item" href="{% url 'task_create' %}">Create</a></li>
                 <li><a class="dropdown-item" href="{% url 'tasks_completed' %}">Completed</a></li>
               </ul>

@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
 
     ### USER ###
     path('admin/', admin.site.urls),
@@ -33,6 +34,7 @@ urlpatterns = [
     ### TASK ###
     path('tasks/', views.tasks, name='tasks'),
     path('tasks_completed/', views.tasks_completed, name='tasks_completed'),
+    path('task_table/', views.task_table, name='task_table'),
     path('task_create/', views.task_create, name='task_create'),
     path('tasks/<int:task_id>', views.task_detail, name='task_detail'),
     path('tasks/<int:task_id>/complete', views.task_complete, name='task_complete'),

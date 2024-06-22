@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<h2>Device > Edit / Delete</h2>
+
 {{device.id}} {{device.name}}
 
 {{error}}
@@ -15,6 +17,7 @@
       src="{{ device.deviceImage.url }}"
       alt="{{ device.name }}"
     />
+  </section>
   <button>
     Update
   </button>

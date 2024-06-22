@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<h2>Operator > Edit / Delete</h2>
+
 {{operator.id}} {{operator.name}}
 
 {{error}}
@@ -15,6 +17,7 @@
       src="{{ operator.operatorImage.url }}"
       alt="{{ operator.name }}"
     />
+  </section>
   <button>
     Update
   </button>

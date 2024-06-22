@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<h2>Case > Edit / Delete</h2>
+
 {{case.id}} {{case.description}}
 
 {{error}}
@@ -11,10 +13,11 @@
   {{form.as_p}}
 
   <section>
-    <img 
+    <img
       src="{{ case.caseImage.url }}"
       alt="{{ case.description }}"
     />
+  </section>
   <button>
     Update
   </button>

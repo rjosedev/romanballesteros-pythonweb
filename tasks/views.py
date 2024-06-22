@@ -10,10 +10,15 @@ from .forms import TaskForm, SiteForm, SiteEditForm, VendorForm, DeviceForm, Ope
 
 # Create your views here.
 
-### LOGIN ###
+### MAIN ###
 
 def home(request):
     return render(request, 'home.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+### LOGIN ###
 
 def signin(request):
     if request.method == 'GET':
@@ -88,6 +93,11 @@ def signout(request):
 def tasks(request):
     tasks = Task.objects.filter(user=request.user, completed__isnull=True)
     return render(request, 'tasks.html', {"tasks": tasks})
+
+@login_required
+def task_table(request):
+    tasks = Task.objects.all()
+    return render(request, 'task_table.html', {'tasks': tasks})
 
 @login_required
 def tasks_completed(request):
