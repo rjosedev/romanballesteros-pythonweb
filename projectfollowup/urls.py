@@ -40,6 +40,7 @@ urlpatterns = [
 
     ### SITE ###
     path('sites/', views.sites, name='sites'),
+    path('site_list/', views.site_list, name='site_list'),
     path('site_create/', views.site_create, name='site_create'),
     path('sites/<int:site_id>', views.site_detail, name='site_detail'),
     path('sites/<int:site_id>/delete', views.site_delete, name='site_delete'),

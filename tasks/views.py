@@ -149,6 +149,11 @@ def sites(request):
     return render(request, 'sites.html', {"sites": sites})
 
 @login_required
+def site_list(request):
+    sites = Site.objects.all()
+    return render(request, 'site_list.html', {'sites': sites})
+
+@login_required
 def site_create(request):
     if request.method == "GET":
         return render(request, 'site_create.html', {"form": SiteForm})
