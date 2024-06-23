@@ -7,7 +7,6 @@
     <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>db.sqlite3 ID</th>
                 <th>Operator ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -20,7 +19,6 @@
         <tbody>
             {% for operator in operators %}
             <tr>
-                <td>{{ operator.id }}</td>
                 <td>{{ operator.operatorId }}</td>
                 <td>{{ operator.firstName }}</td>
                 <td>{{ operator.lastName }}</td>

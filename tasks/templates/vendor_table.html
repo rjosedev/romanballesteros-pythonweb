@@ -7,7 +7,6 @@
     <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>db.sqlite3 ID</th>
                 <th>Vendor ID</th>
                 <th>Name</th>
                 <th>Email</th>
@@ -17,7 +16,6 @@
         <tbody>
             {% for vendor in vendors %}
             <tr>
-                <td>{{ vendor.id }}</td>
                 <td>{{ vendor.vendorId }}</td>
                 <td>{{ vendor.name }}</td>
                 <td>{{ vendor.email }}</td>

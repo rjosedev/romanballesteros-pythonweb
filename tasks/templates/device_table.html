@@ -7,7 +7,6 @@
     <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>db.sqlite3 ID</th>
                 <th>Device ID</th>
                 <th>Name</th>
                 <th>Category</th>
@@ -21,7 +20,6 @@
         <tbody>
             {% for device in devices %}
             <tr>
-                <td>{{ device.id }}</td>
                 <td>{{ device.deviceId }}</td>
                 <td>{{ device.name }}</td>
                 <td>{{ device.category }}</td>

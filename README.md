@@ -1,23 +1,19 @@
-# romanballesteros-pythonweb
+### romanballesteros-pythonweb
 
-### Explicación del Ejemplo:
+- **Nombre del Proyecto:**
+Follow-up
 
-- **Nombre del Proyecto:** Se debe especificar el nombre del proyecto al inicio del archivo.
-- **Descripción:** Breve introducción sobre el proyecto y su propósito.
-- **Requisitos:** Lista de requisitos necesarios para ejecutar el proyecto.
-- **Instalación:** Pasos detallados para instalar el proyecto, incluyendo clonación del repositorio, configuración del entorno virtual, instalación de dependencias, configuración de la base de datos y migraciones.
-- **Uso:** Instrucciones sobre cómo iniciar el servidor de desarrollo y acceder a la aplicación en el navegador.
-- **Funcionalidades:** Sección donde se describen los modelos disponibles, las vistas asociadas y las acciones que se pueden realizar en cada una.
-- **Tipos de Usuarios y Permisos de Acceso:** Explicación de los diferentes roles de usuario y los permisos que tienen sobre las funcionalidades del sistema.
-- **Contribuciones:** Instrucciones sobre cómo contribuir al proyecto y una invitación abierta para recibir contribuciones.
-- **Licencia:** Información sobre la licencia bajo la cual se distribuye el proyecto.
-
-Este ejemplo proporciona una estructura básica y clara para un archivo `README.md` que puedes adaptar según las especificaciones y características únicas de tu proyecto Django.
-
-Bienvenido a la página web de Gestión de Información
-
+- **Descripción:** 
 Esta página web está desarrollada utilizando Python con el framework Django y proporciona funcionalidades para gestionar varios modelos de datos. A continuación se detallan los modelos disponibles y las vistas asociadas para cada tipo de usuario.
-Modelos y Vistas Disponibles
+
+- **Requisitos:** falta completar
+- **Instalación:** falta completar
+ - **Uso:** falta completar
+- **Funcionalidades:** falta completar
+- **Contribuciones:** falta completar
+- **Licencia:** falta completar
+
+- **Modelos y Vistas Disponibles:**
 Modelo: Sitios
 
     Listar Sitios
@@ -71,19 +67,22 @@ Modelo: Tareas
         Permite añadir una nueva tarea utilizando un formulario.
     Editar/Eliminar Tarea
         Formulario para actualizar los campos de una tarea existente o eliminarla.
+    Completar Tarea
+        Muestra una lista de las tareas que han sido completadas.
 
-Tipos de Usuarios y Permisos de Acceso
+- **Tipos de Usuarios y Permisos de Acceso:**
 Administrador (Admin)
 
-    Tiene acceso completo sobre todos los modelos y vistas.
-    Puede crear, editar, eliminar y listar elementos en todos los modelos.
+    Acceso de Admin para administración de los elementos de la página, gestión de usuarios y grupos.
+    Puede acceder a todas las views y models disponibles.
+    Tiene permisos para crear, editar, eliminar y listar elementos en todos los models.
 
 Personal (Staff)
 
-    Puede acceder a todas las vistas y modelos disponibles.
-    Tiene permisos para crear, editar, eliminar y listar elementos en todos los modelos.
+    Puede acceder a todas las views y models disponibles.
+    Tiene permisos para crear, editar, eliminar y listar elementos en todos los models.
 
 Operador (Oper)
 
-    Puede acceder únicamente a los modelos de Casos y Tareas.
-    Puede ver la vista "Listar" de todos los modelos, pero solo puede interactuar (crear, editar, eliminar) con Casos y Tareas.
+    Puede acceder únicamente a los models Case y Task.
+    Puede ver la view List de todos los models, pero solo puede interactuar (crear, editar, eliminar y listar) con models Case y Task.
