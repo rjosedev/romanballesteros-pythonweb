@@ -21,7 +21,11 @@
     {% include 'navbar.html' %}
 
     {% if user.is_authenticated %}
-    Welcome <strong>{{request.user.first_name}} {{request.user.last_name}}</strong>, logged as <strong>{{request.user.username}}</strong>. {{message}}
+    <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item active">
+        Welcome <strong>{{request.user.first_name}} {{request.user.last_name}}</strong>, logged as <strong>{{request.user.username}}</strong>. {{message}}
+      </li>
+    </ol>
     {% endif %}
 
     {% block content %}
@@ -33,6 +37,7 @@
           $('#example').DataTable();
       } );
     </script>
-
+    
   </body>
+  {% include 'footer.html' %}
 </html>

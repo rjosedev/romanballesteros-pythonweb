@@ -8,7 +8,7 @@
   {% for device in devices %}
   <li>
     <a href="{% url 'device_detail' device.id %}">
-      {{device.id}} - {{device.deviceId}} - {{device.name}} - {{device.category}} - {{device.model}} - {{device.serialNumber}} - {{device.rack}} - {{device.site}} - {{device.vendor}}
+      <!-- {{device.id}} -->{{device.deviceId}} - {{device.name}} - {{device.category}} - {{device.model}} - {{device.serialNumber}} - {{device.rack}} - {{device.site}} - {{device.vendor}}
     </a>
   </li>
   {% endfor %}

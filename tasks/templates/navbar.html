@@ -1,17 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Follow-up</a>
+    <a class="navbar-brand" href="/">
+      <img src="/media/static/1930264_check_complete_done_green_success_icon.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      Follow-up
+    </a>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a href="/" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item"></li>
+        <a href="/about" class="nav-link">About</a>
+      </li>
+    </ul>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a href="/" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item"></li>
-          <a href="/about" class="nav-link">About</a>
-        </li>
         {% if user.is_authenticated %}
         <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
           <ul class="navbar-nav">
@@ -112,15 +117,13 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <strong>{{request.user.username}}</strong>
               </a>
-              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+              <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a class="dropdown-item" href="/edit_profile">Edit profile</a></li>
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
               </ul>
             </li>
           </ul>
         </div>
-        <li class="nav-item">
-          <a href="/logout" class="nav-link">Logout</a>
-        </li>
         {% else %}
         <li class="nav-item">
           <a href="/signin" class="nav-link">Login</a>

@@ -10,10 +10,10 @@
     <a href="{% url 'task_detail' task.id %}">
 
       {% if task.important %}
-      <strong>{{task.id}} - {{task.title}}</strong>
+      <strong><!-- {{task.id}} -->{{task.title}}</strong>
 
       {% else %}
-      {{task.id}} - {{task.title}}
+      <!-- {{task.id}} -->{{task.title}}
       
       {% endif %}
 

@@ -98,12 +98,12 @@ class Operator(models.Model):
 
 class Case(models.Model):
   SEVERITIES = (
-    ('1', "Not classified"),
-    ('2', "Information"),
-    ('3', "Warning"),
-    ('4', "Average"),
-    ('5', "High"),
-    ('6', "Disaster")
+    ('1', "1. Not classified"),
+    ('2', "2. Information"),
+    ('3', "3. Warning"),
+    ('4', "4. Average"),
+    ('5', "5. High"),
+    ('6', "6. Disaster")
   )
   caseId = models.CharField(max_length=6)
   description = models.CharField(max_length=20)
