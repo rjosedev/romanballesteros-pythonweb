@@ -21,8 +21,10 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a class="dropdown-item" href="{% url 'site_table' %}">List</a></li>
+                {% if user.is_staff %}
                 <li><a class="dropdown-item" href="{% url 'site_create' %}">Create</a></li>
                 <li><a class="dropdown-item" href="{% url 'sites' %}">Edit / Delete</a></li>
+                {% endif %}
               </ul>
             </li>
           </ul>
@@ -35,8 +37,10 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a class="dropdown-item" href="{% url 'vendor_table' %}">List</a></li>
+                {% if user.is_staff %}
                 <li><a class="dropdown-item" href="{% url 'vendor_create' %}">Create</a></li>
                 <li><a class="dropdown-item" href="{% url 'vendors' %}">Edit / Delete</a></li>
+                {% endif %}
               </ul>
             </li>
           </ul>
@@ -49,8 +53,10 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a class="dropdown-item" href="{% url 'device_table' %}">List</a></li>
+                {% if user.is_staff %}
                 <li><a class="dropdown-item" href="{% url 'device_create' %}">Create</a></li>
                 <li><a class="dropdown-item" href="{% url 'devices' %}">Edit / Delete</a></li>
+                {% endif %}
               </ul>
             </li>
           </ul>
@@ -63,8 +69,10 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a class="dropdown-item" href="{% url 'operator_table' %}">List</a></li>
+                {% if user.is_staff %}
                 <li><a class="dropdown-item" href="{% url 'operator_create' %}">Create</a></li>
                 <li><a class="dropdown-item" href="{% url 'operators' %}">Edit / Delete</a></li>
+                {% endif %}
               </ul>
             </li>
           </ul>

@@ -11,6 +11,9 @@ from .forms import TaskForm, SiteForm, SiteEditForm, VendorForm, DeviceForm, Ope
 
 # Create your views here.
 
+
+
+
 ### MAIN ###
 
 def home(request):
@@ -19,8 +22,8 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-def admin_only(request):
-    return render(request, 'admin_only.html')
+def only_staff(request):
+    return render(request, 'only_staff.html')
 
 ### LOGIN ###
 
@@ -92,73 +95,9 @@ def signout(request):
 
 
 
-### TASK ###
-
-@login_required
-def tasks(request):
-    tasks = Task.objects.filter(user=request.user, completed__isnull=True)
-    return render(request, 'tasks.html', {"tasks": tasks})
-
-@login_required
-def task_table(request):
-    tasks = Task.objects.all()
-    return render(request, 'task_table.html', {'tasks': tasks})
-
-@login_required
-def tasks_completed(request):
-    tasks = Task.objects.filter(user=request.user, completed__isnull=False).order_by('-completed')
-    return render(request, 'tasks.html', {"tasks": tasks})
-
-@login_required
-def task_create(request):
-    if request.method == "GET":
-        return render(request, 'task_create.html', {"form": TaskForm})
-    else:
-        try:
-            form = TaskForm(request.POST)
-            new_task = form.save(commit=False)
-            new_task.user = request.user
-            new_task.save()
-            return redirect('tasks')
-        except ValueError:
-            return render(request, 'task_create.html', {"form": TaskForm, "error": "Error creating task."})
-
-@login_required
-def task_detail(request, task_id):
-    if request.method == 'GET':
-        task = get_object_or_404(Task, pk=task_id, user=request.user)
-        form = TaskForm(instance=task)
-        return render(request, 'task_detail.html', {'task': task, 'form': form})
-    else:
-        try:
-            task = get_object_or_404(Task, pk=task_id, user=request.user)
-            form = TaskForm(request.POST, instance=task)
-            form.save()
-            return redirect('tasks')
-        except ValueError:
-            return render(request, 'task_detail.html', {'task': task, 'form': form, 'error': 'Error updating task.'})
-
-@login_required
-def task_complete(request, task_id):
-    task = get_object_or_404(Task, pk=task_id, user=request.user)
-    if request.method == 'POST':
-        task.completed = timezone.now()
-        task.save()
-        return redirect('tasks')
-
-@login_required
-def task_delete(request, task_id):
-    task = get_object_or_404(Task, pk=task_id, user=request.user)
-    if request.method == 'POST':
-        task.delete()
-        return redirect('tasks')
-    
-
-
-
 ### SITE ###
 
-@staff_member_required(login_url='/admin_only')
+@staff_member_required(login_url='/only_staff')
 def sites(request):
     sites = Site.objects.filter()
     return render(request, 'sites.html', {"sites": sites})
@@ -168,7 +107,7 @@ def site_table(request):
     sites = Site.objects.all()
     return render(request, 'site_table.html', {'sites': sites})
 
-@staff_member_required(login_url='/admin_only')
+@staff_member_required(login_url='/only_staff')
 def site_create(request):
     if request.method == "GET":
         return render(request, 'site_create.html', {"form": SiteForm})
@@ -183,7 +122,7 @@ def site_create(request):
         except ValueError:
             return render(request, 'site_create.html', {"form": SiteForm, "error": "Error creating site."})
 
-@staff_member_required(login_url='/admin_only')
+@staff_member_required(login_url='/only_staff')
 def site_detail(request, site_id):
     if request.method == 'GET':
         site = get_object_or_404(Site, pk=site_id)
@@ -409,3 +348,67 @@ def case_delete(request, case_id):
     if request.method == 'POST':
         case.delete()
         return redirect('cases')
+
+
+
+
+### TASK ###
+
+@login_required
+def tasks(request):
+    tasks = Task.objects.filter(user=request.user, completed__isnull=True)
+    return render(request, 'tasks.html', {"tasks": tasks})
+
+@login_required
+def task_table(request):
+    tasks = Task.objects.all()
+    return render(request, 'task_table.html', {'tasks': tasks})
+
+@login_required
+def tasks_completed(request):
+    tasks = Task.objects.filter(user=request.user, completed__isnull=False).order_by('-completed')
+    return render(request, 'tasks.html', {"tasks": tasks})
+
+@login_required
+def task_create(request):
+    if request.method == "GET":
+        return render(request, 'task_create.html', {"form": TaskForm})
+    else:
+        try:
+            form = TaskForm(request.POST)
+            new_task = form.save(commit=False)
+            new_task.user = request.user
+            new_task.save()
+            return redirect('tasks')
+        except ValueError:
+            return render(request, 'task_create.html', {"form": TaskForm, "error": "Error creating task."})
+
+@login_required
+def task_detail(request, task_id):
+    if request.method == 'GET':
+        task = get_object_or_404(Task, pk=task_id, user=request.user)
+        form = TaskForm(instance=task)
+        return render(request, 'task_detail.html', {'task': task, 'form': form})
+    else:
+        try:
+            task = get_object_or_404(Task, pk=task_id, user=request.user)
+            form = TaskForm(request.POST, instance=task)
+            form.save()
+            return redirect('tasks')
+        except ValueError:
+            return render(request, 'task_detail.html', {'task': task, 'form': form, 'error': 'Error updating task.'})
+
+@login_required
+def task_complete(request, task_id):
+    task = get_object_or_404(Task, pk=task_id, user=request.user)
+    if request.method == 'POST':
+        task.completed = timezone.now()
+        task.save()
+        return redirect('tasks')
+
+@login_required
+def task_delete(request, task_id):
+    task = get_object_or_404(Task, pk=task_id, user=request.user)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('tasks')
