@@ -6,7 +6,9 @@
 
 {{case.id}} {{case.description}}
 
-{{error}}
+<p>
+  {{error}}
+</p>
 
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
@@ -18,6 +20,7 @@
       alt="{{ case.description }}"
     />
   </section>
+
   <button>
     Update
   </button>
@@ -25,6 +28,7 @@
 
 <form action="{% url 'case_delete' case.id %}" method="POST">
   {% csrf_token %}
+  
   <button>
     Delete
   </button>

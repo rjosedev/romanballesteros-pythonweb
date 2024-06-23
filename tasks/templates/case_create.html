@@ -4,16 +4,17 @@
 
   <h2>Case > Create</h2>
   
-  {{error}}
-  <form
-    action="/case_create/"
-    method="POST"
-    enctype="multipart/form-data">
+  <p>
+    {{error}}
+  </p>
+
+  <form action="/case_create/" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    
     {{form}}
-  
-    <button>Save</button>
+
+    <button>
+      Save
+    </button>
   </form>
 
 {% endblock %}

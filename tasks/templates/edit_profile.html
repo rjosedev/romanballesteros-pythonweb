@@ -4,11 +4,17 @@
 
 <h2>Edit profile</h2>
 
-{{error}}
+<p>
+  {{error}}
+</p>
 
 <form action="/edit_profile/" method="POST">
-  {% csrf_token %} {{form.as_p}}
-  <button>Update</button>
+  {% csrf_token %}
+  {{form.as_p}}
+
+  <button>
+    Update
+  </button>
 </form>
 
 {% endblock %}

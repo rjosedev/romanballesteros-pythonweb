@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from .models import Task, Site, Vendor, Device, Operator, Case, Avatar
 from .forms import TaskForm, SiteForm, SiteEditForm, VendorForm, DeviceForm, OperatorForm, CaseForm, UserEditForm
 
@@ -17,6 +18,9 @@ def home(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def admin_only(request):
+    return render(request, 'admin_only.html')
 
 ### LOGIN ###
 
@@ -40,7 +44,8 @@ def signup(request):
         if request.POST["password1"] == request.POST["password2"]:
             try:
                 user = User.objects.create_user(
-                    request.POST["username"], password=request.POST["password1"])
+                    request.POST["username"],
+                    password=request.POST["password1"])
                 user.save()
                 login(request, user)
                 return redirect('home')
@@ -153,7 +158,7 @@ def task_delete(request, task_id):
 
 ### SITE ###
 
-@login_required
+@staff_member_required(login_url='/admin_only')
 def sites(request):
     sites = Site.objects.filter()
     return render(request, 'sites.html', {"sites": sites})
@@ -163,7 +168,7 @@ def site_table(request):
     sites = Site.objects.all()
     return render(request, 'site_table.html', {'sites': sites})
 
-@login_required
+@staff_member_required(login_url='/admin_only')
 def site_create(request):
     if request.method == "GET":
         return render(request, 'site_create.html', {"form": SiteForm})
@@ -178,7 +183,7 @@ def site_create(request):
         except ValueError:
             return render(request, 'site_create.html', {"form": SiteForm, "error": "Error creating site."})
 
-@login_required
+@staff_member_required(login_url='/admin_only')
 def site_detail(request, site_id):
     if request.method == 'GET':
         site = get_object_or_404(Site, pk=site_id)
@@ -194,7 +199,7 @@ def site_detail(request, site_id):
         except ValueError:
             return render(request, 'site_detail.html', {'site': site, 'form': form, 'error': 'Error updating site.'})
 
-@login_required
+@staff_member_required(login_url='/admin_only')
 def site_delete(request, site_id):
     site = get_object_or_404(Site, pk=site_id)
     if request.method == 'POST':

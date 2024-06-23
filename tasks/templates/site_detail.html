@@ -6,7 +6,9 @@
 
 {{site.id}} {{site.name}}
 
-{{error}}
+<p>
+  {{error}}
+</p>
 
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
@@ -18,6 +20,7 @@
       alt="{{ site.name }}"
     />
   </section>
+
   <button>
     Update
   </button>
@@ -25,6 +28,7 @@
 
 <form action="{% url 'site_delete' site.id %}" method="POST">
   {% csrf_token %}
+  
   <button>
     Delete
   </button>

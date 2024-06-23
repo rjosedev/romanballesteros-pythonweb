@@ -2,14 +2,19 @@
 
 {% block content %}
 
-  <h2>Task > Create</h2>
-  
+<h2>Task > Create</h2>
+
+<p>
   {{error}}
-  <form action="/task_create/" method="POST">
-    {% csrf_token %}
-    {{form}}
-  
-    <button>Save</button>
-  </form>
+</p>
+
+<form action="/task_create/" method="POST">
+  {% csrf_token %}
+  {{form}}
+
+  <button>
+    Save
+  </button>
+</form>
 
 {% endblock %}
