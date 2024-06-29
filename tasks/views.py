@@ -19,6 +19,9 @@ from .forms import TaskForm, SiteForm, SiteEditForm, VendorForm, DeviceForm, Ope
 def home(request):
     return render(request, 'home.html')
 
+def pages(request):
+    return render(request, 'pages.html')
+
 def about(request):
     return render(request, 'about.html')
 
