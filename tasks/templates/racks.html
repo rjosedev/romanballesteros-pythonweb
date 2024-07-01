@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mt-4">Edit / Delete > Rack</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
+
+    {% for rack in racks %}
+    <li>
+      <a href="{% url 'rack_detail' rack.id %}">
+        <!-- {{rack.id}} -->{{rack.rackId}} - {{rack.name}} - {{rack.site}}
+      </a>
+    </li>
+    {% endfor %}
+
+  </div>
+</div>
+
+{% endblock %}

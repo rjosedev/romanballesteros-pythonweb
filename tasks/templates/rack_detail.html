@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mt-4">Edit / Delete > Rack</h2>
+
+{{rack.rackId}} - {{rack.name}} - {{rack.site}}
+
+<p>
+  {{error}}
+</p>
+
+<div class="card mb-4">
+  <div class="card-body">
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.as_p}}
+    
+      <section>
+        <img 
+          src="{{ rack.rackImage.url }}"
+          alt="{{ rack.name }}"
+        />
+      </section>
+    
+      <button>
+        Update
+      </button>
+    </form>
+    
+    <form action="{% url 'rack_delete' rack.id %}" method="POST">
+      {% csrf_token %}
+      
+      <button>
+        Delete
+      </button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

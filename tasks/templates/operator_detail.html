@@ -2,36 +2,42 @@
 
 {% block content %}
 
-<h2>Operator > Edit / Delete</h2>
+<h2 class="mt-4">Edit / Delete > Operator</h2>
 
-{{operator.id}} {{operator.name}}
+{{operator.operatorId}} - {{operator.firstName}} {{operator.lastName}} - {{operator.email}} - {{operator.contact}} - {{operator.backOffice}} - {{operator.user.username}} 
 
 <p>
   {{error}}
 </p>
 
-<form method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{form.as_p}}
+<div class="card mb-4">
+  <div class="card-body">
 
-  <section>
-    <img 
-      src="{{ operator.operatorImage.url }}"
-      alt="{{ operator.name }}"
-    />
-  </section>
-
-  <button>
-    Update
-  </button>
-</form>
-
-<form action="{% url 'operator_delete' operator.id %}" method="POST">
-  {% csrf_token %}
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.as_p}}
+    
+      <section>
+        <img 
+          src="{{ operator.operatorImage.url }}"
+          alt="{{ operator.name }}"
+        />
+      </section>
+    
+      <button>
+        Update
+      </button>
+    </form>
+    
+    <form action="{% url 'operator_delete' operator.id %}" method="POST">
+      {% csrf_token %}
+      
+      <button>
+        Delete
+      </button>
+    </form>
   
-  <button>
-    Delete
-  </button>
-</form>
+  </div>
+</div>
 
 {% endblock %}

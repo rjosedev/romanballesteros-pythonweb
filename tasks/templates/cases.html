@@ -2,16 +2,20 @@
 
 {% block content %}
 
-<h2>Case > Edit / Delete</h2>
+<h2 class="mt-4">Edit / Delete > Case</h2>
 
-<ul>
-  {% for case in cases %}
-  <li>
-    <a href="{% url 'case_detail' case.id %}">
-      <!-- {{case.id}} -->{{case.caseId}} - {{case.description}} - {{case.severity}} - {{case.site}} - {{case.vendor}} - {{case.device}} - {{case.operator}}
-    </a>
-  </li>
-  {% endfor %}
-</ul>
+<div class="card mb-4">
+  <div class="card-body">
+
+    {% for case in cases %}
+    <li>
+      <a href="{% url 'case_detail' case.id %}">
+        <!-- {{case.id}} -->{{case.caseId}} - {{case.description}} - {{case.severity}} - {{case.site}} - {{case.vendor}} - {{case.device}} - {{case.operator}}
+      </a>
+    </li>
+    {% endfor %}
+
+  </div>
+</div>
 
 {% endblock %}

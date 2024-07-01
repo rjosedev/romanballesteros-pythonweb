@@ -2,18 +2,25 @@
 
 {% block content %}
 
-<h2>Vendor > Create</h2>
+<h2 class="mt-4">Create > Vendor</h2>
 
 <p>
   {{error}}
 </p>
-<form action="/vendor_create/" method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{form}}
 
-  <button>
-    Save
-  </button>
-</form>
+<div class="card mb-4">
+  <div class="card-body">
+
+    <form action="/vendor_create/" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form}}
+  
+      <button>
+        Save
+      </button>
+    </form>
+    
+  </div>
+</div>
 
 {% endblock %}

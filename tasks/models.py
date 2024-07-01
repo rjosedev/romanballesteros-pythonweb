@@ -23,16 +23,36 @@ class Site(models.Model):
   country = models.CharField(max_length=20)
   switchowner = models.CharField(max_length=30)
   contact = models.IntegerField(default=0)
-  siteImage = models.ImageField(upload_to='sites', blank=True, null=True) # default=""
+  siteImage = models.ImageField(upload_to='sites', blank=True, null=True, default="/media/static/default.png") # default=""
   
   def __str__(self):
-    return self.name + ' - ' + self.country
+    return self.name
   
   class Meta():
     verbose_name = 'Site'
     verbose_name_plural = 'Sites'
     ordering = ('siteId', 'name')
     unique_together = ('siteId', 'name')
+
+class Rack(models.Model):
+
+  rackId = models.CharField(max_length=6)
+  name = models.CharField(max_length=20)
+  site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True)
+  rackImage = models.ImageField(upload_to='racks', blank=True, null=True, default="/media/static/default.png") # default=""
+
+  #def save(self, *args, **kwargs):
+  #  self.site = self.site.name
+  #  super().save(*args, **kwargs)
+
+  def __str__(self):
+    return self.name
+
+  class Meta():
+    verbose_name = 'Rack'
+    verbose_name_plural = 'Racks'
+    ordering = ('rackId', 'name')
+    unique_together = ('rackId', 'name')
     
 class Vendor(models.Model):
 
@@ -40,7 +60,8 @@ class Vendor(models.Model):
   name = models.CharField(max_length=20)
   email = models.EmailField()
   contact = models.IntegerField()
-  vendorImage = models.ImageField(upload_to='vendors', blank=True, null=True)
+  link = models.URLField(max_length=200, blank=True)
+  vendorImage = models.ImageField(upload_to='vendors', blank=True, null=True, default="/media/static/default.png")
 
   def __str__(self):
     return self.name
@@ -59,20 +80,26 @@ class Device(models.Model):
   category = models.CharField(max_length=20)
   model = models.CharField(max_length=20)
   serialNumber = models.CharField(max_length=30)
-  rack = models.CharField(max_length=30)
   site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True)
+  rack = models.ForeignKey(Rack, on_delete=models.CASCADE, null=True)
   vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, null=True)
-  deviceImage = models.ImageField(upload_to='devices', blank=True, null=True)
+  deviceImage = models.ImageField(upload_to='devices', blank=True, null=True, default="/media/static/default.png")
+
+  #def save(self, *args, **kwargs):
+  #  self.site = self.site.name
+  #  self.rack = self.rack.name
+  #  self.vendor = self.vendor.name
+  #  super().save(*args, **kwargs)
 
   def __str__(self):
-    return f'{self.name} - {self.category} - {self.model}'
+    return f'{self.name} - {self.category} - {self.model} - {self.serialNumber}'
 
   class Meta():
 
     verbose_name = 'Device'
     verbose_name_plural = 'Devices'
-    ordering = ('deviceId', 'name', 'category')
-    unique_together = ('deviceId', 'name', 'category')
+    ordering = ('deviceId', 'name')
+    unique_together = ('deviceId', 'name')
 
 class Operator(models.Model):
 
@@ -83,7 +110,7 @@ class Operator(models.Model):
   contact = models.IntegerField()
   backOffice = models.CharField(max_length=20)
   user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-  operatorImage = models.ImageField(upload_to='operators', blank=True, null=True)
+  operatorImage = models.ImageField(upload_to='operators', blank=True, null=True, default="/media/static/default.png")
   # site = models.ForeignKey(Site, on_delete=models.CASCADE)
     
   def __str__(self):
@@ -108,14 +135,21 @@ class Case(models.Model):
   caseId = models.CharField(max_length=6)
   description = models.CharField(max_length=20)
   severity = models.CharField(choices=SEVERITIES, max_length=2, null=True)
-  site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True)
-  vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, null=True)
+  site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True, editable=False)
+  rack = models.ForeignKey(Rack, on_delete=models.CASCADE, null=True, editable=False) 
+  vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, null=True, editable=False)
   device = models.ForeignKey(Device, on_delete=models.CASCADE, null=True)
   operator = models.ForeignKey(Operator, on_delete=models.CASCADE, null=True)
-  caseImage = models.ImageField(upload_to='cases', blank=True, null=True)
+  caseImage = models.ImageField(upload_to='cases', blank=True, null=True, default="/media/static/default.png")
+
+  def save(self, *args, **kwargs):
+    self.site = self.device.site
+    self.rack = self.device.rack
+    self.vendor = self.device.vendor
+    super().save(*args, **kwargs)
     
   def __str__(self):
-    return f'{self.caseId} - {self.description} - {self.severity} - {self.site} - {self.vendor} - {self.device} - {self.operator}'
+    return f'{self.caseId} - {self.description} - {self.severity} - {self.device.name} - {self.operator.user.username}'
 
   class Meta():
 

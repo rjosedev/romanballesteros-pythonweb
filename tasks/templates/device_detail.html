@@ -2,36 +2,42 @@
 
 {% block content %}
 
-<h2>Device > Edit / Delete</h2>
+<h2 class="mt-4">Edit / Delete > Device</h2>
 
-{{device.id}} {{device.name}}
+{{device.deviceId}} - {{device.name}} - {{device.category}} - {{device.model}} - {{device.serialNumber}} - {{device.site}} - {{device.rack}} - {{device.vendor}}
 
 <p>
   {{error}}
 </p>
 
-<form method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{form.as_p}}
+<div class="card mb-4">
+  <div class="card-body">
 
-  <section>
-    <img 
-      src="{{ device.deviceImage.url }}"
-      alt="{{ device.name }}"
-    />
-  </section>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.as_p}}
+    
+      <section>
+        <img 
+          src="{{ device.deviceImage.url }}"
+          alt="{{ device.name }}"
+        />
+      </section>
+    
+      <button>
+        Update
+      </button>
+    </form>
+    
+    <form action="{% url 'device_delete' device.id %}" method="POST">
+      {% csrf_token %}
+      
+      <button>
+        Delete
+      </button>
+    </form>
 
-  <button>
-    Update
-  </button>
-</form>
-
-<form action="{% url 'device_delete' device.id %}" method="POST">
-  {% csrf_token %}
-  
-  <button>
-    Delete
-  </button>
-</form>
+  </div>
+</div>
 
 {% endblock %}

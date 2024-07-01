@@ -2,19 +2,25 @@
 
 {% block content %}
 
-  <h2>Case > Create</h2>
+<h2 class="mt-4">Create > Case</h2>
+
+<p>
+  {{error}}
+</p>
+
+<div class="card mb-4">
+  <div class="card-body">
+
+    <form action="/case_create/" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form}}
   
-  <p>
-    {{error}}
-  </p>
-
-  <form action="/case_create/" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form}}
-
-    <button>
-      Save
-    </button>
-  </form>
+      <button>
+        Save
+      </button>
+    </form>
+    
+  </div>
+</div>
 
 {% endblock %}

@@ -19,15 +19,20 @@ class SiteEditForm(ModelForm):
         model = Site
         fields = ['address', 'city', 'country', 'switchowner', 'contact', 'siteImage']
 
+class RackForm(ModelForm):
+    class Meta:
+        model = Rack
+        fields = ['rackId', 'name', 'site', 'rackImage']
+
 class VendorForm(ModelForm):
     class Meta:
         model = Vendor
-        fields = ['vendorId','name', 'email', 'contact', 'vendorImage']
+        fields = ['vendorId','name', 'email', 'contact', 'link', 'vendorImage']
 
 class DeviceForm(ModelForm):
     class Meta:
         model = Device
-        fields = ['deviceId', 'name', 'category', 'model', 'serialNumber', 'rack', 'site', 'vendor', 'deviceImage']
+        fields = ['deviceId', 'name', 'category', 'model', 'serialNumber', 'site', 'rack', 'vendor', 'deviceImage']
 
 class OperatorForm(ModelForm):
     class Meta:
@@ -37,7 +42,7 @@ class OperatorForm(ModelForm):
 class CaseForm(ModelForm):
     class Meta:
         model = Case
-        fields = ['caseId', 'description', 'severity', 'site', 'vendor', 'device', 'operator', 'caseImage']
+        fields = ['caseId', 'description', 'severity', 'device', 'operator', 'caseImage']
 
 class UserEditForm(UserChangeForm):
 

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mt-4">List > Rack</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
+
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Rack ID</th>
+                <th>Name</th>
+                <th>Site</th>
+                {% if user.is_staff %}
+                <th>Options</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for rack in racks %}
+            <tr>
+                <td>{{ rack.rackId }}</td>
+                <td>{{ rack.name }}</td>
+                <td>{{ rack.site }}</td>
+                {% if user.is_staff %}
+                <td><a href="{% url 'rack_detail' rack.id %}">Edit / Delete</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+  </div>
+</div>
+
+{% endblock %}

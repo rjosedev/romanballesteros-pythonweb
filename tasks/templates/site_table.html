@@ -2,7 +2,10 @@
 
 {% block content %}
 
-    <h2>Site > List</h2>
+<h2 class="mt-4">List > Site</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
     
     <table id="example" class="display" style="width:100%">
         <thead>
@@ -14,6 +17,9 @@
                 <th>Country</th>
                 <th>Switchowner</th>
                 <th>Contact</th>
+                {% if user.is_staff %}
+                <th>Options</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -26,8 +32,15 @@
                 <td>{{ site.country }}</td>
                 <td>{{ site.switchowner }}</td>
                 <td>{{ site.contact }}</td>
+                {% if user.is_staff %}
+                <td><a href="{% url 'site_detail' site.id %}">Edit / Delete</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+  </div>
+</div>
+
 {% endblock %}

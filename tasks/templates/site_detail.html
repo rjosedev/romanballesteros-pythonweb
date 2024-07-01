@@ -2,36 +2,42 @@
 
 {% block content %}
 
-<h2>Site > Edit / Delete</h2>
+<h2 class="mt-4">Edit / Delete > Site</h2>
 
-{{site.id}} {{site.name}}
+{{site.siteId}} - {{site.name}} - {{site.address}} - {{site.city}} - {{site.country}} - {{site.switchowner}} - {{site.contact}}
 
 <p>
   {{error}}
 </p>
 
-<form method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{form.as_p}}
+<div class="card mb-4">
+  <div class="card-body">
+    
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.as_p}}
+    
+      <section>
+        <img 
+          src="{{ site.siteImage.url }}"
+          alt="{{ site.name }}"
+        />
+      </section>
+    
+      <button>
+        Update
+      </button>
+    </form>
+    
+    <form action="{% url 'site_delete' site.id %}" method="POST">
+      {% csrf_token %}
+      
+      <button>
+        Delete
+      </button>
+    </form>
 
-  <section>
-    <img 
-      src="{{ site.siteImage.url }}"
-      alt="{{ site.name }}"
-    />
-  </section>
-
-  <button>
-    Update
-  </button>
-</form>
-
-<form action="{% url 'site_delete' site.id %}" method="POST">
-  {% csrf_token %}
-  
-  <button>
-    Delete
-  </button>
-</form>
+  </div>
+</div>
 
 {% endblock %}

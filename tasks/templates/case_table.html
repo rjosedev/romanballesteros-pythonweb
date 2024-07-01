@@ -2,7 +2,10 @@
 
 {% block content %}
 
-<h2>Case > List</h2>
+<h2 class="mt-4">List > Case</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
 
     <table id="example" class="display" style="width:100%">
         <thead>
@@ -11,9 +14,11 @@
                 <th>Description</th>
                 <th>Severity</th>
                 <th>Site</th>
+                <th>Rack</th>
                 <th>Vendor</th>
                 <th>Device</th>
                 <th>Operator</th>
+                <th>Options</th>
             </tr>
         </thead>
         <tbody>
@@ -23,11 +28,17 @@
               <td>{{ case.description }}</td>
               <td>{{ case.severity }}</td>
               <td>{{ case.site }}</td>
+              <td>{{ case.rack }}</td>
               <td>{{ case.vendor }}</td>
               <td>{{ case.device }}</td>
               <td>{{ case.operator }}</td>
+              <td><a href="{% url 'case_detail' case.id %}">Edit / Delete</a></td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    
+  </div>
+</div>
+
 {% endblock %}

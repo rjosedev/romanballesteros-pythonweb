@@ -2,7 +2,10 @@
 
 {% block content %}
 
-    <h2>Vendor > List</h2>
+<h2 class="mt-4">List > Vendor</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
 
     <table id="example" class="display" style="width:100%">
         <thead>
@@ -11,6 +14,10 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Contact</th>
+                <th>Link</th>
+                {% if user.is_staff %}
+                <th>Options</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -20,8 +27,16 @@
                 <td>{{ vendor.name }}</td>
                 <td>{{ vendor.email }}</td>
                 <td>{{ vendor.contact }}</td>
+                <td>{{ vendor.link }}</a></td>
+                {% if user.is_staff %}
+                <td><a href="{% url 'vendor_detail' vendor.id %}">Edit / Delete</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+  </div>
+</div>
+
 {% endblock %}

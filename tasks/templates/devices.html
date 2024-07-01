@@ -2,16 +2,20 @@
 
 {% block content %}
 
-<h2>Device > Edit / Delete</h2>
+<h2 class="mt-4">Edit / Delete > Device</h2>
 
-<ul>
-  {% for device in devices %}
-  <li>
-    <a href="{% url 'device_detail' device.id %}">
-      <!-- {{device.id}} -->{{device.deviceId}} - {{device.name}} - {{device.category}} - {{device.model}} - {{device.serialNumber}} - {{device.rack}} - {{device.site}} - {{device.vendor}}
-    </a>
-  </li>
-  {% endfor %}
-</ul>
+<div class="card mb-4">
+  <div class="card-body">
+
+    {% for device in devices %}
+    <li>
+      <a href="{% url 'device_detail' device.id %}">
+        <!-- {{device.id}} -->{{device.deviceId}} - {{device.name}} - {{device.category}} - {{device.model}} - {{device.serialNumber}} - {{device.site}} - {{device.rack}} - {{device.vendor}}
+      </a>
+    </li>
+    {% endfor %}
+
+  </div>
+</div>
 
 {% endblock %}

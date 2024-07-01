@@ -2,7 +2,10 @@
 
 {% block content %}
 
-    <h2>Operator > List</h2>
+<h2 class="mt-4">List > Operator</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
 
     <table id="example" class="display" style="width:100%">
         <thead>
@@ -14,6 +17,9 @@
                 <th>Contact</th>
                 <th>Back Office</th>
                 <th>Username</th>
+                {% if user.is_staff %}
+                <th>Options</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -26,8 +32,15 @@
                 <td>{{ operator.contact }}</td>
                 <td>{{ operator.backOffice }}</td>
                 <td>{{ operator.user.username }}</td>
+                {% if user.is_staff %}
+                <td><a href="{% url 'operator_detail' operator.id %}">Edit / Delete</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+  </div>
+</div>
+
 {% endblock %}

@@ -2,37 +2,43 @@
 
 {% block content %}
 
-<h2>Task > Edit / Delete</h2>
+<h2 class="mt-4">Edit / Delete > Task</h2>
 
-<!-- {{task.id}} -->{{task.title}}
+{{task.title}} - {{task.description}} - {{task.created}} - {{task.user.username}}
 
 <p>
   {{error}}
 </p>
 
-<form method="POST">
-  {% csrf_token %}
-  {{form.as_p}}
+<div class="card mb-4">
+  <div class="card-body">
+    
+    <form method="POST">
+      {% csrf_token %}
+      {{form.as_p}}
+    
+      <button>
+        Update
+      </button>
+    </form>
+    
+    <form action="{% url 'task_complete' task.id %}" method="POST">
+      {% csrf_token %}
+    
+      <button>
+        Complete
+      </button>
+    </form>
+    
+    <form action="{% url 'task_delete' task.id %}" method="POST">
+      {% csrf_token %}
+      
+      <button>
+        Delete
+      </button>
+    </form>
 
-  <button>
-    Update
-  </button>
-</form>
-
-<form action="{% url 'task_complete' task.id %}" method="POST">
-  {% csrf_token %}
-
-  <button>
-    Complete
-  </button>
-</form>
-
-<form action="{% url 'task_delete' task.id %}" method="POST">
-  {% csrf_token %}
-  
-  <button>
-    Delete
-  </button>
-</form>
+  </div>
+</div>
 
 {% endblock %}

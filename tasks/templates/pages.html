@@ -2,79 +2,66 @@
 
 {% block content %}
 
-<div id="layoutSidenav_content">
-    <main>
-        <div class="container-fluid px-4">
-          <h2 class="mt-4">Páginas</h2>
-          <ol class="breadcrumb mb-4">
-            <li>Lista de todas las páginas que componen la página web.</li>
-          </ol>
-          <div class="card mb-4">
-            <div class="card-body">
-              <ul>
-                <p>Páginas que son visibles para todos sin necesidad de estar registrado en el sitio o haber ingresar con usuario:
-                  <li>Home</li>
-                  <li>Pages</li>
-                  <li>About</li>
-                  <li>Sign in</li>
-                  <li>Sign out</li>
-                </p>
-                <p>Páginas que son solo visibles para usuarios registrados que hayan ingresado:
-                  <li>List  
-                    <ul>
-                      <li>Site</li>
-                      <li>Vendor</li>
-                      <li>Device</li>
-                      <li>Operator</li>
-                      <li>Case</li>
-                      <li>Task</li>
-                    </ul>
-                  </li>
-                  <li>Create
-                    <ul>
-                      <li>Site (visible solo para staff)</li>
-                      <li>Vendor (visible solo para staff)</li>
-                      <li>Device (visible solo para staff)</li>
-                      <li>Operator (visible solo para staff)</li>
-                      <li>Case</li>
-                    </ul>
-                  </li>
-                  <li>Edit / Delete
-                    <ul>
-                      <li>Site (visible solo para staff)</li>
-                      <li>Vendor (visible solo para staff)</li>
-                      <li>Device (visible solo para staff)</li>
-                      <li>Operator (visible solo para staff)</li>
-                      <li>Case</li>
-                    </ul>
-                  </li>
-                  <li>User
-                    <ul>
-                      <li>Task</li>
-                      <ul>
-                        <li>Create</li>
-                        <li>Edit / Delete</li>
-                        <li>Completed</li>
-                      </ul>
-                      <li>Edit profile</li>
-                      <li>Logout</li>
-                    </ul>
-                  </li>
-                </p>
-              </ul>
-            </div>
-          </div>
-          <div class="card mb-4">
-            <div class="card-header">
-              <i class="fas fa-table me-1"></i>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam ullam consequuntur architecto aperiam tempore repellat voluptatem repellendus vel facilis totam voluptate tempora, eaque eveniet libero molestiae ex accusantium magni iure?
-            </div>
-            <div class="card-body">
-              <img src="/media/static/vecteezy.png" class="img-fluid">
-            </div>
-          </div>
-        </div>
-    </main>
+<h2 class="mt-4">Pages (páginas)</h2>
+
+<ol class="breadcrumb mb-4">
+  <li>Lista de todas las páginas que componen la página web.</li>
+</ol>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <p>
+      Páginas que son visibles para todos sin necesidad de estar registrado en el sitio o haber ingresar con usuario:
+      <li>Home</li>
+      <li>Pages</li>
+      <li>About</li>
+      <li>Sign in</li>
+      <li>Sign out</li>
+    </p>
+    <p>
+      Páginas que son solo visibles para los usuarios registrados que hayan ingresado:
+      <li>List  
+        <ul>
+          <li>Site</li>
+          <li>Vendor</li>
+          <li>Device</li>
+          <li>Operator</li>
+          <li>Case</li>
+          <li>Task</li>
+        </ul>
+      </li>
+      <li>Create
+        <ul>
+          <li>Site (visible solo para staff)</li>
+          <li>Vendor (visible solo para staff)</li>
+          <li>Device (visible solo para staff)</li>
+          <li>Operator (visible solo para staff)</li>
+          <li>Case</li>
+        </ul>
+      </li>
+      <li>Edit / Delete
+        <ul>
+          <li>Site (visible solo para staff)</li>
+          <li>Vendor (visible solo para staff)</li>
+          <li>Device (visible solo para staff)</li>
+          <li>Operator (visible solo para staff)</li>
+          <li>Case</li>
+        </ul>
+      </li>
+      <li>User
+        <ul>
+          <li>Task</li>
+          <ul>
+            <li>Create</li>
+            <li>Edit / Delete</li>
+            <li>Completed</li>
+          </ul>
+          <li>Edit profile</li>
+          <li>Logout</li>
+        </ul>
+      </li>
+    </p>
+  </div>
 </div>
 
 {% endblock %}

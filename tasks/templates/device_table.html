@@ -2,7 +2,10 @@
 
 {% block content %}
 
-    <h2>Device > List</h2>
+<h2 class="mt-4">List > Device</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
 
     <table id="example" class="display" style="width:100%">
         <thead>
@@ -12,9 +15,12 @@
                 <th>Category</th>
                 <th>Model</th>
                 <th>Serial Number</th>
-                <th>Rack</th>
                 <th>Site</th>
+                <th>Rack</th>
                 <th>Vendor</th>
+                {% if user.is_staff %}
+                <th>Options</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -25,11 +31,18 @@
                 <td>{{ device.category }}</td>
                 <td>{{ device.model }}</td>
                 <td>{{ device.serialNumber }}</td>
-                <td>{{ device.rack }}</td>
                 <td>{{ device.site }}</td>
+                <td>{{ device.rack }}</td>
                 <td>{{ device.vendor }}</td>
+                {% if user.is_staff %}
+                <td><a href="{% url 'device_detail' device.id %}">Edit / Delete</a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+  </div>
+</div>
+
 {% endblock %}

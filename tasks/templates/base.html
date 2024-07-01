@@ -16,28 +16,36 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
   
   </head>
+
   <body>
     
-    {% include 'navbar.html' %}
+  {% include 'navbar.html' %}
+    <div id="layoutSidenav_content">
+      <main>
+        <div class="container-fluid px-4">
 
-    {% if user.is_authenticated %}
-    <ol class="breadcrumb mb-4">
-      <li class="breadcrumb-item active">
-        Welcome <strong>{{request.user.first_name}} {{request.user.last_name}}</strong>, logged as <strong>{{request.user.username}}</strong>. {{message}}
-      </li>
-    </ol>
-    {% endif %}
-
-    {% block content %}
-    {% endblock %}
-
-    <!-- Initialize DataTables -->
-    <script type="text/javascript">
-      $(document).ready(function() {
-          $('#example').DataTable();
-      } );
-    </script>
-    
+          {% if user.is_authenticated %}
+          <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">
+              Welcome <strong>{{request.user.first_name}} {{request.user.last_name}}</strong>, logged as <strong>{{request.user.username}}</strong>. {{message}}
+            </li>
+          </ol>
+          {% endif %}
+      
+          {% block content %}
+          {% endblock %}
+      
+          <!-- Initialize DataTables -->
+          <script type="text/javascript">
+            $(document).ready(function() {
+                $('#example').DataTable();
+            } );
+          </script>
+          
+          {% include 'footer.html' %}
+        </div>
+      </main>
+    </div>
   </body>
-  {% include 'footer.html' %}
+
 </html>

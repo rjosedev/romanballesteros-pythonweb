@@ -2,16 +2,20 @@
 
 {% block content %}
 
-<h2>Operator > Edit / Delete</h2>
+<h2 class="mt-4">Edit / Delete > Device</h2>
 
-<ul>
-  {% for operator in operators %}
-  <li>
-    <a href="{% url 'operator_detail' operator.id %}">
-      <!-- {{operator.id}} -->{{operator.operatorId}} - {{operator.firstName}} {{operator.lastName}} - {{operator.email}} - {{operator.contact}} - {{operator.backOffice}} - {{operator.user.username}} 
-    </a>
-  </li>
-  {% endfor %}
-</ul>
+<div class="card mb-4">
+  <div class="card-body">
+
+    {% for operator in operators %}
+    <li>
+      <a href="{% url 'operator_detail' operator.id %}">
+        <!-- {{operator.id}} -->{{operator.operatorId}} - {{operator.firstName}} {{operator.lastName}} - {{operator.email}} - {{operator.contact}} - {{operator.backOffice}} - {{operator.user.username}}
+      </a>
+    </li>
+    {% endfor %}
+
+  </div>
+</div>
 
 {% endblock %}

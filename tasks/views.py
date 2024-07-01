@@ -6,8 +6,8 @@ from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
-from .models import Task, Site, Vendor, Device, Operator, Case, Avatar
-from .forms import TaskForm, SiteForm, SiteEditForm, VendorForm, DeviceForm, OperatorForm, CaseForm, UserEditForm
+from .models import Task, Site, Rack, Vendor, Device, Operator, Case, Avatar
+from .forms import TaskForm, SiteForm, SiteEditForm, RackForm, VendorForm, DeviceForm, OperatorForm, CaseForm, UserEditForm
 
 # Create your views here.
 
@@ -27,6 +27,9 @@ def about(request):
 
 def only_staff(request):
     return render(request, 'only_staff.html')
+
+
+
 
 ### LOGIN ###
 
@@ -147,6 +150,58 @@ def site_delete(request, site_id):
     if request.method == 'POST':
         site.delete()
         return redirect('sites')
+
+
+
+
+### RACK ###
+@staff_member_required(login_url='/only_staff')
+def racks(request):
+    racks = Rack.objects.filter()
+    return render(request, 'racks.html', {"racks": racks})
+
+@login_required
+def rack_table(request):
+    racks = Rack.objects.all()
+    return render(request, 'rack_table.html', {'racks': racks})
+
+@staff_member_required(login_url='/only_staff')
+def rack_create(request):
+    if request.method == "GET":
+        return render(request, 'rack_create.html', {"form": RackForm})
+    else:
+        try:
+            form = RackForm(request.POST, request.FILES)
+            new_rack = form.save(commit=False)
+            new_rack.user = request.user
+            new_rack.save()
+            return redirect('racks')
+        except ValueError:
+            return render(request, 'rack_create.html', {"form": RackForm, "error": "Error creating rack."})
+
+@staff_member_required(login_url='/only_staff')
+def rack_detail(request, rack_id):
+    if request.method == 'GET':
+        rack = get_object_or_404(Rack, pk=rack_id)
+        form = RackForm(instance=rack)
+        return render(request, 'rack_detail.html', {'rack': rack, 'form': form})
+    else:
+        try:
+            rack = get_object_or_404(Rack, pk=rack_id)
+            form = RackForm(request.POST, request.FILES, instance=rack)
+            form.save()
+
+            return redirect('racks')
+        except ValueError:
+            return render(request, 'rack_detail.html', {'rack': rack, 'form': form, 'error': 'Error updating rack.'})
+
+@staff_member_required(login_url='/admin_only')
+def rack_delete(request, rack_id):
+    rack = get_object_or_404(Rack, pk=rack_id)
+    if request.method == 'POST':
+        rack.delete()
+        return redirect('racks')
+
 
 
 
@@ -326,7 +381,7 @@ def case_create(request):
             new_case = form.save(commit=False)
             new_case.user = request.user
             new_case.save()
-            return redirect('cases')
+            return redirect('case_table')
         except ValueError:
             return render(request, 'case_create.html', {"form": CaseForm, "error": "Error creating case."})
 
@@ -341,7 +396,7 @@ def case_detail(request, case_id):
             case = get_object_or_404(Case, pk=case_id)
             form = CaseForm(request.POST, request.FILES, instance=case)
             form.save()
-            return redirect('cases')
+            return redirect('case_table')
         except ValueError:
             return render(request, 'case_detail.html', {'case': case, 'form': form, 'error': 'Error updating case.'})
 
@@ -350,7 +405,7 @@ def case_delete(request, case_id):
     case = get_object_or_404(Case, pk=case_id)
     if request.method == 'POST':
         case.delete()
-        return redirect('cases')
+        return redirect('case_table')
 
 
 
@@ -364,7 +419,7 @@ def tasks(request):
 
 @login_required
 def task_table(request):
-    tasks = Task.objects.all()
+    tasks = Task.objects.filter(user=request.user)
     return render(request, 'task_table.html', {'tasks': tasks})
 
 @login_required

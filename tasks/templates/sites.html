@@ -2,16 +2,20 @@
 
 {% block content %}
 
-<h2>Site > Edit / Delete</h2>
+<h2 class="mt-4">Edit / Delete > Site</h2>
 
-<ul>
-  {% for site in sites %}
-  <li>
-    <a href="{% url 'site_detail' site.id %}">
-      <!-- {{site.id}} -->{{site.siteId}} - {{site.name}} - {{site.address}} - {{site.city}} - {{site.country}} - {{site.switchowner}} - {{site.contact}}
-    </a>
-  </li>
-  {% endfor %}
-</ul>
+<div class="card mb-4">
+  <div class="card-body">
+
+    {% for site in sites %}
+    <li>
+      <a href="{% url 'site_detail' site.id %}">
+        <!-- {{site.id}} -->{{site.siteId}} - {{site.name}} - {{site.address}} - {{site.city}} - {{site.country}} - {{site.switchowner}} - {{site.contact}}
+      </a>
+    </li>
+    {% endfor %}
+
+  </div>
+</div>
 
 {% endblock %}

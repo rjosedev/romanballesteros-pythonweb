@@ -2,36 +2,42 @@
 
 {% block content %}
 
-<h2>Vendor > Edit / Delete</h2>
+<h2 class="mt-4">Edit / Delete > Vendor</h2>
 
-{{vendor.id}} {{vendor.name}}
+{{vendor.vendorId}} - {{vendor.name}} - {{vendor.email}} - {{vendor.contact}} - {{vendor.link}}
 
 <p>
   {{error}}
 </p>
 
-<form method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{form.as_p}}
+<div class="card mb-4">
+  <div class="card-body">
 
-  <section>
-    <img 
-      src="{{ vendor.vendorImage.url }}"
-      alt="{{ vendor.name }}"
-    />
-  </section>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.as_p}}
+    
+      <section>
+        <img 
+          src="{{ vendor.vendorImage.url }}"
+          alt="{{ vendor.name }}"
+        />
+      </section>
+    
+      <button>
+        Update
+      </button>
+    </form>
+    
+    <form action="{% url 'vendor_delete' vendor.id %}" method="POST">
+      {% csrf_token %}
+      
+      <button>
+        Delete
+      </button>
+    </form>
 
-  <button>
-    Update
-  </button>
-</form>
-
-<form action="{% url 'vendor_delete' vendor.id %}" method="POST">
-  {% csrf_token %}
-  
-  <button>
-    Delete
-  </button>
-</form>
+  </div>
+</div>
 
 {% endblock %}

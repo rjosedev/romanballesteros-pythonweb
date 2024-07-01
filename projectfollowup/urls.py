@@ -50,6 +50,13 @@ urlpatterns = [
     path('sites/<int:site_id>', views.site_detail, name='site_detail'),
     path('sites/<int:site_id>/delete', views.site_delete, name='site_delete'),
 
+    ### RACK ###
+    path('racks/', views.racks, name='racks'),
+    path('rack_table/', views.rack_table, name='rack_table'),
+    path('rack_create/', views.rack_create, name='rack_create'),
+    path('racks/<int:rack_id>', views.rack_detail, name='rack_detail'),
+    path('racks/<int:rack_id>/delete', views.rack_delete, name='rack_delete'),
+
     ### VENDOR ###
     path('vendors/', views.vendors, name='vendors'),
     path('vendor_table/', views.vendor_table, name='vendor_table'),

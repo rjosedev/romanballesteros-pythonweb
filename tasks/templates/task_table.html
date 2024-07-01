@@ -2,7 +2,11 @@
 
 {% block content %}
 
-    <h2>Task > List</h2>
+
+<h2 class="mt-4">List > Task</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
 
     <table id="example" class="display" style="width:100%">
         <thead>
@@ -13,6 +17,7 @@
                 <th>Completed</th>
                 <th>Important</th>
                 <th>Username</th>
+                <th>Options</th>
             </tr>
         </thead>
         <tbody>
@@ -24,8 +29,13 @@
                 <td>{{ task.completed }}</td>
                 <td>{{ task.important }}</td>
                 <td>{{ task.user.username }}</td>
+                <td><a href="{% url 'task_detail' task.id %}">Edit / Delete</a></td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+  </div>
+</div>
+
 {% endblock %}
