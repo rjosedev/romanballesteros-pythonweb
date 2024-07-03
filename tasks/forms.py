@@ -12,17 +12,21 @@ class TaskForm(ModelForm):
 class SiteForm(ModelForm):
     class Meta:
         model = Site
-        fields = ['siteId','name', 'address', 'city', 'country', 'switchowner', 'contact', 'siteImage']
+        fields = ['siteId', 'country', 'city', 'address', 'contact', 'switchowner', 'name', 'siteImage']
 
 class SiteEditForm(ModelForm):
     class Meta:
         model = Site
-        fields = ['address', 'city', 'country', 'switchowner', 'contact', 'siteImage']
+        fields = ['siteId', 'name', 'address', 'city', 'country', 'switchowner', 'contact', 'siteImage']
 
 class RackForm(ModelForm):
     class Meta:
         model = Rack
-        fields = ['rackId', 'name', 'site', 'rackImage']
+        fields = ['rackId', 'site', 'name', 'rackImage']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['site'].queryset = Site.objects.all()
 
 class VendorForm(ModelForm):
     class Meta:
@@ -32,7 +36,25 @@ class VendorForm(ModelForm):
 class DeviceForm(ModelForm):
     class Meta:
         model = Device
-        fields = ['deviceId', 'name', 'category', 'model', 'serialNumber', 'site', 'rack', 'vendor', 'deviceImage']
+        fields = ['deviceId', 'site', 'rack', 'vendor', 'category', 'name', 'model', 'serialNumber', 'deviceImage']
+
+    # def __init__(self, site_id, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.fields['rack'].queryset = Rack.objects.filter(site_id=site_id)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['rack'].queryset = Rack.objects.all()
+    
+        if 'site' in self.data:
+            try:
+                site_id = int(self.data.get('site'))
+                self.fields['rack'].queryset = Rack.objects.filter(site_id=site_id)
+            except (ValueError, TypeError):
+                pass  # Handle the error as you need
+
+        elif self.instance.pk:
+            self.fields['rack'].queryset = self.instance.rack.site.racks.all()
 
 class OperatorForm(ModelForm):
     class Meta:
@@ -42,7 +64,7 @@ class OperatorForm(ModelForm):
 class CaseForm(ModelForm):
     class Meta:
         model = Case
-        fields = ['caseId', 'description', 'severity', 'device', 'operator', 'caseImage']
+        fields = ['caseId', 'device', 'severity', 'description', 'operator', 'caseImage']
 
 class UserEditForm(UserChangeForm):
 

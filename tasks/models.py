@@ -38,7 +38,7 @@ class Rack(models.Model):
 
   rackId = models.CharField(max_length=6)
   name = models.CharField(max_length=20)
-  site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True)
+  site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True, related_name='racks')
   rackImage = models.ImageField(upload_to='racks', blank=True, null=True, default="/media/static/default.png") # default=""
 
   #def save(self, *args, **kwargs):
@@ -46,7 +46,7 @@ class Rack(models.Model):
   #  super().save(*args, **kwargs)
 
   def __str__(self):
-    return self.name
+    return f"{self.name}"
 
   class Meta():
     verbose_name = 'Rack'
@@ -81,7 +81,7 @@ class Device(models.Model):
   model = models.CharField(max_length=20)
   serialNumber = models.CharField(max_length=30)
   site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True)
-  rack = models.ForeignKey(Rack, on_delete=models.CASCADE, null=True)
+  rack = models.ForeignKey(Rack, on_delete=models.CASCADE, null=True, related_name='devices')
   vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, null=True)
   deviceImage = models.ImageField(upload_to='devices', blank=True, null=True, default="/media/static/default.png")
 
@@ -92,7 +92,7 @@ class Device(models.Model):
   #  super().save(*args, **kwargs)
 
   def __str__(self):
-    return f'{self.name} - {self.category} - {self.model} - {self.serialNumber}'
+    return f"{self.name}"
 
   class Meta():
 
@@ -149,7 +149,7 @@ class Case(models.Model):
     super().save(*args, **kwargs)
     
   def __str__(self):
-    return f'{self.caseId} - {self.description} - {self.severity} - {self.device.name} - {self.operator.user.username}'
+    return f'{self.caseId} - {self.device.name} - {self.severity} - {self.description} - {self.operator.user.username}'
 
   class Meta():
 

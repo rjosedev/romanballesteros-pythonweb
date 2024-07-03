@@ -137,7 +137,7 @@ def site_detail(request, site_id):
     else:
         try:
             site = get_object_or_404(Site, pk=site_id)
-            form = SiteEditForm(request.POST, request.FILES, instance=site)
+            form = SiteForm(request.POST, request.FILES, instance=site)
             form.save()
 
             return redirect('sites')
@@ -281,7 +281,20 @@ def device_create(request):
             new_device.save()
             return redirect('devices')
         except ValueError:
-            return render(request, 'device_create.html', {"form": DeviceForm, "error": "Error creating device."})
+            return render(request, 'device_create.html', {"form": DeviceForm, "error": "Error creating rack."})
+
+    # if request.method == 'POST':
+    #     form = DeviceForm(request.POST)
+    #     if form.is_valid():
+    #         device = form.save()
+    #         return redirect('device_create.html')
+    # else:
+    #     form = DeviceForm()
+    # 
+    # return render(request, 'device_create.html', {'form': form})
+
+
+
 
 @login_required
 def device_detail(request, device_id):
