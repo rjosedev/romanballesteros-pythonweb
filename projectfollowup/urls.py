@@ -26,7 +26,7 @@ urlpatterns = [
     path('pages/', views.pages, name='pages'),
     path('about/', views.about, name='about'),
     path('only_staff/', views.only_staff, name='only_staff'),
-    path('chaining/', include('smart_selects.urls')),
+    path('smart_selects/', include('smart_selects.urls')),
     
     ### USER ###
     path('admin/', admin.site.urls),
