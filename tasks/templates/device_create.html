@@ -13,7 +13,8 @@
 
     <form action="/device_create/" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
-      {{form}}
+      {{ form.media.js }}
+      {{ form.as_p }}
   
       <button>
         Save

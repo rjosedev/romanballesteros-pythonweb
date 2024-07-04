@@ -39,7 +39,7 @@ class Rack(models.Model):
 
   rackId = models.CharField(max_length=6)
   name = models.CharField(max_length=20)
-  site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True, related_name='racks')
+  site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True)
   rackImage = models.ImageField(upload_to='racks', blank=True, null=True, default="/media/static/default.png") # default=""
 
   #def save(self, *args, **kwargs):
@@ -54,6 +54,20 @@ class Rack(models.Model):
     verbose_name_plural = 'Racks'
     ordering = ('rackId', 'name')
     unique_together = ('rackId', 'name')
+
+class Category(models.Model):
+
+  categoryId = models.CharField(max_length=6)
+  name = models.CharField(max_length=20)
+  
+  def __str__(self):
+    return self.name
+  
+  class Meta():
+    verbose_name = 'Category'
+    verbose_name_plural = 'Categories'
+    ordering = ('categoryId', 'name')
+    unique_together = ('categoryId', 'name')
     
 class Vendor(models.Model):
 
@@ -82,7 +96,16 @@ class Device(models.Model):
   model = models.CharField(max_length=20)
   serialNumber = models.CharField(max_length=30)
   site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True)
-  rack = models.ForeignKey(Rack, on_delete=models.CASCADE, null=True, related_name='devices')
+  rack = ChainedForeignKey(
+    Rack,
+    on_delete=models.CASCADE,
+    null=True, 
+    related_name='devices',
+    chained_field="site",
+    chained_model_field="site",
+    show_all=False,
+    auto_choose=True,
+    sort=True)
   vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, null=True)
   deviceImage = models.ImageField(upload_to='devices', blank=True, null=True, default="/media/static/default.png")
 

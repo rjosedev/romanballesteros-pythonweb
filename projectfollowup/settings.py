@@ -128,7 +128,7 @@ MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = '/signin'
 
-JQUERY_URL = True
+JQUERY_URL = False
 USE_DJANGO_JQUERY = True
 
 # Default primary key field type
