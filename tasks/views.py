@@ -394,7 +394,7 @@ def case_create(request):
             new_case = form.save(commit=False)
             new_case.user = request.user
             new_case.save()
-            return redirect('case_table')
+            return redirect('cases')
         except ValueError:
             return render(request, 'case_create.html', {"form": CaseForm, "error": "Error creating case."})
 
