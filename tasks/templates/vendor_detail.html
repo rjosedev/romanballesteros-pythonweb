@@ -2,9 +2,16 @@
 
 {% block content %}
 
-<h2 class="mt-4">Edit / Delete > Vendor</h2>
+<h2 class="mt-4">Vendors</h2>
 
-{{vendor.vendorId}} - {{vendor.name}} - {{vendor.email}} - {{vendor.contact}} - {{vendor.link}}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/vendors">List</a></li>
+    <li class="breadcrumb-item"><a href="/vendor_table">Table</a></li>
+    <li class="breadcrumb-item"><a href="/vendor_create">Create</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit / Delete</li>
+  </ol>
+</nav>
 
 <p>
   {{error}}
@@ -12,7 +19,8 @@
 
 <div class="card mb-4">
   <div class="card-body">
-
+    <p><strong>{{vendor.vendorId}} - {{vendor.name}} - {{vendor.email}} - {{vendor.contact}} - {{vendor.link}}</strong></p>
+  
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       {{form.as_p}}

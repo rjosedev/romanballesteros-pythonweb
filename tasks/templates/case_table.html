@@ -2,7 +2,15 @@
 
 {% block content %}
 
-<h2 class="mt-4">List > Case</h2>
+<h2 class="mt-4">Cases</h2>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/cases">List</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Table</li>
+    <li class="breadcrumb-item"><a href="/case_create">Create</a></li>
+  </ol>
+</nav>
 
 <div class="card mb-4">
   <div class="card-body">
@@ -11,12 +19,12 @@
         <thead>
             <tr>
                 <th>Case ID</th>
-                <th>Description</th>
-                <th>Severity</th>
                 <th>Site</th>
                 <th>Rack</th>
                 <th>Vendor</th>
                 <th>Device</th>
+                <th>Severity</th>
+                <th>Description</th>
                 <th>Operator</th>
                 <th>Options</th>
             </tr>
@@ -25,12 +33,12 @@
             {% for case in cases %}
             <tr>
               <td>{{ case.caseId }}</td>
-              <td>{{ case.description }}</td>
-              <td>{{ case.severity }}</td>
               <td>{{ case.site }}</td>
               <td>{{ case.rack }}</td>
               <td>{{ case.vendor }}</td>
               <td>{{ case.device }}</td>
+              <td>{{ case.severity }}</td>
+              <td>{{ case.description }}</td>
               <td>{{ case.operator }}</td>
               <td><a href="{% url 'case_detail' case.id %}">Edit / Delete</a></td>
             </tr>

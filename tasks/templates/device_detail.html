@@ -2,9 +2,16 @@
 
 {% block content %}
 
-<h2 class="mt-4">Edit / Delete > Device</h2>
+<h2 class="mt-4">Devices</h2>
 
-{{device.deviceId}} - {{device.site}} - {{device.rack}} - {{device.vendor}} - {{device.category}} - {{device.name}} - {{device.model}} - {{device.serialNumber}}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/devices">List</a></li>
+    <li class="breadcrumb-item"><a href="/device_table">Table</a></li>
+    <li class="breadcrumb-item"><a href="/device_create">Create</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit / Delete</li>
+  </ol>
+</nav>
 
 <p>
   {{error}}
@@ -12,9 +19,11 @@
 
 <div class="card mb-4">
   <div class="card-body">
+    <p><strong>{{device.deviceId}} - {{device.site}} - {{device.rack}} - {{device.vendor}} - {{device.category}} - {{device.name}} - {{device.model}} - {{device.serialNumber}}</strong></p>
 
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
+      {{ form.media.js }}
       {{form.as_p}}
     
       <section>

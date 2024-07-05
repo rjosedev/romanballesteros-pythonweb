@@ -2,9 +2,16 @@
 
 {% block content %}
 
-<h2 class="mt-4">Edit / Delete > Operator</h2>
+<h2 class="mt-4">Operators</h2>
 
-{{operator.operatorId}} - {{operator.firstName}} {{operator.lastName}} - {{operator.email}} - {{operator.contact}} - {{operator.backOffice}} - {{operator.user.username}} 
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/operators">List</a></li>
+    <li class="breadcrumb-item"><a href="/operator_table">Table</a></li>
+    <li class="breadcrumb-item"><a href="/operator_create">Create</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit / Delete</li>
+  </ol>
+</nav>
 
 <p>
   {{error}}
@@ -12,6 +19,7 @@
 
 <div class="card mb-4">
   <div class="card-body">
+    <p><strong>{{operator.operatorId}} - {{operator.firstName}} {{operator.lastName}} - {{operator.email}} - {{operator.contact}} - {{operator.backOffice}} - {{operator.user.username}}</strong></p>
 
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}

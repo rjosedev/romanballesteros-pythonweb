@@ -42,19 +42,19 @@ class DeviceForm(ModelForm):
     #     super().__init__(*args, **kwargs)
     #     self.fields['rack'].queryset = Rack.objects.filter(site_id=site_id)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['rack'].queryset = Rack.objects.all()
-    
-        if 'site' in self.data:
-            try:
-                site_id = int(self.data.get('site'))
-                self.fields['rack'].queryset = Rack.objects.filter(site_id=site_id)
-            except (ValueError, TypeError):
-                pass  # Handle the error as you need
-
-        elif self.instance.pk:
-            self.fields['rack'].queryset = self.instance.rack.site.racks.all()
+    #def __init__(self, *args, **kwargs):
+    #    super().__init__(*args, **kwargs)
+    #    self.fields['rack'].queryset = Rack.objects.all()
+    #
+    #    if 'site' in self.data:
+    #        try:
+    #            site_id = int(self.data.get('site'))
+    #            self.fields['rack'].queryset = Rack.objects.filter(site_id=site_id)
+    #        except (ValueError, TypeError):
+    #            pass  # Handle the error as you need
+#
+    #    elif self.instance.pk:
+    #        self.fields['rack'].queryset = self.instance.rack.site.racks('name')
 
 class OperatorForm(ModelForm):
     class Meta:

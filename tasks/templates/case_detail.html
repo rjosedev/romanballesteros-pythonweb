@@ -2,9 +2,16 @@
 
 {% block content %}
 
-<h2 class="mt-4">Edit / Delete > Case</h2>
+<h2 class="mt-4">Cases</h2>
 
-{{case.caseId}} - {{case.description}} - {{case.severity}} - {{case.site}} - {{case.vendor}} - {{case.device}} - {{case.operator}}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/cases">List</a></li>
+    <li class="breadcrumb-item"><a href="/case_table">Table</a></li>
+    <li class="breadcrumb-item"><a href="/case_create">Create</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit / Delete</li>
+  </ol>
+</nav>
 
 <p>
   {{error}}
@@ -12,6 +19,7 @@
 
 <div class="card mb-4">
   <div class="card-body">
+    <p><strong>{{case.caseId}} - {{case.site}} - {{ case.rack }} - {{case.vendor}} - {{case.device}} - {{case.severity}} - {{case.description}} - {{case.operator}}</strong></p>
 
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}

@@ -2,9 +2,16 @@
 
 {% block content %}
 
-<h2 class="mt-4">Edit / Delete > Rack</h2>
+<h2 class="mt-4">Racks</h2>
 
-{{rack.rackId}} - {{rack.site}} - {{rack.name}}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/racks">List</a></li>
+    <li class="breadcrumb-item"><a href="/rack_table">Table</a></li>
+    <li class="breadcrumb-item"><a href="/rack_create">Create</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit / Delete</li>
+  </ol>
+</nav>
 
 <p>
   {{error}}
@@ -12,6 +19,7 @@
 
 <div class="card mb-4">
   <div class="card-body">
+    <p><strong>{{rack.rackId}} - {{rack.site}} - {{rack.name}}</strong></p>
 
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}

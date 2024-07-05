@@ -2,15 +2,24 @@
 
 {% block content %}
 
-<h2 class="mt-4">Edit / Delete > Vendor</h2>
+<h2 class="mt-4">Vendors</h2>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">List</li>
+    <li class="breadcrumb-item"><a href="/vendor_table">Table</a></li>
+    <li class="breadcrumb-item"><a href="/vendor_create">Create</a></li>
+  </ol>
+</nav>
 
 <div class="card mb-4">
   <div class="card-body">
 
     {% for vendor in vendors %}
     <li>
+      <!-- {{vendor.id}} -->{{vendor.vendorId}} - {{vendor.name}} - {{vendor.email}} - {{vendor.contact}} - {{vendor.link}} - 
       <a href="{% url 'vendor_detail' vendor.id %}">
-        <!-- {{vendor.id}} -->{{vendor.vendorId}} - {{vendor.name}} - {{vendor.email}} - {{vendor.contact}}
+        Edit / Delete
       </a>
     </li>
     {% endfor %}

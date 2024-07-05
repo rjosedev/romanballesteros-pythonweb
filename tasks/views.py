@@ -293,9 +293,6 @@ def device_create(request):
     # 
     # return render(request, 'device_create.html', {'form': form})
 
-
-
-
 @login_required
 def device_detail(request, device_id):
     if request.method == 'GET':

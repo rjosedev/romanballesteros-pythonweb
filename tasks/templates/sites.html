@@ -2,15 +2,24 @@
 
 {% block content %}
 
-<h2 class="mt-4">Edit / Delete > Site</h2>
+<h2 class="mt-4">Sites</h2>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">List</li>
+    <li class="breadcrumb-item"><a href="/site_table">Table</a></li>
+    <li class="breadcrumb-item"><a href="/site_create">Create</a></li>
+  </ol>
+</nav>
 
 <div class="card mb-4">
   <div class="card-body">
 
     {% for site in sites %}
     <li>
+      <!-- {{site.id}} -->{{site.siteId}} - {{site.country}} - {{site.city}} - {{site.address}} - {{site.contact}} - {{site.switchowner}} - {{site.name}} - 
       <a href="{% url 'site_detail' site.id %}">
-        <!-- {{site.id}} -->{{site.siteId}} - {{site.name}} - {{site.address}} - {{site.city}} - {{site.country}} - {{site.switchowner}} - {{site.contact}}
+        Edit / Delete
       </a>
     </li>
     {% endfor %}

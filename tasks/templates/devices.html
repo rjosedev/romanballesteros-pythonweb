@@ -2,16 +2,23 @@
 
 {% block content %}
 
-<h2 class="mt-4">Edit / Delete > Device</h2>
+<h2 class="mt-4">Devices</h2>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">List</li>
+    <li class="breadcrumb-item"><a href="/device_table">Table</a></li>
+    <li class="breadcrumb-item"><a href="/device_create">Create</a></li>
+  </ol>
+</nav>
 
 <div class="card mb-4">
   <div class="card-body">
 
     {% for device in devices %}
     <li>
-      <a href="{% url 'device_detail' device.id %}">
-        <!-- {{device.id}} -->{{device.deviceId}} - {{device.site}} - {{device.rack}} - {{device.vendor}} - {{device.category}} - {{device.name}} - {{device.model}} - {{device.serialNumber}}
-      </a>
+      <!-- {{device.id}} -->{{device.deviceId}} - {{device.site}} - {{device.rack}} - {{device.vendor}} - {{device.category}} - {{device.name}} - {{device.model}} - {{device.serialNumber}}
+       - <a href="{% url 'device_detail' device.id %}">Edit / Delete</a>
     </li>
     {% endfor %}
 

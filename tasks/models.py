@@ -89,10 +89,17 @@ class Vendor(models.Model):
     unique_together = ('vendorId', 'name')
 
 class Device(models.Model):
-
+  CATEGORIES = (
+    ('RT', "Router"),
+    ('SW2', "Switch L2"),
+    ('SW3', "Switch L3"),
+    ('FW', "Firewall"),
+    ('SR', "Server"),
+    ('ST', "Storage")
+  )
   deviceId = models.CharField(max_length=6)
   name = models.CharField(max_length=20)
-  category = models.CharField(max_length=20)
+  category = models.CharField(choices=CATEGORIES, max_length=3, null=True)
   model = models.CharField(max_length=20)
   serialNumber = models.CharField(max_length=30)
   site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True)

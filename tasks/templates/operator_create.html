@@ -2,7 +2,15 @@
 
 {% block content %}
 
-<h2 class="mt-4">Create > Operator</h2>
+<h2 class="mt-4">Operators</h2>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/operators">List</a></li>
+    <li class="breadcrumb-item"><a href="/operator_table">Table</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Create</li>
+  </ol>
+</nav>
 
 <p>
   {{error}}
@@ -13,7 +21,7 @@
 
     <form action="/operator_create/" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
-      {{form}}
+      {{ form.as_p }}
   
       <button>
         Save
