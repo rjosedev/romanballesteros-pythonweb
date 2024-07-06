@@ -103,7 +103,7 @@ def signout(request):
 
 ### SITE ###
 
-@staff_member_required(login_url='/only_staff')
+@login_required
 def sites(request):
     sites = Site.objects.filter()
     return render(request, 'sites.html', {"sites": sites})
@@ -144,7 +144,7 @@ def site_detail(request, site_id):
         except ValueError:
             return render(request, 'site_detail.html', {'site': site, 'form': form, 'error': 'Error updating site.'})
 
-@staff_member_required(login_url='/admin_only')
+@staff_member_required(login_url='/only_staff')
 def site_delete(request, site_id):
     site = get_object_or_404(Site, pk=site_id)
     if request.method == 'POST':
@@ -155,7 +155,7 @@ def site_delete(request, site_id):
 
 
 ### RACK ###
-@staff_member_required(login_url='/only_staff')
+@login_required
 def racks(request):
     racks = Rack.objects.filter()
     return render(request, 'racks.html', {"racks": racks})
@@ -195,7 +195,7 @@ def rack_detail(request, rack_id):
         except ValueError:
             return render(request, 'rack_detail.html', {'rack': rack, 'form': form, 'error': 'Error updating rack.'})
 
-@staff_member_required(login_url='/admin_only')
+@staff_member_required(login_url='/only_staff')
 def rack_delete(request, rack_id):
     rack = get_object_or_404(Rack, pk=rack_id)
     if request.method == 'POST':
@@ -218,7 +218,7 @@ def vendor_table(request):
     vendors = Vendor.objects.all()
     return render(request, 'vendor_table.html', {'vendors': vendors})
 
-@login_required
+@staff_member_required(login_url='/only_staff')
 def vendor_create(request):
     if request.method == "GET":
         return render(request, 'vendor_create.html', {"form": VendorForm})
@@ -232,7 +232,7 @@ def vendor_create(request):
         except ValueError:
             return render(request, 'vendor_create.html', {"form": VendorForm, "error": "Error creating vendor."})
 
-@login_required
+@staff_member_required(login_url='/only_staff')
 def vendor_detail(request, vendor_id):
     if request.method == 'GET':
         vendor = get_object_or_404(Vendor, pk=vendor_id)
@@ -247,7 +247,7 @@ def vendor_detail(request, vendor_id):
         except ValueError:
             return render(request, 'vendor_detail.html', {'vendor': vendor, 'form': form, 'error': 'Error updating vendor.'})
 
-@login_required
+@staff_member_required(login_url='/only_staff')
 def vendor_delete(request, vendor_id):
     vendor = get_object_or_404(Vendor, pk=vendor_id)
     if request.method == 'POST':
@@ -269,7 +269,7 @@ def device_table(request):
     devices = Device.objects.all()
     return render(request, 'device_table.html', {'devices': devices})
 
-@login_required
+@staff_member_required(login_url='/only_staff')
 def device_create(request):
     if request.method == "GET":
         return render(request, 'device_create.html', {"form": DeviceForm})
@@ -293,7 +293,7 @@ def device_create(request):
     # 
     # return render(request, 'device_create.html', {'form': form})
 
-@login_required
+@staff_member_required(login_url='/only_staff')
 def device_detail(request, device_id):
     if request.method == 'GET':
         device = get_object_or_404(Device, pk=device_id)
@@ -308,7 +308,7 @@ def device_detail(request, device_id):
         except ValueError:
             return render(request, 'device_detail.html', {'device': device, 'form': form, 'error': 'Error updating device.'})
 
-@login_required
+@staff_member_required(login_url='/only_staff')
 def device_delete(request, device_id):
     device = get_object_or_404(Device, pk=device_id)
     if request.method == 'POST':
@@ -330,7 +330,7 @@ def operator_table(request):
     operators = Operator.objects.all()
     return render(request, 'operator_table.html', {'operators': operators})
 
-@login_required
+@staff_member_required(login_url='/only_staff')
 def operator_create(request):
     if request.method == "GET":
         return render(request, 'operator_create.html', {"form": OperatorForm})
@@ -344,7 +344,7 @@ def operator_create(request):
         except ValueError:
             return render(request, 'operator_create.html', {"form": OperatorForm, "error": "Error creating operator."})
 
-@login_required
+@staff_member_required(login_url='/only_staff')
 def operator_detail(request, operator_id):
     if request.method == 'GET':
         operator = get_object_or_404(Operator, pk=operator_id)
@@ -359,7 +359,7 @@ def operator_detail(request, operator_id):
         except ValueError:
             return render(request, 'operator_detail.html', {'operator': operator, 'form': form, 'error': 'Error updating operator.'})
 
-@login_required
+@staff_member_required(login_url='/only_staff')
 def operator_delete(request, operator_id):
     operator = get_object_or_404(Operator, pk=operator_id)
     if request.method == 'POST':

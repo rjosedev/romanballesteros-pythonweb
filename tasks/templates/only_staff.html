@@ -2,10 +2,29 @@
 
 {% block content %}
 
-<h2>Only for staff members!</h2>
+<h2 class="mt-4">Only staff</h2>
 
-<p>
-    This content can only be accessed by staff members.
-</p>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item"><a href="/pages">Pages</a></li>
+    <li class="breadcrumb-item"><a href="/about">About</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Only staff</li>
+  </ol>
+</nav>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <p>
+      This content can only be accessed by staff members.
+      <li>
+        Option 1
+      </li>
+      <li>
+        Option 2
+      </li>
+    </p>
+  </div>
+</div>
 
 {% endblock %}
