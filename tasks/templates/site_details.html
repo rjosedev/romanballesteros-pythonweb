@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mt-4">Sites</h2>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/sites">List</a></li>
+    <li class="breadcrumb-item"><a href="/site_table">Table</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Details</li>
+    <li class="breadcrumb-item"><a href="/site_create">Create</a></li>
+  </ol>
+</nav>
+
+<p>
+  {{error}}
+</p>
+
+<div class="card mb-4">
+  <div class="card-body">
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-12">
+          <p>
+            <strong>
+              {{site.siteId}} - {{site.country}} - {{site.city}} - {{site.address}} - {{site.contact}} - {{site.switchowner}} - {{site.name}}
+            </strong>
+            {% if user.is_staff %}
+              <td>
+                 - <a href="{% url 'site_edit' site.id %}">Edit / Delete</a>
+              </td>
+            {% endif %}
+          </p>
+        </div>
+
+        <div class="col-6">
+          <li>Site ID: {{site.siteId}}</li>
+          <li>Country: {{site.country}}</li>
+          <li>City: {{site.city}}</li>
+          <li>Adddress: {{site.address}}</li>
+          <li>Contact: {{site.contact}}</li>
+          <li>Switchowner: {{site.switchowner}}</li>
+          <li>Name: {{site.name}}</li>
+        </div>
+
+        <div class="col-6" enctype="multipart/form-data">
+          <section>
+            <img 
+              src="{{ site.siteImage.url }}"
+              alt="{{ site.name }}"
+            />
+          </section>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

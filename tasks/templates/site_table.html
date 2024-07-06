@@ -41,7 +41,7 @@
                 <td>{{ site.switchowner }}</td>
                 <td>{{ site.name }}</td>
                 {% if user.is_staff %}
-                <td><a href="{% url 'site_detail' site.id %}">Edit / Delete</a></td>
+                <td><a href="{% url 'site_edit' site.id %}">Edit / Delete</a></td>
                 {% endif %}
             </tr>
             {% endfor %}

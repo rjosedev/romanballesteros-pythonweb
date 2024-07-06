@@ -47,8 +47,9 @@ urlpatterns = [
     ### SITE ###
     path('sites/', views.sites, name='sites'),
     path('site_table/', views.site_table, name='site_table'),
+    path('site_details/<int:site_id>', views.site_details, name='site_details'),
     path('site_create/', views.site_create, name='site_create'),
-    path('sites/<int:site_id>', views.site_detail, name='site_detail'),
+    path('sites/<int:site_id>', views.site_edit, name='site_edit'),
     path('sites/<int:site_id>/delete', views.site_delete, name='site_delete'),
 
     ### RACK ###

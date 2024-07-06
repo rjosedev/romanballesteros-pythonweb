@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
+from django.http import HttpResponse
+from django.template import loader
 from django.db import IntegrityError
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
@@ -113,6 +115,15 @@ def site_table(request):
     sites = Site.objects.all()
     return render(request, 'site_table.html', {'sites': sites})
 
+@login_required
+def site_details(request, site_id):
+    site = Site.objects.get(pk=site_id)
+    template = loader.get_template('site_details.html')
+    context = {
+      'site': site,
+    }
+    return HttpResponse(template.render(context, request))          
+
 @staff_member_required(login_url='/only_staff')
 def site_create(request):
     if request.method == "GET":
@@ -129,11 +140,11 @@ def site_create(request):
             return render(request, 'site_create.html', {"form": SiteForm, "error": "Error creating site."})
 
 @staff_member_required(login_url='/only_staff')
-def site_detail(request, site_id):
+def site_edit(request, site_id):
     if request.method == 'GET':
         site = get_object_or_404(Site, pk=site_id)
         form = SiteForm(instance=site)
-        return render(request, 'site_detail.html', {'site': site, 'form': form})
+        return render(request, 'site_edit.html', {'site': site, 'form': form})
     else:
         try:
             site = get_object_or_404(Site, pk=site_id)
@@ -142,7 +153,7 @@ def site_detail(request, site_id):
 
             return redirect('sites')
         except ValueError:
-            return render(request, 'site_detail.html', {'site': site, 'form': form, 'error': 'Error updating site.'})
+            return render(request, 'site_edit.html', {'site': site, 'form': form, 'error': 'Error updating site.'})
 
 @staff_member_required(login_url='/only_staff')
 def site_delete(request, site_id):
