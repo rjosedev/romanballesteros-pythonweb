@@ -25,10 +25,17 @@
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Scroll
+                Sites
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                <li><a class="dropdown-item" href="{% url 'site_scroll' %}">Sites</a></li>
+                <li><a class="dropdown-item" href="{% url 'sites' %}">List</a></li>
+                <li><a class="dropdown-item" href="{% url 'site_table' %}">Table</a></li>
+                <li><a class="dropdown-item" href="{% url 'site_scroll' %}">Scroll</a></li>
+                <li><a class="dropdown-item" href="/site_detail/1/">Detail</a></li>
+                <li><a class="dropdown-item" href="/site_nav/1/">Nav</a></li>
+                {% if user.is_staff %}
+                <li><a class="dropdown-item" href="{% url 'site_create' %}">Create</a></li>
+                {% endif %}
               </ul>
             </li>
           </ul>
@@ -40,25 +47,6 @@
                 List
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                <li><a class="dropdown-item" href="{% url 'sites' %}">Sites</a></li>
-                <li><a class="dropdown-item" href="{% url 'racks' %}">Racks</a></li>
-                <li><a class="dropdown-item" href="{% url 'vendors' %}">Vendors</a></li>
-                <li><a class="dropdown-item" href="{% url 'devices' %}">Devices</a></li>
-                <li><a class="dropdown-item" href="{% url 'operators' %}">Operators</a></li>
-                <li><a class="dropdown-item" href="{% url 'cases' %}">Cases</a></li>
-                <li><a class="dropdown-item" href="{% url 'tasks' %}">Tasks</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                List
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                <li><a class="dropdown-item" href="{% url 'sites' %}">Sites</a></li>
                 <li><a class="dropdown-item" href="{% url 'racks' %}">Racks</a></li>
                 <li><a class="dropdown-item" href="{% url 'vendors' %}">Vendors</a></li>
                 <li><a class="dropdown-item" href="{% url 'devices' %}">Devices</a></li>
@@ -76,7 +64,6 @@
                 Table
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                <li><a class="dropdown-item" href="{% url 'site_table' %}">Sites</a></li>
                 <li><a class="dropdown-item" href="{% url 'rack_table' %}">Racks</a></li>
                 <li><a class="dropdown-item" href="{% url 'vendor_table' %}">Vendors</a></li>
                 <li><a class="dropdown-item" href="{% url 'device_table' %}">Devices</a></li>
@@ -95,7 +82,6 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                 {% if user.is_staff %}
-                <li><a class="dropdown-item" href="{% url 'site_create' %}">Sites</a></li>
                 <li><a class="dropdown-item" href="{% url 'rack_create' %}">Racks</a></li>
                 <li><a class="dropdown-item" href="{% url 'vendor_create' %}">Vendors</a></li>
                 <li><a class="dropdown-item" href="{% url 'device_create' %}">Devices</a></li>

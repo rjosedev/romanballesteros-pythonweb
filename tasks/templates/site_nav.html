@@ -8,24 +8,31 @@
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/sites">List</a></li>
     <li class="breadcrumb-item"><a href="/site_table">Table</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Scroll</li>
+    <li class="breadcrumb-item"><a href="/site_scroll">Scroll</a></li>
     <li class="breadcrumb-item"><a href="/site_detail/1">Detail</a></li>
-    <li class="breadcrumb-item"><a href="/site_nav/1">Nav</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Nav</li>
     <li class="breadcrumb-item"><a href="/site_create">Create</a></li>
   </ol>
 </nav>
 
+<p>
+  {{error}}
+</p>
+
+
 <div class="card mb-4">
-  <div class="card-body">    
-
-
-    {% for site in sites %}
-
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      {% for site in sites %}
+        <li class="nav-item {% if site.id == current_site.id %}active{% endif %}">
+          <a class="nav-link active" href="{% url 'site_nav' site.id %}">{{ site.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="card-body">
     <div class="container">
       <div class="row">
-
-        <strong>{{site.name}}</strong>
-        <hr>
 
         <div class="col-6">
           <li>Site ID: {{site.siteId}}</li>
@@ -36,7 +43,7 @@
           <li>Switchowner: {{site.switchowner}}</li>
           <li>Name: {{site.name}}</li>
         </div>
-    
+
         <div class="col-6" enctype="multipart/form-data">
           <section>
             <img 
@@ -46,7 +53,7 @@
             />
           </section>
         </div>
-    
+
         <div>
           {% if user.is_staff %}
           <td>
@@ -54,11 +61,8 @@
           </td>
           {% endif %}
         </div>
-
       </div>
     </div>
-    {% endfor %}
-
   </div>
 </div>
 

@@ -117,6 +117,12 @@ def site_scroll(request):
     return render(request, 'site_scroll.html', {"sites": sites})
 
 @login_required
+def site_nav(request, site_id):
+    site = get_object_or_404(Site, id=site_id)
+    sites = Site.objects.all()
+    return render(request, 'site_nav.html', {'site': site, 'sites': sites})
+
+@login_required
 def site_table(request):
     sites = Site.objects.all()
     return render(request, 'site_table.html', {'sites': sites})

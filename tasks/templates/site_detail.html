@@ -8,7 +8,9 @@
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/sites">List</a></li>
     <li class="breadcrumb-item"><a href="/site_table">Table</a></li>
+    <li class="breadcrumb-item"><a href="/site_scroll">Scroll</a></li>
     <li class="breadcrumb-item active" aria-current="page">Detail</li>
+    <li class="breadcrumb-item"><a href="/site_nav/1">Nav</a></li>
     <li class="breadcrumb-item"><a href="/site_create">Create</a></li>
   </ol>
 </nav>
@@ -31,14 +33,8 @@
           {% endfor %}
         </ul>
 
-        <div class="col-12">
-          <hr>
-          <p>
-            <strong>
-              {{site.siteId}} - {{site.country}} - {{site.city}} - {{site.address}} - {{site.contact}} - {{site.switchowner}} - {{site.name}}
-            </strong>
-          </p>
-        </div>
+        <strong>{{site.name}}</strong>
+        <hr>
 
         <div class="col-6">
           <li>Site ID: {{site.siteId}}</li>
