@@ -32,6 +32,13 @@
                 </a>
               </li>
             {% endfor %}
+            {% for site in sites %}
+            <ul class="nav justify-content-center">
+              <li class="nav-item {% if site.id == current_site.id %}active{% endif %}">
+                <a class="nav-link" href="{% url 'site_detail' site.id %}">{{ site.name }}</a>
+              </li>
+            </ul>
+            {% endfor %}
           </ol>
         </nav>
 

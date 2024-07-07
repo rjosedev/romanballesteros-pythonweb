@@ -19,7 +19,6 @@
   {{error}}
 </p>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 * {
   box-sizing: border-box;
@@ -56,14 +55,11 @@
   color: white;
 }
 </style>
-</head>
-<body>
 
 <div id="btnContainer">
   <button class="btn" onclick="listView()"><i class="fa fa-bars"></i> List</button> 
   <button class="btn" onclick="gridView()"><i class="fa fa-th-large"></i> Grid</button>
 </div>
-<br>
 
 <div class="row">
   {% for site in sites %}
@@ -132,6 +128,5 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 </script>
-
 
 {% endblock %}
