@@ -8,7 +8,7 @@
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/sites">List</a></li>
     <li class="breadcrumb-item"><a href="/site_table">Table</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Details</li>
+    <li class="breadcrumb-item active" aria-current="page">Detail</li>
     <li class="breadcrumb-item"><a href="/site_create">Create</a></li>
   </ol>
 </nav>
@@ -23,19 +23,22 @@
     <div class="container">
       <div class="row">
 
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            {% for site in sites %}
-              <li class="nav-item {% if site.id == current_site.id %}active{% endif %}">
-                <a class="nav-link" href="{% url 'site_detail' site.id %}">
-                  {{ site.siteId }}
-                </a>
-              </li>
-            {% endfor %}
-          </ol>
-        </nav>
+        <ul class="nav justify-content-center">
+          {% for site in sites %}
+            <li class="nav-item {% if site.id == current_site.id %}active{% endif %}">
+              <a class="nav-link" href="{% url 'site_detail' site.id %}">{{ site.name }}</a>
+            </li>
+          {% endfor %}
+        </ul>
 
-        <hr>
+        <div class="col-12">
+          <hr>
+          <p>
+            <strong>
+              {{site.siteId}} - {{site.country}} - {{site.city}} - {{site.address}} - {{site.contact}} - {{site.switchowner}} - {{site.name}}
+            </strong>
+          </p>
+        </div>
 
         <div class="col-6">
           <li>Site ID: {{site.siteId}}</li>
@@ -51,11 +54,19 @@
           <section>
             <img 
               src="{{ site.siteImage.url }}"
+              class="rounded float-end"
               alt="{{ site.name }}"
             />
           </section>
         </div>
 
+        <div>
+          {% if user.is_staff %}
+          <td>
+             <a class="rounded float-end" href="{% url 'site_edit' site.id %}">Edit / Delete</a>
+          </td>
+          {% endif %}
+        </div>
       </div>
     </div>
 

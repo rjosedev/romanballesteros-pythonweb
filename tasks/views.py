@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.apps import apps
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
@@ -122,7 +123,13 @@ def site_details(request, site_id):
     context = {
       'site': site,
     }
-    return HttpResponse(template.render(context, request))          
+    return HttpResponse(template.render(context, request))
+
+@login_required
+def site_detail(request, site_id):
+    site = get_object_or_404(Site, id=site_id)
+    sites = Site.objects.all()
+    return render(request, 'site_detail.html', {'site': site, 'sites': sites})
 
 @staff_member_required(login_url='/only_staff')
 def site_create(request):

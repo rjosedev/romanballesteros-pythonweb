@@ -51,6 +51,7 @@ urlpatterns = [
     path('site_create/', views.site_create, name='site_create'),
     path('sites/<int:site_id>', views.site_edit, name='site_edit'),
     path('sites/<int:site_id>/delete', views.site_delete, name='site_delete'),
+    path('site_detail/<int:site_id>/', views.site_detail, name='site_detail'),
 
     ### RACK ###
     path('racks/', views.racks, name='racks'),
