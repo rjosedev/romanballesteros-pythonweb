@@ -36,7 +36,7 @@
         <tbody>
             {% for site in sites %}
             <tr>
-                <td><a href="{% url 'site_nav' site.id %}">{{ site.siteId }}</a></td>
+                <td><a href="{% url 'site_detail' site.id %}">{{ site.siteId }}</a></td>
                 <td>{{ site.country }}</td>
                 <td>{{ site.city }}</td>
                 <td>{{ site.address }}</td>

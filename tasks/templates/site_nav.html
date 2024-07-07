@@ -21,13 +21,15 @@
 
 <div class="card mb-4">
   <div class="card-header">
+
     <ul class="nav nav-pills">
-      {% for site in sites %}
-        <li class="nav-item {% if site.id == current_site.id %}active{% endif %}">
+      <li class="nav-item {% if site.id == current_site.id %}active{% endif %}"></li>
+        {% for site in sites %}
           <a class="nav-link" href="{% url 'site_nav' site.id %}">{{ site.name }}</a>
-        </li>
-      {% endfor %}
+        {% endfor %}
+      </li>
     </ul>
+
   </div>
   <div class="card-body">
     <div class="container">
@@ -59,6 +61,7 @@
              <a class="rounded float-end" href="{% url 'site_edit' site.id %}">Edit / Delete</a>
           </td>
           {% endif %}
+
         </div>
       </div>
     </div>

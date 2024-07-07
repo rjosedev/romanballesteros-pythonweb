@@ -42,7 +42,7 @@
   border: none;
   outline: none;
   padding: 12px 16px;
-  background-color: #f1f1f1;
+  /* background-color: #f1f1f1; */
   cursor: pointer;
 }
 
@@ -67,8 +67,14 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-12 bg-light p-3 border"><strong>{{site.name}}</strong></div>
-    
+
+        <div class="col-12 bg-light p-3 border">
+          <strong>{{site.name }}</strong>
+          {% if user.is_staff %}
+          <td><a class="rounded float-end" href="{% url 'site_edit' site.id %}"> Edit / Delete</a></td>
+          {% endif %}
+        </div>
+
         <!-- Force next columns to break to new line -->
         <div class="w-100"></div>
     
@@ -81,20 +87,17 @@
           <li>Switchowner: {{site.switchowner}}</li>
           <li>Name: {{site.name}}</li>
         </div>
+
         <div class="col-6 bg-light p-3 border">
           <section><img class="img-fluid" src="{{ site.siteImage.url }}" alt="{{ site.name }}"/></section>
-
-          {% if user.is_staff %}
-          <td><a href="{% url 'site_edit' site.id %}">Edit / Delete</a></td>
-          {% endif %}
         </div>
+
       </div>
     </div>
 
   </div>
   {% endfor %}
 </div>
-
 
 <script>
 // Get the elements with class="column"

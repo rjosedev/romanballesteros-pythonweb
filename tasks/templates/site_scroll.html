@@ -24,10 +24,12 @@
     <div class="container">
       <div class="row">
 
-        <strong>{{site.name}}</strong>
+        <div>
+          <strong>{{site.name}}</strong>
+        </div>
         <hr>
-
-        <div class="col-6">
+        
+        <div class="col-4">
           <li>Site ID: {{site.siteId}}</li>
           <li>Country: {{site.country}}</li>
           <li>City: {{site.city}}</li>
@@ -37,7 +39,7 @@
           <li>Name: {{site.name}}</li>
         </div>
     
-        <div class="col-6" enctype="multipart/form-data">
+        <div class="col-4" enctype="multipart/form-data">
           <section>
             <img 
               src="{{ site.siteImage.url }}"
@@ -46,8 +48,8 @@
             />
           </section>
         </div>
-    
-        <div>
+
+        <div class="col-4">
           {% if user.is_staff %}
           <td>
              <a class="rounded float-end" href="{% url 'site_edit' site.id %}">Edit / Delete</a>
@@ -55,7 +57,10 @@
           {% endif %}
         </div>
 
+       
+
       </div>
+      <br>
     </div>
     {% endfor %}
 
