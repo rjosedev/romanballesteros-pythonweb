@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mt-4">Sites</h2>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Scroll</li>
+    <li class="breadcrumb-item"><a href="/sites">List</a></li>
+    <li class="breadcrumb-item"><a href="/site_table">Table</a></li>
+    <li class="breadcrumb-item"><a href="/site_create">Create</a></li>
+  </ol>
+</nav>
+
+<div class="card mb-4">
+  <div class="card-body">    
+
+    {% for site in sites %}
+
+    <div class="container">
+      <div class="row">
+
+        <li><strong>{{site.name}}</strong></li>
+
+        <div class="col-6">
+          <li>Site ID: {{site.siteId}}</li>
+          <li>Country: {{site.country}}</li>
+          <li>City: {{site.city}}</li>
+          <li>Adddress: {{site.address}}</li>
+          <li>Contact: {{site.contact}}</li>
+          <li>Switchowner: {{site.switchowner}}</li>
+          <li>Name: {{site.name}}</li>
+        </div>
+    
+        <div class="col-6" enctype="multipart/form-data">
+          <section>
+            <img 
+              src="{{ site.siteImage.url }}"
+              class="rounded float-end"
+              alt="{{ site.name }}"
+            />
+          </section>
+        </div>
+    
+        <div>
+          {% if user.is_staff %}
+          <td>
+             <a class="rounded float-end" href="{% url 'site_edit' site.id %}">Edit / Delete</a>
+          </td>
+          {% endif %}
+        </div>
+
+    {% endfor %}
+
+  </div>
+</div>
+
+{% endblock %}

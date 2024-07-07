@@ -112,6 +112,11 @@ def sites(request):
     return render(request, 'sites.html', {"sites": sites})
 
 @login_required
+def site_scroll(request):
+    sites = Site.objects.filter()
+    return render(request, 'site_scroll.html', {"sites": sites})
+
+@login_required
 def site_table(request):
     sites = Site.objects.all()
     return render(request, 'site_table.html', {'sites': sites})
