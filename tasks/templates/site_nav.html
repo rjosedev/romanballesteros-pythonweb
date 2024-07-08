@@ -6,12 +6,12 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/site_create">Create</a></li>
     <li class="breadcrumb-item"><a href="/sites">List</a></li>
     <li class="breadcrumb-item"><a href="/site_table">Table</a></li>
     <li class="breadcrumb-item"><a href="/site_scroll">Scroll</a></li>
     <li class="breadcrumb-item"><a href="/site_detail/1">Detail</a></li>
     <li class="breadcrumb-item active" aria-current="page">Nav</li>
-    <li class="breadcrumb-item"><a href="/site_create">Create</a></li>
   </ol>
 </nav>
 
@@ -32,10 +32,11 @@
 
   </div>
   <div class="card-body">
-    <div class="container">
+
+    <div class="container" enctype="multipart/form-data">
       <div class="row">
 
-        <div class="col-6">
+        <div class="col">
           <li>Site ID: {{site.siteId}}</li>
           <li>Country: {{site.country}}</li>
           <li>City: {{site.city}}</li>
@@ -45,24 +46,14 @@
           <li>Name: {{site.name}}</li>
         </div>
 
-        <div class="col-6" enctype="multipart/form-data">
-          <section>
-            <img 
-              src="{{ site.siteImage.url }}"
-              class="rounded float-end"
-              alt="{{ site.name }}"
-            />
-          </section>
-        </div>
-
-        <div>
+        <div class="col ms-auto">
+          <img src="{{ site.siteImage.url }}" alt="{{ site.name }}"/>
+          <hr>
           {% if user.is_staff %}
-          <td>
-             <a class="rounded float-end" href="{% url 'site_edit' site.id %}">Edit / Delete</a>
-          </td>
+          <td><a class="text-end" href="{% url 'site_edit' site.id %}">Edit / Delete</a></td>
           {% endif %}
-
         </div>
+
       </div>
     </div>
   </div>

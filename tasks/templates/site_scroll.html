@@ -6,12 +6,12 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/site_create">Create</a></li>
     <li class="breadcrumb-item"><a href="/sites">List</a></li>
     <li class="breadcrumb-item"><a href="/site_table">Table</a></li>
     <li class="breadcrumb-item active" aria-current="page">Scroll</li>
     <li class="breadcrumb-item"><a href="/site_detail/1">Detail</a></li>
     <li class="breadcrumb-item"><a href="/site_nav/1">Nav</a></li>
-    <li class="breadcrumb-item"><a href="/site_create">Create</a></li>
   </ol>
 </nav>
 
@@ -26,10 +26,15 @@
 
         <div>
           <strong>{{site.name}}</strong>
+          {% if user.is_staff %}
+          <td>
+             <a class="rounded float-end" href="{% url 'site_edit' site.id %}">Edit / Delete</a>
+          </td>
+          {% endif %}
         </div>
         <hr>
         
-        <div class="col-4">
+        <div class="col-6">
           <li>Site ID: {{site.siteId}}</li>
           <li>Country: {{site.country}}</li>
           <li>City: {{site.city}}</li>
@@ -39,25 +44,16 @@
           <li>Name: {{site.name}}</li>
         </div>
     
-        <div class="col-4" enctype="multipart/form-data">
+        <div class="col-6" enctype="multipart/form-data">
           <section>
-            <img 
+            <img
+              class="rounded float-end"
               src="{{ site.siteImage.url }}"
               class="rounded float-end"
               alt="{{ site.name }}"
             />
           </section>
         </div>
-
-        <div class="col-4">
-          {% if user.is_staff %}
-          <td>
-             <a class="rounded float-end" href="{% url 'site_edit' site.id %}">Edit / Delete</a>
-          </td>
-          {% endif %}
-        </div>
-
-       
 
       </div>
       <br>

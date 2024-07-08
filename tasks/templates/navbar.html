@@ -28,14 +28,14 @@
                 Sites
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                {% if user.is_staff %}
+                <li><a class="dropdown-item" href="{% url 'site_create' %}">Create</a></li>
+                {% endif %}
                 <li><a class="dropdown-item" href="{% url 'sites' %}">List</a></li>
                 <li><a class="dropdown-item" href="{% url 'site_table' %}">Table</a></li>
                 <li><a class="dropdown-item" href="{% url 'site_scroll' %}">Scroll</a></li>
                 <li><a class="dropdown-item" href="/site_detail/1/">Detail</a></li>
                 <li><a class="dropdown-item" href="/site_nav/1/">Nav</a></li>
-                {% if user.is_staff %}
-                <li><a class="dropdown-item" href="{% url 'site_create' %}">Create</a></li>
-                {% endif %}
               </ul>
             </li>
           </ul>
@@ -44,51 +44,76 @@
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                List
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                <li><a class="dropdown-item" href="{% url 'racks' %}">Racks</a></li>
-                <li><a class="dropdown-item" href="{% url 'vendors' %}">Vendors</a></li>
-                <li><a class="dropdown-item" href="{% url 'devices' %}">Devices</a></li>
-                <li><a class="dropdown-item" href="{% url 'operators' %}">Operators</a></li>
-                <li><a class="dropdown-item" href="{% url 'cases' %}">Cases</a></li>
-                <li><a class="dropdown-item" href="{% url 'tasks' %}">Tasks</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Table
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                <li><a class="dropdown-item" href="{% url 'rack_table' %}">Racks</a></li>
-                <li><a class="dropdown-item" href="{% url 'vendor_table' %}">Vendors</a></li>
-                <li><a class="dropdown-item" href="{% url 'device_table' %}">Devices</a></li>
-                <li><a class="dropdown-item" href="{% url 'operator_table' %}">Operators</a></li>
-                <li><a class="dropdown-item" href="{% url 'case_table' %}">Cases</a></li>
-                <li><a class="dropdown-item" href="{% url 'task_table' %}">Tasks</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Create
+                Racks
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                 {% if user.is_staff %}
-                <li><a class="dropdown-item" href="{% url 'rack_create' %}">Racks</a></li>
-                <li><a class="dropdown-item" href="{% url 'vendor_create' %}">Vendors</a></li>
-                <li><a class="dropdown-item" href="{% url 'device_create' %}">Devices</a></li>
-                <li><a class="dropdown-item" href="{% url 'operator_create' %}">Operators</a></li>
+                <li><a class="dropdown-item" href="{% url 'rack_create' %}">Create</a></li>
                 {% endif %}
-                <li><a class="dropdown-item" href="{% url 'case_create' %}">Cases</a></li>
-                <li><a class="dropdown-item" href="{% url 'task_create' %}">Tasks</a></li>
+                <li><a class="dropdown-item" href="{% url 'racks' %}">List</a></li>
+                <li><a class="dropdown-item" href="{% url 'rack_table' %}">Table</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Vendors
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                {% if user.is_staff %}
+                <li><a class="dropdown-item" href="{% url 'vendor_create' %}">Create</a></li>
+                {% endif %}
+                <li><a class="dropdown-item" href="{% url 'vendors' %}">List</a></li>
+                <li><a class="dropdown-item" href="{% url 'vendor_table' %}">Table</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Devices
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                {% if user.is_staff %}
+                <li><a class="dropdown-item" href="{% url 'device_create' %}">Create</a></li>
+                {% endif %}
+                <li><a class="dropdown-item" href="{% url 'devices' %}">List</a></li>
+                <li><a class="dropdown-item" href="{% url 'device_table' %}">Table</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Operators
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                {% if user.is_staff %}
+                <li><a class="dropdown-item" href="{% url 'operator_create' %}">Create</a></li>
+                {% endif %}
+                <li><a class="dropdown-item" href="{% url 'operators' %}">List</a></li>
+                <li><a class="dropdown-item" href="{% url 'operator_table' %}">Table</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Cases
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item" href="{% url 'case_create' %}">Create</a></li>
+                <li><a class="dropdown-item" href="{% url 'cases' %}">List</a></li>
+                <li><a class="dropdown-item" href="{% url 'case_table' %}">Table</a></li>
               </ul>
             </li>
           </ul>
@@ -102,8 +127,10 @@
               <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
                 <li><a class="dropdown-item">Tasks</a></li>
                   <ul>
-                    <li><a class="dropdown-item" href="{% url 'tasks' %}">Pending</a></li>
-                    <li><a class="dropdown-item" href="{% url 'tasks_completed' %}">Completed</a></li>
+                    <li><a class="dropdown-item" href="{% url 'task_create' %}">Create</a></li>
+                    <li><a class="dropdown-item" href="{% url 'tasks' %}">List pending</a></li>
+                    <li><a class="dropdown-item" href="{% url 'tasks_completed' %}">List completed</a></li>
+                    <li><a class="dropdown-item" href="{% url 'task_table' %}">Table</a></li>
                   </ul>
                 </li>
                 <li><a class="dropdown-item" href="/edit_profile">Edit profile</a></li>
