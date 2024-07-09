@@ -6,7 +6,9 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    {% if user.is_staff %}
     <li class="breadcrumb-item"><a href="/site_create">Create</a></li>
+    {% endif %}
     <li class="breadcrumb-item"><a href="/sites">List</a></li>
     <li class="breadcrumb-item"><a href="/site_table">Table</a></li>
     <li class="breadcrumb-item"><a href="/site_scroll">Scroll</a></li>
@@ -20,8 +22,10 @@
 </p>
 
 <style>
+
 * {
   box-sizing: border-box;
+  border-radius: 6px;
 }
 
 /* Create two equal columns that floats next to each other */
@@ -37,6 +41,7 @@
   display: table;
   clear: both;
 }
+
 /* Style the buttons */
 .btn {
   border: none;
@@ -54,6 +59,7 @@
   background-color: #666;
   color: white;
 }
+
 </style>
 
 <div id="btnContainer">
@@ -63,12 +69,12 @@
 
 <div class="row">
   {% for site in sites %}
-  <div class="column" style="background-color:#ffffff;" enctype="multipart/form-data">
+  <div class="column" enctype="multipart/form-data">
 
-    <div class="container">
+    <div class="col-12 bg-white p-2 border">
       <div class="row">
 
-        <div class="col-12 bg-light p-3 border">
+        <div class="col-12">
           <strong>{{site.name }}</strong>
           {% if user.is_staff %}
           <td><a class="rounded float-end" href="{% url 'site_edit' site.id %}"> Edit / Delete</a></td>
@@ -78,7 +84,7 @@
         <!-- Force next columns to break to new line -->
         <div class="w-100"></div>
     
-        <div class="col-6 bg-light p-3 border">
+        <div class="col-6">
           <li>Site ID: {{site.siteId}}</li>
           <li>Country: {{site.country}}</li>
           <li>City: {{site.city}}</li>
@@ -88,7 +94,7 @@
           <li>Name: {{site.name}}</li>
         </div>
 
-        <div class="col-6 bg-light p-3 border">
+        <div class="col-6">
           <section>
             <img 
             class="img-fluid float-end" 

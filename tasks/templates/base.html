@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -30,12 +30,14 @@
             <div class="row">
               <div class="col">
                 <div class="text-start">
-                  Welcome <strong>{{request.user.first_name}} {{request.user.last_name}}</strong>, logged as <strong>{{request.user.username}}</strong>. {{message}}
+                  Welcome <strong>{{request.user.first_name}} {{request.user.last_name}}</strong>, 
+                  logged as <strong>{{request.user.username}}</strong>.
+                  {{message}}
                 </div>
               </div>
               <div class="col col-lg-2">
                 <div class="text-end">
-                  <i class="fa fa-arrow-left" aria-hidden="true" onclick="window.history.back()">Back</i>
+                  <i class="fa fa-arrow-left" aria-hidden="true" onclick="window.history.back()"></i>
                 </div>
               </div>
             </div>

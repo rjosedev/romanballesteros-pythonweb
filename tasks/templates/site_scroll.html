@@ -6,7 +6,9 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    {% if user.is_staff %}
     <li class="breadcrumb-item"><a href="/site_create">Create</a></li>
+    {% endif %}
     <li class="breadcrumb-item"><a href="/sites">List</a></li>
     <li class="breadcrumb-item"><a href="/site_table">Table</a></li>
     <li class="breadcrumb-item active" aria-current="page">Scroll</li>
@@ -16,49 +18,61 @@
 </nav>
 
 <div class="card mb-4">
-  <div class="card-body">    
+  <div class="card-body">
 
-
-    {% for site in sites %}
-
-    <div class="container">
-      <div class="row">
-
-        <div>
-          <strong>{{site.name}}</strong>
-          {% if user.is_staff %}
-          <td>
-             <a class="rounded float-end" href="{% url 'site_edit' site.id %}">Edit / Delete</a>
-          </td>
-          {% endif %}
+    <div class="row">
+      <div class="col-2">
+        <div id="list-example" class="list-group list-group-horizontal">
+          {% for site in sites %}
+          <a class="list-group-item list-group-item-action" href="#{{site.name}}">{{site.name}}</a>
+          {% endfor %}
         </div>
-        <hr>
-        
-        <div class="col-6">
-          <li>Site ID: {{site.siteId}}</li>
-          <li>Country: {{site.country}}</li>
-          <li>City: {{site.city}}</li>
-          <li>Adddress: {{site.address}}</li>
-          <li>Contact: {{site.contact}}</li>
-          <li>Switchowner: {{site.switchowner}}</li>
-          <li>Name: {{site.name}}</li>
-        </div>
-    
-        <div class="col-6" enctype="multipart/form-data">
-          <section>
-            <img
-              class="rounded float-end"
-              src="{{ site.siteImage.url }}"
-              class="rounded float-end"
-              alt="{{ site.name }}"
-            />
-          </section>
-        </div>
-
       </div>
-      <br>
+      <div class="col-12">
+        <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+          {% for site in sites %}
+          <div class="row">
+            <div class="col-6">
+              <h4 id="{{site.name}}">{{site.name}}</h4>
+            </div>
+            <div class="col-6">
+              {% if user.is_staff %}
+              <td><a class="rounded float-end" href="{% url 'site_edit' site.id %}"> Edit / Delete</a></td>
+              {% endif %}
+            </div>
+            <hr>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <li>Site ID: {{site.siteId}}</li>
+              <li>Country: {{site.country}}</li>
+              <li>City: {{site.city}}</li>
+              <li>Adddress: {{site.address}}</li>
+              <li>Contact: {{site.contact}}</li>
+              <li>Switchowner: {{site.switchowner}}</li>
+              <li>Name: {{site.name}}</li>
+            </div>
+            <div class="col-6">
+              <section>
+                <img 
+                class="img-fluid float-end" 
+                src="{{ site.siteImage.url }}" 
+                alt="{{ site.name }}"/>
+              </section>
+            </div>
+          </div>
+          <br>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis tenetur itaque, perspiciatis, molestias enim assumenda et est necessitatibus consequuntur voluptates fugit facere id! Quos accusantium pariatur voluptates harum, cum inventore.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, molestiae. Repellat delectus nisi, in inventore optio facere quia quibusdam incidunt ipsam consectetur blanditiis illum quod impedit aliquid excepturi illo! Quae!
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam error quis velit quidem, vero beatae qui voluptates reiciendis voluptas explicabo, maxime incidunt? Animi cum dolore iure a accusamus, deserunt vero!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere necessitatibus, quas ipsa fugiat dolores eos ad voluptas cumque officia aperiam ratione quidem incidunt accusantium, dolorum quae quo iusto quos perspiciatis.
+          </p>
+          <br>
+          {% endfor %}
+        </div>
+      </div>
     </div>
-    {% endfor %}
 
   </div>
 </div>
