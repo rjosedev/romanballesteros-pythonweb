@@ -18,22 +18,26 @@
 </nav>
 
 <div class="card mb-4">
-  <div class="card-body">
+  <div class="card-body" >
 
     <div class="row">
-      <div class="col-2">
-        <div id="list-example" class="list-group list-group-horizontal">
+
+      <div class="col-1">
+        <div id="list-example" class="list-group">
           {% for site in sites %}
           <a class="list-group-item list-group-item-action" href="#{{site.name}}">{{site.name}}</a>
           {% endfor %}
         </div>
       </div>
-      <div class="col-12">
-        <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-          {% for site in sites %}
+      
+      <div class="col-11 overflow-auto" style="height: 300px;">
+
+        {% for site in sites %}
+        <div data-bs-spy="scroll" data-bs-target="#list-example" data-offset="100" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+          
           <div class="row">
             <div class="col-6">
-              <h4 id="{{site.name}}">{{site.name}}</h4>
+              <div id="{{site.name}}"><h4>{{site.name}}</h4></div>
             </div>
             <div class="col-6">
               {% if user.is_staff %}
@@ -42,6 +46,7 @@
             </div>
             <hr>
           </div>
+
           <div class="row">
             <div class="col-6">
               <li>Site ID: {{site.siteId}}</li>
@@ -60,20 +65,22 @@
                 alt="{{ site.name }}"/>
               </section>
             </div>
+            <br>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis tenetur itaque, perspiciatis, molestias enim assumenda et est necessitatibus consequuntur voluptates fugit facere id! Quos accusantium pariatur voluptates harum, cum inventore.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, molestiae. Repellat delectus nisi, in inventore optio facere quia quibusdam incidunt ipsam consectetur blanditiis illum quod impedit aliquid excepturi illo! Quae!
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam error quis velit quidem, vero beatae qui voluptates reiciendis voluptas explicabo, maxime incidunt? Animi cum dolore iure a accusamus, deserunt vero!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere necessitatibus, quas ipsa fugiat dolores eos ad voluptas cumque officia aperiam ratione quidem incidunt accusantium, dolorum quae quo iusto quos perspiciatis.
+            </p>
+            <br>
+            <br>
           </div>
-          <br>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis tenetur itaque, perspiciatis, molestias enim assumenda et est necessitatibus consequuntur voluptates fugit facere id! Quos accusantium pariatur voluptates harum, cum inventore.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, molestiae. Repellat delectus nisi, in inventore optio facere quia quibusdam incidunt ipsam consectetur blanditiis illum quod impedit aliquid excepturi illo! Quae!
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam error quis velit quidem, vero beatae qui voluptates reiciendis voluptas explicabo, maxime incidunt? Animi cum dolore iure a accusamus, deserunt vero!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere necessitatibus, quas ipsa fugiat dolores eos ad voluptas cumque officia aperiam ratione quidem incidunt accusantium, dolorum quae quo iusto quos perspiciatis.
-          </p>
-          <br>
-          {% endfor %}
+
         </div>
+        {% endfor %}
+
       </div>
     </div>
-
   </div>
 </div>
 
