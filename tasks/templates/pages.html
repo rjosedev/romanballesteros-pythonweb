@@ -14,57 +14,111 @@
 
 <div class="card mb-4">
   <div class="card-body">
-    <p>
-      Páginas que son visibles para todos sin necesidad de estar registrado en el sitio o haber ingresar con usuario:
-      <li>Home</li>
-      <li>Pages</li>
-      <li>About</li>
-      <li>Sign in</li>
-      <li>Sign out</li>
-    </p>
-    <p>
-      Páginas que son solo visibles para los usuarios registrados que hayan ingresado:
-      <li>List  
-        <ul>
-          <li>Site</li>
-          <li>Vendor</li>
-          <li>Device</li>
-          <li>Operator</li>
-          <li>Case</li>
-          <li>Task</li>
-        </ul>
-      </li>
-      <li>Create
-        <ul>
-          <li>Site (visible solo para staff)</li>
-          <li>Vendor (visible solo para staff)</li>
-          <li>Device (visible solo para staff)</li>
-          <li>Operator (visible solo para staff)</li>
-          <li>Case</li>
-        </ul>
-      </li>
-      <li>Edit / Delete
-        <ul>
-          <li>Site (visible solo para staff)</li>
-          <li>Vendor (visible solo para staff)</li>
-          <li>Device (visible solo para staff)</li>
-          <li>Operator (visible solo para staff)</li>
-          <li>Case</li>
-        </ul>
-      </li>
-      <li>User
-        <ul>
-          <li>Task</li>
-          <ul>
-            <li>Create</li>
-            <li>Edit / Delete</li>
-            <li>Completed</li>
-          </ul>
-          <li>Edit profile</li>
-          <li>Logout</li>
-        </ul>
-      </li>
-    </p>
+
+    <div class="container">
+      <div class="row align-items-start">
+        <div class="col-6">
+          <p>
+            Páginas accesibles para todos sin necesidad de estar registrado:
+          </p>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'pages' %}">Pages</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'signin' %}">Sing In</a></li>
+          <li><a href="{% url 'signup' %}">Sing Up</a></li>
+        </div>
+        <div class="col-6">
+          <p>
+            Páginas accesibles y asociadas solo al usuario que ha ingresado:
+          </p>
+          <li><a href="{% url 'edit_profile' %}"><strong>Username</strong></a> > Edit profile</li>
+          <li><a href="{% url 'logout' %}">Logout </a>> Home</li>
+          <br>
+          Tasks
+          <li><a href="{% url 'task_create' %}">Create</a></li>
+          <li><a href="{% url 'tasks' %}">List pending</a></li>
+          <li><a href="{% url 'tasks_completed' %}">List completed</a></li>
+          <li><a href="{% url 'task_table' %}">Table</a></li>
+          <br>
+        </div>
+        <hr>
+        <div class="row">
+          <p>
+            Páginas accesibles solo para usuarios registrados que ingresaron:
+          </p>
+          <div class="col-2">
+            Sites
+            <li><a href="{% url 'sites' %}">List</a></li>
+            <li><a href="{% url 'site_table' %}">Table</a></li>
+            <li><a href="{% url 'site_scroll' %}">Scroll</a></li>
+            <li><a href="/site_detail/1/">Detail</a></li>
+            <li><a href="/site_nav/1/">Nav</a></li>
+            <br>
+          </div>
+          <div class="col-2">
+            Rack
+            <li><a href="{% url 'racks' %}">List</a></li>
+            <li><a href="{% url 'rack_table' %}">Table</a></li>
+          </div>
+          <div class="col-2">
+            Vendors
+            <li><a href="{% url 'vendors' %}">List</a></li>
+            <li><a href="{% url 'vendor_table' %}">Table</a></li>
+          </div>
+          <div class="col-2">
+            Device
+            <li><a href="{% url 'devices' %}">List</a></li>
+            <li><a href="{% url 'device_table' %}">Table</a></li>
+          </div>
+          <div class="col-2">
+            Operators
+            <li><a href="{% url 'operators' %}">List</a></li>
+            <li><a href="{% url 'operator_table' %}">Table</a></li>
+          </div>
+          <div class="col-2">
+            Cases
+            <li><a href="{% url 'case_create' %}">Create</a></li>
+            <li><a href="{% url 'cases' %}">List</a></li>
+            <li><a href="{% url 'case_table' %}">Table</a></li>
+            <li><a href="/cases/1">Edit / Delete</a></li>
+          </div>
+        </div>
+        <br>
+        <hr>
+        <div class="row">
+          <p>
+            Páginas accesibles solo para usuarios admin o staff:
+          </p>
+          <div class="col-2">
+            Sites
+            <li><a href="{% url 'site_create' %}">Create</a></li>
+            <li><a href="/sites/1">Edit / Delete</a></li>
+          </div>
+          <div class="col-2">
+            Rack
+            <li><a href="{% url 'rack_create' %}">Create</a></li>
+            <li><a href="/racks/1">Edit / Delete</a></li>
+          </div>
+          <div class="col-2">
+            Vendors
+            <li><a href="{% url 'vendor_create' %}">Create</a></li>
+            <li><a href="/vendors/1">Edit / Delete</a></li>
+          </div>
+          <div class="col-2">
+            Device
+            <li><a href="{% url 'device_create' %}">Create</a></li>
+            <li><a href="/devices/1">Edit / Delete</a></li>
+          </div>
+          <div class="col-2">
+            Operators
+            <li><a href="{% url 'operator_create' %}">Create</a></li>
+            <li><a href="/operators/1">Edit / Delete</a></li>
+          </div>
+          <div class="col-2">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
