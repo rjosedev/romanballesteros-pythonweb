@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mt-4">Operators</h2>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    {% if user.is_staff %}
+    <li class="breadcrumb-item"><a href="/operator_create">Create</a></li>
+    {% endif %}
+    <li class="breadcrumb-item"><a href="/operators">List</a></li>
+    <li class="breadcrumb-item"><a href="/operator_table">Table</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Nav</li>
+  </ol>
+</nav>
+
+<p>
+  {{error}}
+</p>
+
+<div class="card mb-4">
+  <div class="card-header">
+
+    <ul class="nav">
+      <li class="nav-item {% if operator.id == current_operator.id %}active{% endif %}"></li>
+        {% for operator in operators %}
+          <a class="nav-link" href="{% url 'operator_nav' operator.id %}">{{ operator.name }}</a>
+        {% endfor %}
+      </li>
+    </ul>
+
+  </div>
+  <div class="container" enctype="multipart/form-data">
+    <br>
+    <div class="row">
+      <div class="col-6">
+        <li>Operator ID: {{operator.operatorId}}</li>
+        <li>First Name: {{operator.firstName}}</li>
+        <li>Last Name: {{operator.lastName}}</li>
+        <li>Email: {{operator.email}}</li>
+        <li>Contact: {{operator.contact}}</li>
+        <li>Back Office: {{operator.backOffice}}</li>
+        <li>Username: {{operator.user.username}}</li>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          {% if user.is_staff %}
+          <td><a class="text-end" href="{% url 'operator_edit' operator.id %}">Edit / Delete</a></td>
+          {% endif %}
+        </div>
+        <div class="row">
+          <section>
+            <img 
+            class="img-fluid float-end" 
+            src="{{ operator.operatorImage.url }}" 
+            alt="{{ operator.name }}"/>
+          </section>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+
+{% endblock %}

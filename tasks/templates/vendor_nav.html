@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mt-4">Vendors</h2>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    {% if user.is_staff %}
+    <li class="breadcrumb-item"><a href="/vendor_create">Create</a></li>
+    {% endif %}
+    <li class="breadcrumb-item"><a href="/vendors">List</a></li>
+    <li class="breadcrumb-item"><a href="/vendor_table">Table</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Nav</li>
+  </ol>
+</nav>
+
+<p>
+  {{error}}
+</p>
+
+<div class="card mb-4">
+  <div class="card-header">
+
+    <ul class="nav">
+      <li class="nav-item {% if vendor.id == current_vendor.id %}active{% endif %}"></li>
+        {% for vendor in vendors %}
+          <a class="nav-link" href="{% url 'vendor_nav' vendor.id %}">{{ vendor.name }}</a>
+        {% endfor %}
+      </li>
+    </ul>
+
+  </div>
+  <div class="container" enctype="multipart/form-data">
+    <br>
+    <div class="row">
+      <div class="col-6">
+        <li>Vendor ID: {{vendor.vendorId}}</li>
+        <li>Name: {{vendor.name}}</li>
+        <li>Email: {{vendor.email}}</li>
+        <li>Contact: {{vendor.contact}}</li>
+        <li>Link: {{vendor.link}}</li>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          {% if user.is_staff %}
+          <td><a class="text-end" href="{% url 'vendor_edit' vendor.id %}">Edit / Delete</a></td>
+          {% endif %}
+        </div>
+        <div class="row">
+          <section>
+            <img 
+            class="img-fluid float-end" 
+            src="{{ vendor.vendorImage.url }}" 
+            alt="{{ vendor.name }}"/>
+          </section>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mt-4">Cases</h2>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    {% if user.is_staff %}
+    <li class="breadcrumb-item"><a href="/case_create">Create</a></li>
+    {% endif %}
+    <li class="breadcrumb-item"><a href="/cases">List</a></li>
+    <li class="breadcrumb-item"><a href="/case_table">Table</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Nav</li>
+  </ol>
+</nav>
+
+<p>
+  {{error}}
+</p>
+
+<div class="card mb-4">
+  <div class="card-header">
+
+    <ul class="nav">
+      <li class="nav-item {% if case.id == current_case.id %}active{% endif %}"></li>
+        {% for case in cases %}
+          <a class="nav-link" href="{% url 'case_nav' case.id %}">{{ case.name }}</a>
+        {% endfor %}
+      </li>
+    </ul>
+
+  </div>
+  <div class="container" enctype="multipart/form-data">
+    <br>
+    <div class="row">
+      <div class="col-6">
+        <li>Case ID: {{case.caseId}}</li>
+        <li>Site: {{case.site}}</li>
+        <li>Rack: {{case.rack}}</li>
+        <li>Vendor: {{case.vendor}}</li>
+        <li>Device: {{case.device}}</li>
+        <li>Severity: {{case.severity}}</li>
+        <li>Description: {{case.description}}</li>
+        <li>Operator: {{case.user.username}}</li>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          {% if user.is_staff %}
+          <td><a class="text-end" href="{% url 'case_edit' case.id %}">Edit / Delete</a></td>
+          {% endif %}
+        </div>
+        <div class="row">
+          <section>
+            <img 
+            class="img-fluid float-end" 
+            src="{{ case.caseImage.url }}" 
+            alt="{{ case.name }}"/>
+          </section>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+
+{% endblock %}

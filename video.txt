@@ -1,0 +1,27 @@
+Coderhouse
+
+Python web
+
+Presentación, nombre y apellido
+
+Recorrido por pantallas
+
+Registrar usuario
+Ingresar con usuario
+
+admin
+Crear sitio
+Crear rack
+Crear proveedor
+Crear dispositivo
+Crear operario
+
+oper
+Crear una tarea > Crear caso
+Crear caso
+Completar tarea
+
+Test
+Crear usuario repetido
+Cambiar contraseña
+

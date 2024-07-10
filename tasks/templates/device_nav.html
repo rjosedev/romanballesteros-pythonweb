@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mt-4">Devices</h2>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    {% if user.is_staff %}
+    <li class="breadcrumb-item"><a href="/device_create">Create</a></li>
+    {% endif %}
+    <li class="breadcrumb-item"><a href="/devices">List</a></li>
+    <li class="breadcrumb-item"><a href="/device_table">Table</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Nav</li>
+  </ol>
+</nav>
+
+<p>
+  {{error}}
+</p>
+
+<div class="card mb-4">
+  <div class="card-header">
+
+    <ul class="nav">
+      <li class="nav-item {% if device.id == current_device.id %}active{% endif %}"></li>
+        {% for device in devices %}
+          <a class="nav-link" href="{% url 'device_nav' device.id %}">{{ device.name }}</a>
+        {% endfor %}
+      </li>
+    </ul>
+
+  </div>
+  <div class="container" enctype="multipart/form-data">
+    <br>
+    <div class="row">
+      <div class="col-6">
+        <li>Device ID: {{device.deviceId}}</li>
+        <li>Site: {{device.site}}</li>
+        <li>Rack: {{device.rack}}</li>
+        <li>Vendor: {{device.vendor}}</li>
+        <li>Category: {{device.category}}</li>
+        <li>Name: {{device.name}}</li>
+        <li>Model: {{device.model}}</li>
+        <li>Serial Number: {{device.serialNumber}}</li>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          {% if user.is_staff %}
+          <td><a class="text-end" href="{% url 'device_edit' device.id %}">Edit / Delete</a></td>
+          {% endif %}
+        </div>
+        <div class="row">
+          <section>
+            <img 
+            class="img-fluid float-end" 
+            src="{{ device.deviceImage.url }}" 
+            alt="{{ device.name }}"/>
+          </section>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+
+{% endblock %}

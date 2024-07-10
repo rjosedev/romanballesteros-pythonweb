@@ -33,33 +33,35 @@
     </ul>
 
   </div>
-  <div class="card-body">
-
-    <div class="container" enctype="multipart/form-data">
-      <div class="row">
-
-        <div class="d-flex bd-highlight">
-          <div class="p-2 flex-grow-1 bd-highlight">
-            <li>Site ID: {{site.siteId}}</li>
-            <li>Country: {{site.country}}</li>
-            <li>City: {{site.city}}</li>
-            <li>Adddress: {{site.address}}</li>
-            <li>Contact: {{site.contact}}</li>
-            <li>Switchowner: {{site.switchowner}}</li>
-            <li>Name: {{site.name}}</li>
-          </div>
-          <div class="p-2 bd-highlight">
-            <img src="{{ site.siteImage.url }}" alt="{{ site.name }}"/>
-          </div>
-          <div class="p-2 bd-highlight">
-            {% if user.is_staff %}
-            <td><a href="{% url 'site_edit' site.id %}">Edit / Delete</a></td>
-            {% endif %}
-          </div>
+  <div class="container" enctype="multipart/form-data">
+    <br>
+    <div class="row">
+      <div class="col-6">
+        <li>Site ID: {{site.siteId}}</li>
+        <li>Country: {{site.country}}</li>
+        <li>City: {{site.city}}</li>
+        <li>Adddress: {{site.address}}</li>
+        <li>Contact: {{site.contact}}</li>
+        <li>Switchowner: {{site.switchowner}}</li>
+        <li>Name: {{site.name}}</li>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          {% if user.is_staff %}
+          <td><a class="text-end" href="{% url 'site_edit' site.id %}">Edit / Delete</a></td>
+          {% endif %}
         </div>
-
+        <div class="row">
+          <section>
+            <img 
+            class="img-fluid float-end" 
+            src="{{ site.siteImage.url }}" 
+            alt="{{ site.name }}"/>
+          </section>
+        </div>
       </div>
     </div>
+    <br>
   </div>
 </div>
 
