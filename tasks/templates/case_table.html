@@ -6,9 +6,9 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/case_create">Create</a></li>
     <li class="breadcrumb-item"><a href="/cases">List</a></li>
     <li class="breadcrumb-item active" aria-current="page">Table</li>
-    <li class="breadcrumb-item"><a href="/case_create">Create</a></li>
   </ol>
 </nav>
 
@@ -32,7 +32,7 @@
         <tbody>
             {% for case in cases %}
             <tr>
-              <td>{{ case.caseId }}</td>
+              <td><a href="{% url 'case_nav' case.id %}">{{ case.caseId }}</a></td>
               <td>{{ case.site }}</td>
               <td>{{ case.rack }}</td>
               <td>{{ case.vendor }}</td>
@@ -40,7 +40,7 @@
               <td>{{ case.severity }}</td>
               <td>{{ case.description }}</td>
               <td>{{ case.operator }}</td>
-              <td><a href="{% url 'case_detail' case.id %}">Edit / Delete</a></td>
+              <td><a href="{% url 'case_detail' case.id %}">Edit/Delete</a></td>
             </tr>
             {% endfor %}
         </tbody>

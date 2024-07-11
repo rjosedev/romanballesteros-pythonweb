@@ -7,9 +7,9 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/task_create">Create</a></li>
     <li class="breadcrumb-item"><a href="/tasks">List</a></li>
     <li class="breadcrumb-item active" aria-current="page">Table</li>
-    <li class="breadcrumb-item"><a href="/task_create">Create</a></li>
   </ol>
 </nav>
 
@@ -37,7 +37,7 @@
                 <td>{{ task.completed }}</td>
                 <td>{{ task.important }}</td>
                 <td>{{ task.user.username }}</td>
-                <td><a href="{% url 'task_detail' task.id %}">Edit / Delete</a></td>
+                <td><a href="{% url 'task_detail' task.id %}">Edit/Delete</a></td>
             </tr>
             {% endfor %}
         </tbody>

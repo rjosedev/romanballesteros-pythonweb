@@ -418,7 +418,21 @@ def operator_delete(request, operator_id):
 
 
 
-### CASE ###
+### CASE: Create, List, Table, Nav, Edit/Delete ###
+
+@login_required
+def case_create(request):
+    if request.method == "GET":
+        return render(request, 'case_create.html', {"form": CaseForm})
+    else:
+        try:
+            form = CaseForm(request.POST, request.FILES)
+            new_case = form.save(commit=False)
+            new_case.user = request.user
+            new_case.save()
+            return redirect('cases')
+        except ValueError:
+            return render(request, 'case_create.html', {"form": CaseForm, "error": "Error creating case."})
 
 @login_required
 def cases(request):
@@ -435,20 +449,6 @@ def case_nav(request, case_id):
     case = get_object_or_404(Case, id=case_id)
     cases = Case.objects.all()
     return render(request, 'case_nav.html', {'case': case, 'cases': cases})
-
-@login_required
-def case_create(request):
-    if request.method == "GET":
-        return render(request, 'case_create.html', {"form": CaseForm})
-    else:
-        try:
-            form = CaseForm(request.POST, request.FILES)
-            new_case = form.save(commit=False)
-            new_case.user = request.user
-            new_case.save()
-            return redirect('cases')
-        except ValueError:
-            return render(request, 'case_create.html', {"form": CaseForm, "error": "Error creating case."})
 
 @login_required
 def case_detail(request, case_id):
@@ -475,7 +475,21 @@ def case_delete(request, case_id):
 
 
 
-### TASK ###
+### TASK:  Create, List pending, List completed, Table, Edit/Delete ###
+
+@login_required
+def task_create(request):
+    if request.method == "GET":
+        return render(request, 'task_create.html', {"form": TaskForm})
+    else:
+        try:
+            form = TaskForm(request.POST)
+            new_task = form.save(commit=False)
+            new_task.user = request.user
+            new_task.save()
+            return redirect('tasks')
+        except ValueError:
+            return render(request, 'task_create.html', {"form": TaskForm, "error": "Error creating task."})
 
 @login_required
 def tasks(request):
@@ -491,20 +505,6 @@ def task_table(request):
 def tasks_completed(request):
     tasks = Task.objects.filter(user=request.user, completed__isnull=False).order_by('-completed')
     return render(request, 'tasks.html', {"tasks": tasks})
-
-@login_required
-def task_create(request):
-    if request.method == "GET":
-        return render(request, 'task_create.html', {"form": TaskForm})
-    else:
-        try:
-            form = TaskForm(request.POST)
-            new_task = form.save(commit=False)
-            new_task.user = request.user
-            new_task.save()
-            return redirect('tasks')
-        except ValueError:
-            return render(request, 'task_create.html', {"form": TaskForm, "error": "Error creating task."})
 
 @login_required
 def task_detail(request, task_id):

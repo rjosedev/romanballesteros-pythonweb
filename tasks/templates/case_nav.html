@@ -6,9 +6,7 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    {% if user.is_staff %}
     <li class="breadcrumb-item"><a href="/case_create">Create</a></li>
-    {% endif %}
     <li class="breadcrumb-item"><a href="/cases">List</a></li>
     <li class="breadcrumb-item"><a href="/case_table">Table</a></li>
     <li class="breadcrumb-item active" aria-current="page">Nav</li>
@@ -25,7 +23,7 @@
     <ul class="nav">
       <li class="nav-item {% if case.id == current_case.id %}active{% endif %}"></li>
         {% for case in cases %}
-          <a class="nav-link" href="{% url 'case_nav' case.id %}">{{ case.name }}</a>
+          <a class="nav-link" href="{% url 'case_nav' case.id %}">{{ case.caseId }}</a>
         {% endfor %}
       </li>
     </ul>
@@ -47,7 +45,7 @@
       <div class="col-6">
         <div class="row">
           {% if user.is_staff %}
-          <td><a class="text-end" href="{% url 'case_edit' case.id %}">Edit / Delete</a></td>
+          <td><a class="text-end" href="{% url 'case_detail' case.id %}">Edit/Delete</a></td>
           {% endif %}
         </div>
         <div class="row">
