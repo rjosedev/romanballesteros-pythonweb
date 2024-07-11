@@ -2,8 +2,7 @@
 
 - **Nombre e integrantes del proyecto:**
 
-Follow-up
-Roman Jose Ballesteros
+Follow-up por Roman Jose Ballesteros
 
 - **Descripción:**
 
@@ -38,10 +37,10 @@ Todos los usuarios pueden consultar información de todas las instancias de todo
 
 - **Modelos y Vistas Disponibles:**
 
-Modelos:
+- Modelos:
     - Site, Rack, Vendor, Device, Operator, Case y Task.
 
-Vistas:
+- Vistas:
     - Main: Home, Pages, About, Sing In, Sign Out
     - User: Edit profile, Logout
     - Site: Create, List, Table, Scroll, Detail, Nav, Edit/Delete
