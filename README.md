@@ -1,88 +1,60 @@
 ### romanballesteros-pythonweb
 
-- **Nombre del Proyecto:**
-Follow-up
+- **Nombre e integrantes del proyecto:**
 
-- **Descripción:** 
-Esta página web está desarrollada utilizando Python con el framework Django y proporciona funcionalidades para gestionar varios modelos de datos. A continuación se detallan los modelos disponibles y las vistas asociadas para cada tipo de usuario.
+Follow-up
+Roman Jose Ballesteros
+
+- **Descripción:**
+
+Bienvenido a la página web Follow-up
+
+Esta página web está desarrollada utilizando lenguaje Python con el framework Django y proporciona funcionalidades para gestionar varios modelos de datos.
+
+Esta página web permite a usuarios operarios registrados consultar información sobre: sitios, racks, proveedores, dispositivos y operadores, que han sido previamente creados por un usuario admin o staff.
+
+Además los usuarios pueden crear casos relacionados a los dispositivos disponibles (estos están asociados a un sito, rack, proveedor, y operario en particular), también pueden crear tareas que están únicamente asociadas al propio usuario; básicamente para darle seguimiento a esos casos y tareas.
 
 - **Requisitos:** falta completar
 - **Instalación:** falta completar
- - **Uso:** falta completar
-- **Funcionalidades:** falta completar
-- **Contribuciones:** falta completar
-- **Licencia:** falta completar
+- **Uso:** falta completar
+ 
+- **Funcionalidades:**
+
+Registrarse con un usuario.
+Ingresar con un usuario.
+Usuarios admin y staff, pueden crear instancias de todos los modelos disponibles: sitios, racks, proveedores, dispositivos, operarios, casos y tareas.
+Usuarios oper, pueden crear solo instancias de los modelos: casos y tareas.
+Todos los usuarios pueden consultar información de todas las instancias de todos los modelos.
 
 - **Modelos y Vistas Disponibles:**
-Modelo: Sitios
 
-    Listar Sitios
-        Muestra en una tabla todos los sitios cargados.
-    Crear Sitio
-        Permite añadir un nuevo sitio utilizando un formulario.
-    Editar/Eliminar Sitio
-        Formulario para actualizar los campos de un sitio existente o eliminarlo.
+Modelos:
+Site, Rack, Vendor, Device, Operator, Case y Task.
 
-Modelo: Proveedores
-
-    Listar Proveedores
-        Muestra en una tabla todos los proveedores cargados.
-    Crear Proveedor
-        Permite añadir un nuevo proveedor utilizando un formulario.
-    Editar/Eliminar Proveedor
-        Formulario para actualizar los campos de un proveedor existente o eliminarlo.
-
-Modelo: Dispositivos
-
-    Listar Dispositivos
-        Muestra en una tabla todos los dispositivos cargados.
-    Crear Dispositivo
-        Permite añadir un nuevo dispositivo utilizando un formulario.
-    Editar/Eliminar Dispositivo
-        Formulario para actualizar los campos de un dispositivo existente o eliminarlo.
-
-Modelo: Operadores
-
-    Listar Operadores
-        Muestra en una tabla todos los operadores cargados.
-    Crear Operador
-        Permite añadir un nuevo operador utilizando un formulario.
-    Editar/Eliminar Operador
-        Formulario para actualizar los campos de un operador existente o eliminarlo.
-
-Modelo: Casos
-
-    Listar Casos
-        Muestra en una tabla todos los casos cargados.
-    Crear Caso
-        Permite añadir un nuevo caso utilizando un formulario.
-    Editar/Eliminar Caso
-        Formulario para actualizar los campos de un caso existente o eliminarlo.
-
-Modelo: Tareas
-
-    Listar Tareas
-        Muestra en una tabla todas las tareas cargadas.
-    Crear Tarea
-        Permite añadir una nueva tarea utilizando un formulario.
-    Editar/Eliminar Tarea
-        Formulario para actualizar los campos de una tarea existente o eliminarla.
-    Completar Tarea
-        Muestra una lista de las tareas que han sido completadas.
+Vistas:
+Main: Home, Pages, About, Sing In, Sign Out
+User: Edit profile, Logout
+Site: Create, List, Table, Scroll, Detail, Nav, Edit/Delete
+Rack: Create, List, Table, Scroll, Detail, Nav, Edit/Delete
+Vendor: Create, List, Table, Scroll, Detail, Nav, Edit/Delete
+Device: Create, List, Table, Scroll, Detail, Nav, Edit/Delete
+Operator: Create, List, Table, Scroll, Detail, Nav, Edit/Delete
+Case: Create, List, Table, Scroll, Detail, Nav, Edit/Delete
+Task: Create, List pending, List completed, Table, Edit/Delete
 
 - **Tipos de Usuarios y Permisos de Acceso:**
-Administrador (Admin)
 
-    Acceso de Admin para administración de los elementos de la página, gestión de usuarios y grupos.
-    Puede acceder a todas las views y models disponibles.
-    Tiene permisos para crear, editar, eliminar y listar elementos en todos los models.
+Administrador (admin):
+Acceso de administrador (frontend Django) para gestión de modelos, usuarios y grupos.
+Puede acceder a todas las vistas y modelos disponibles.
+Tiene permisos para crear, editar, eliminar y listar elementos en todos los modelos disponibles.
 
 Personal (Staff)
-
-    Puede acceder a todas las views y models disponibles.
-    Tiene permisos para crear, editar, eliminar y listar elementos en todos los models.
+No tiene acceso de administrador (frontend Django) para gestión de modelos, usuarios y grupos.
+Puede acceder a todas las vistas y modelos disponibles.
+Tiene permisos para crear, editar, eliminar y listar elementos en todos los modelos disponibles.
 
 Operador (Oper)
-
-    Puede acceder únicamente a los models Case y Task.
-    Puede ver la view List de todos los models, pero solo puede interactuar (crear, editar, eliminar y listar) con models Case y Task.
+Puede acceder a todas las vistas de los modelos caso y tarea.
+Puede acceder solo a las vistas listar, tabla, detalle de todos los modelos disponibles.
