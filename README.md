@@ -37,10 +37,10 @@ Todos los usuarios pueden consultar información de todas las instancias de todo
 
 - **Modelos y Vistas Disponibles:**
 
-- Modelos:
+1 Modelos:
     - Site, Rack, Vendor, Device, Operator, Case y Task.
 
-- Vistas:
+2 Vistas:
     - Main: Home, Pages, About, Sing In, Sign Out
     - User: Edit profile, Logout
     - Site: Create, List, Table, Scroll, Detail, Nav, Edit/Delete
