@@ -17,7 +17,7 @@ from .forms import TaskForm, SiteForm, SiteEditForm, RackForm, VendorForm, Devic
 
 
 
-### MAIN ###
+### MAIN: HOME, PAGES, ABOUT, ONLY STAFF ###
 
 def home(request):
     return render(request, 'home.html')
@@ -34,7 +34,7 @@ def only_staff(request):
 
 
 
-### LOGIN ###
+### USER: SIGNIN, SIGNOUT, EDIT PROFILE, LOGOUT ###
 
 def signin(request):
     if request.method == 'GET':
@@ -104,43 +104,7 @@ def signout(request):
 
 
 
-### SITE ###
-
-@login_required
-def sites(request):
-    sites = Site.objects.filter()
-    return render(request, 'sites.html', {"sites": sites})
-
-@login_required
-def site_scroll(request):
-    sites = Site.objects.filter()
-    return render(request, 'site_scroll.html', {"sites": sites})
-
-@login_required
-def site_nav(request, site_id):
-    site = get_object_or_404(Site, id=site_id)
-    sites = Site.objects.all()
-    return render(request, 'site_nav.html', {'site': site, 'sites': sites})
-
-@login_required
-def site_table(request):
-    sites = Site.objects.all()
-    return render(request, 'site_table.html', {'sites': sites})
-
-@login_required
-def site_details(request, site_id):
-    site = Site.objects.get(pk=site_id)
-    template = loader.get_template('site_details.html')
-    context = {
-      'site': site,
-    }
-    return HttpResponse(template.render(context, request))
-
-@login_required
-def site_detail(request, site_id):
-    site = get_object_or_404(Site, id=site_id)
-    sites = Site.objects.all()
-    return render(request, 'site_detail.html', {'site': site, 'sites': sites})
+### SITE: Create, List, Table, Scroll, Detail, Nav, Edit / Delete ###
 
 @staff_member_required(login_url='/only_staff')
 def site_create(request):
@@ -156,6 +120,42 @@ def site_create(request):
             return redirect('sites')
         except ValueError:
             return render(request, 'site_create.html', {"form": SiteForm, "error": "Error creating site."})
+
+@login_required
+def sites(request):
+    sites = Site.objects.filter()
+    return render(request, 'sites.html', {"sites": sites})
+
+@login_required
+def site_table(request):
+    sites = Site.objects.all()
+    return render(request, 'site_table.html', {'sites': sites})
+
+@login_required
+def site_scroll(request):
+    sites = Site.objects.filter()
+    return render(request, 'site_scroll.html', {"sites": sites})
+
+@login_required
+def site_nav(request, site_id):
+    site = get_object_or_404(Site, id=site_id)
+    sites = Site.objects.all()
+    return render(request, 'site_nav.html', {'site': site, 'sites': sites})
+
+@login_required
+def site_listgrid(request, site_id):
+    site = get_object_or_404(Site, id=site_id)
+    sites = Site.objects.all()
+    return render(request, 'site_listgrid.html', {'site': site, 'sites': sites})
+
+@login_required
+def site_details(request, site_id):
+    site = Site.objects.get(pk=site_id)
+    template = loader.get_template('site_details.html')
+    context = {
+      'site': site,
+    }
+    return HttpResponse(template.render(context, request))
 
 @staff_member_required(login_url='/only_staff')
 def site_edit(request, site_id):
@@ -183,16 +183,7 @@ def site_delete(request, site_id):
 
 
 
-### RACK ###
-@login_required
-def racks(request):
-    racks = Rack.objects.filter()
-    return render(request, 'racks.html', {"racks": racks})
-
-@login_required
-def rack_table(request):
-    racks = Rack.objects.all()
-    return render(request, 'rack_table.html', {'racks': racks})
+### RACK: Create, List, Table, Detail, Nav, Edit / Delete ###
 
 @staff_member_required(login_url='/only_staff')
 def rack_create(request):
@@ -207,6 +198,22 @@ def rack_create(request):
             return redirect('racks')
         except ValueError:
             return render(request, 'rack_create.html', {"form": RackForm, "error": "Error creating rack."})
+
+@login_required
+def racks(request):
+    racks = Rack.objects.filter()
+    return render(request, 'racks.html', {"racks": racks})
+
+@login_required
+def rack_table(request):
+    racks = Rack.objects.all()
+    return render(request, 'rack_table.html', {'racks': racks})
+
+@login_required
+def rack_nav(request, rack_id):
+    rack = get_object_or_404(Rack, id=rack_id)
+    racks = Rack.objects.all()
+    return render(request, 'rack_nav.html', {'rack': rack, 'racks': racks})
 
 @staff_member_required(login_url='/only_staff')
 def rack_detail(request, rack_id):
@@ -223,6 +230,22 @@ def rack_detail(request, rack_id):
             return redirect('racks')
         except ValueError:
             return render(request, 'rack_detail.html', {'rack': rack, 'form': form, 'error': 'Error updating rack.'})
+
+@staff_member_required(login_url='/only_staff')
+def rack_edit(request, rack_id):
+    if request.method == 'GET':
+        rack = get_object_or_404(Rack, pk=rack_id)
+        form = RackForm(instance=rack)
+        return render(request, 'rack_edit.html', {'rack': rack, 'form': form})
+    else:
+        try:
+            rack = get_object_or_404(Rack, pk=rack_id)
+            form = RackForm(request.POST, request.FILES, instance=rack)
+            form.save()
+
+            return redirect('racks')
+        except ValueError:
+            return render(request, 'rack_edit.html', {'rack': rack, 'form': form, 'error': 'Error updating rack.'})
 
 @staff_member_required(login_url='/only_staff')
 def rack_delete(request, rack_id):
@@ -246,6 +269,12 @@ def vendors(request):
 def vendor_table(request):
     vendors = Vendor.objects.all()
     return render(request, 'vendor_table.html', {'vendors': vendors})
+
+@login_required
+def vendor_nav(request, vendor_id):
+    vendor = get_object_or_404(Vendor, id=vendor_id)
+    vendors = Vendor.objects.all()
+    return render(request, 'vendor_nav.html', {'vendor': vendor, 'vendors': vendors})
 
 @staff_member_required(login_url='/only_staff')
 def vendor_create(request):
@@ -298,6 +327,12 @@ def device_table(request):
     devices = Device.objects.all()
     return render(request, 'device_table.html', {'devices': devices})
 
+@login_required
+def device_nav(request, device_id):
+    device = get_object_or_404(Device, id=device_id)
+    devices = Device.objects.all()
+    return render(request, 'device_nav.html', {'device': device, 'devices': devices})
+
 @staff_member_required(login_url='/only_staff')
 def device_create(request):
     if request.method == "GET":
@@ -310,7 +345,7 @@ def device_create(request):
             new_device.save()
             return redirect('devices')
         except ValueError:
-            return render(request, 'device_create.html', {"form": DeviceForm, "error": "Error creating rack."})
+            return render(request, 'device_create.html', {"form": DeviceForm, "error": "Error creating device."})
 
     # if request.method == 'POST':
     #     form = DeviceForm(request.POST)
@@ -358,6 +393,12 @@ def operators(request):
 def operator_table(request):
     operators = Operator.objects.all()
     return render(request, 'operator_table.html', {'operators': operators})
+
+@login_required
+def operator_nav(request, operator_id):
+    operator = get_object_or_404(Operator, id=operator_id)
+    operators = Operator.objects.all()
+    return render(request, 'operator_nav.html', {'operator': operator, 'operators': operators})
 
 @staff_member_required(login_url='/only_staff')
 def operator_create(request):
@@ -409,6 +450,12 @@ def cases(request):
 def case_table(request):
     cases = Case.objects.all()
     return render(request, 'case_table.html', {'cases': cases})
+
+@login_required
+def case_nav(request, case_id):
+    case = get_object_or_404(Case, id=case_id)
+    cases = Case.objects.all()
+    return render(request, 'case_nav.html', {'case': case, 'cases': cases})
 
 @login_required
 def case_create(request):

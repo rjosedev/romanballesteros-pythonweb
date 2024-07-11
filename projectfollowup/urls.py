@@ -52,7 +52,7 @@ urlpatterns = [
     path('site_create/', views.site_create, name='site_create'),
     path('sites/<int:site_id>', views.site_edit, name='site_edit'),
     path('sites/<int:site_id>/delete', views.site_delete, name='site_delete'),
-    path('site_detail/<int:site_id>/', views.site_detail, name='site_detail'),
+    path('site_listgrid/<int:site_id>/', views.site_listgrid, name='site_listgrid'),
     path('site_nav/<int:site_id>/', views.site_nav, name='site_nav'),
 
     ### RACK ###
@@ -60,7 +60,9 @@ urlpatterns = [
     path('rack_table/', views.rack_table, name='rack_table'),
     path('rack_create/', views.rack_create, name='rack_create'),
     path('racks/<int:rack_id>', views.rack_detail, name='rack_detail'),
+    path('racks/<int:rack_id>', views.rack_edit, name='rack_edit'),
     path('racks/<int:rack_id>/delete', views.rack_delete, name='rack_delete'),
+    path('rack_nav/<int:rack_id>/', views.rack_nav, name='rack_nav'),
 
     ### VENDOR ###
     path('vendors/', views.vendors, name='vendors'),
@@ -68,6 +70,7 @@ urlpatterns = [
     path('vendor_create/', views.vendor_create, name='vendor_create'),
     path('vendors/<int:vendor_id>', views.vendor_detail, name='vendor_detail'),
     path('vendors/<int:vendor_id>/delete', views.vendor_delete, name='vendor_delete'),
+    path('vendor_nav/<int:vendor_id>/', views.vendor_nav, name='vendor_nav'),
 
     ### DEVICE ###
     path('devices/', views.devices, name='devices'),
@@ -75,6 +78,7 @@ urlpatterns = [
     path('device_create/', views.device_create, name='device_create'),
     path('devices/<int:device_id>', views.device_detail, name='device_detail'),
     path('devices/<int:device_id>/delete', views.device_delete, name='device_delete'),
+    path('device_nav/<int:device_id>/', views.device_nav, name='device_nav'),
 
     ### OPERATOR ###
     path('operators/', views.operators, name='operators'),
@@ -82,6 +86,7 @@ urlpatterns = [
     path('operator_create/', views.operator_create, name='operator_create'),
     path('operators/<int:operator_id>', views.operator_detail, name='operator_detail'),
     path('operators/<int:operator_id>/delete', views.operator_delete, name='operator_delete'),
+    path('operator_nav/<int:operator_id>/', views.operator_nav, name='operator_nav'),
     
     ### CASE ###
     path('cases/', views.cases, name='cases'),
@@ -89,6 +94,7 @@ urlpatterns = [
     path('case_create/', views.case_create, name='case_create'),
     path('cases/<int:case_id>', views.case_detail, name='case_detail'),
     path('cases/<int:case_id>/delete', views.case_delete, name='case_delete'),
+    path('case_nav/<int:case_id>/', views.case_nav, name='case_nav'),
 ]
 
 urlpatterns += static (settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

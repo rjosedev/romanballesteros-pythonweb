@@ -18,7 +18,9 @@
     {% for operator in operators %}
     <li>
       <!-- {{operator.id}} -->{{operator.operatorId}} - {{operator.firstName}} {{operator.lastName}} - {{operator.email}} - {{operator.contact}} - {{operator.backOffice}} - {{operator.user.username}}
-       - <a href="{% url 'operator_detail' operator.id %}">Edit / Delete</a>
+      {% if user.is_staff %}
+      - <a href="{% url 'operator_detail' operator.id %}">Edit / Delete</a>
+     {% endif %}
     </li>
     {% endfor %}
 

@@ -18,7 +18,9 @@
     {% for device in devices %}
     <li>
       <!-- {{device.id}} -->{{device.deviceId}} - {{device.site}} - {{device.rack}} - {{device.vendor}} - {{device.category}} - {{device.name}} - {{device.model}} - {{device.serialNumber}}
-       - <a href="{% url 'device_detail' device.id %}">Edit / Delete</a>
+      {% if user.is_staff %}
+      - <a href="{% url 'device_detail' device.id %}">Edit / Delete</a>
+      {% endif %}
     </li>
     {% endfor %}
 

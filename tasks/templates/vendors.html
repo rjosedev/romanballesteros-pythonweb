@@ -17,10 +17,11 @@
 
     {% for vendor in vendors %}
     <li>
-      <!-- {{vendor.id}} -->{{vendor.vendorId}} - {{vendor.name}} - {{vendor.email}} - {{vendor.contact}} - {{vendor.link}} - 
-      <a href="{% url 'vendor_detail' vendor.id %}">
-        Edit / Delete
-      </a>
+      <a href="{% url 'vendor_nav' vendor.id %}">{{ vendor.vendorId }}</a>
+      <!-- {{vendor.id}} -->{{vendor.vendorId}} - {{vendor.name}} - {{vendor.email}} - {{vendor.contact}} - {{vendor.link}}
+      {% if user.is_staff %}
+       - <a href="{% url 'vendor_detail' vendor.id %}">Edit / Delete</a>
+      {% endif %}
     </li>
     {% endfor %}
 

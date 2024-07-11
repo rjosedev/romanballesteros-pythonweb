@@ -17,10 +17,11 @@
 
     {% for rack in racks %}
     <li>
-      <!-- {{rack.id}} -->{{rack.rackId}} - {{rack.site}} - {{rack.name}} - 
-      <a href="{% url 'rack_detail' rack.id %}">
-        Edit / Delete
-      </a>
+      <a href="{% url 'rack_nav' rack.id %}">{{ rack.rackId }}</a>
+      <!-- {{rack.id}} --> - {{rack.site}} - {{rack.name}}
+      {% if user.is_staff %}
+       - <a href="{% url 'rack_detail' rack.id %}">Edit / Delete</a>
+      {% endif %}
     </li>
     {% endfor %}
 

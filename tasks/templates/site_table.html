@@ -12,7 +12,7 @@
     <li class="breadcrumb-item"><a href="/sites">List</a></li>
     <li class="breadcrumb-item active" aria-current="page">Table</li>
     <li class="breadcrumb-item"><a href="/site_scroll">Scroll</a></li>
-    <li class="breadcrumb-item"><a href="/site_detail/1">Detail</a></li>
+    <li class="breadcrumb-item"><a href="/site_listgrid/1">List / Grid</a></li>
     <li class="breadcrumb-item"><a href="/site_nav/1">Nav</a></li>
   </ol>
 </nav>
@@ -38,7 +38,7 @@
         <tbody>
             {% for site in sites %}
             <tr>
-                <td><a href="{% url 'site_detail' site.id %}">{{ site.siteId }}</a></td>
+                <td><a href="{% url 'site_nav' site.id %}">{{ site.siteId }}</a></td>
                 <td>{{ site.country }}</td>
                 <td>{{ site.city }}</td>
                 <td>{{ site.address }}</td>

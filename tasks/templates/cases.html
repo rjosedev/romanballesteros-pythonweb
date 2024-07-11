@@ -18,7 +18,7 @@
     {% for case in cases %}
     <li>
       <!-- {{case.id}} -->{{case.caseId}} - {{case.site}} - {{case.rack}} - {{case.vendor}} - {{case.device}} - {{case.severity}} - {{case.description}} - {{case.operator}}
-       - <a href="{% url 'case_detail' case.id %}">Edit / Delete</a>
+      - <a href="{% url 'case_detail' case.id %}">Edit / Delete</a>
     </li>
     {% endfor %}
 
