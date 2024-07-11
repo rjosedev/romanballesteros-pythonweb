@@ -44,7 +44,7 @@
       <div class="col-6">
         <div class="row">
           {% if user.is_staff %}
-          <td><a class="text-end" href="{% url 'vendor_edit' vendor.id %}">Edit / Delete</a></td>
+          <td><a class="text-end" href="{% url 'vendor_detail' vendor.id %}">Edit/Delete</a></td>
           {% endif %}
         </div>
         <div class="row">

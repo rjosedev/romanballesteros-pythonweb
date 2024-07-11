@@ -41,14 +41,14 @@ Todos los usuarios pueden consultar información de todas las instancias de todo
    - Site, Rack, Vendor, Device, Operator, Case y Task.
 
 2. Vistas:
-   - Main: Home, Pages, About, Sing In, Sign Out
-   - User: Edit profile, Logout
-   - Site: Create, List, Table, Scroll, List / Grid, Nav, Edit / Delete
-   - Rack: Create, List, Table, Nav, Edit / Delete
-   - Vendor: Create, List, Table, Nav, Edit / Delete
-   - Device: Create, List, Table, Nav, Edit / Delete
-   - Operator: Create, List, Table, Nav, Edit / Delete
-   - Case: Create, List, Table, Nav, Edit / Delete
+   - Main: Home, Pages, About
+   - User: Sing In, Sign Up, Edit profile, Logout
+   - Site: Create, List, Table, Scroll, List/Grid, Nav, Edit/Delete
+   - Rack: Create, List, Table, Nav, Edit/Delete
+   - Vendor: Create, List, Table, Nav, Edit/Delete
+   - Device: Create, List, Table, Nav, Edit/Delete
+   - Operator: Create, List, Table, Nav, Edit/Delete
+   - Case: Create, List, Table, Nav, Edit/Delete
    - Task: Create, List pending, List completed, Table, Edit/Delete
 
 - **Tipos de Usuarios y Permisos de Acceso:**

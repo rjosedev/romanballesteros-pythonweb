@@ -17,7 +17,7 @@ from .forms import TaskForm, SiteForm, SiteEditForm, RackForm, VendorForm, Devic
 
 
 
-### MAIN: HOME, PAGES, ABOUT, ONLY STAFF ###
+### MAIN: Home, Pages, About ###
 
 def home(request):
     return render(request, 'home.html')
@@ -34,7 +34,7 @@ def only_staff(request):
 
 
 
-### USER: SIGNIN, SIGNOUT, EDIT PROFILE, LOGOUT ###
+### USER: Sing In, Sign Up, Edit profile, Logout ###
 
 def signin(request):
     if request.method == 'GET':
@@ -68,32 +68,21 @@ def signup(request):
 
 @login_required
 def editprofile(request):
-
     user = request.user
-
     if request.method == 'POST':
-        
         form = UserEditForm(request.POST, instance=request.user)
-
         if form.is_valid():
             data = form.cleaned_data
-
             user.first_name = data['first_name']
             user.last_name = data['last_name']
             user.email = data['email']
             user.set_password(data['password2'])
             user.save()
-
             return render(request, 'home.html', {"message": "User profile successfully updated."})
-        
         else:
-
             return render(request, 'edit_profile.html', {"form": form})
-    
     else:
-
         form = UserEditForm(instance=request.user)
-
         return render(request, 'edit_profile.html', {"form": form})
 
 @login_required
@@ -104,7 +93,7 @@ def signout(request):
 
 
 
-### SITE: Create, List, Table, Scroll, Detail, Nav, Edit / Delete ###
+### SITE: Create, List, Table, Scroll, List/Grid, Nav, Edit/Delete ###
 
 @staff_member_required(login_url='/only_staff')
 def site_create(request):
@@ -183,7 +172,7 @@ def site_delete(request, site_id):
 
 
 
-### RACK: Create, List, Table, Detail, Nav, Edit / Delete ###
+### RACK: Create, List, Table, Nav, Edit/Delete ###
 
 @staff_member_required(login_url='/only_staff')
 def rack_create(request):
@@ -258,7 +247,21 @@ def rack_delete(request, rack_id):
 
 
 
-### VENDOR ###
+### VENDOR: Create, List, Table, Nav, Edit/Delete ###
+
+@staff_member_required(login_url='/only_staff')
+def vendor_create(request):
+    if request.method == "GET":
+        return render(request, 'vendor_create.html', {"form": VendorForm})
+    else:
+        try:
+            form = VendorForm(request.POST, request.FILES)
+            new_vendor = form.save(commit=False)
+            new_vendor.user = request.user
+            new_vendor.save()
+            return redirect('vendors')
+        except ValueError:
+            return render(request, 'vendor_create.html', {"form": VendorForm, "error": "Error creating vendor."})
 
 @login_required
 def vendors(request):
@@ -275,20 +278,6 @@ def vendor_nav(request, vendor_id):
     vendor = get_object_or_404(Vendor, id=vendor_id)
     vendors = Vendor.objects.all()
     return render(request, 'vendor_nav.html', {'vendor': vendor, 'vendors': vendors})
-
-@staff_member_required(login_url='/only_staff')
-def vendor_create(request):
-    if request.method == "GET":
-        return render(request, 'vendor_create.html', {"form": VendorForm})
-    else:
-        try:
-            form = VendorForm(request.POST, request.FILES)
-            new_vendor = form.save(commit=False)
-            new_vendor.user = request.user
-            new_vendor.save()
-            return redirect('vendors')
-        except ValueError:
-            return render(request, 'vendor_create.html', {"form": VendorForm, "error": "Error creating vendor."})
 
 @staff_member_required(login_url='/only_staff')
 def vendor_detail(request, vendor_id):

@@ -12,7 +12,7 @@
     <li class="breadcrumb-item active" aria-current="page">List</li>
     <li class="breadcrumb-item"><a href="/site_table">Table</a></li>
     <li class="breadcrumb-item"><a href="/site_scroll">Scroll</a></li>
-    <li class="breadcrumb-item"><a href="/site_listgrid/1">List / Grid</a></li>
+    <li class="breadcrumb-item"><a href="/site_listgrid/1">List/Grid</a></li>
     <li class="breadcrumb-item"><a href="/site_nav/1">Nav</a></li>
   </ol>
 </nav>
@@ -25,7 +25,7 @@
       <a href="{% url 'site_nav' site.id %}">{{ site.siteId }}</a>
       <!-- {{site.id}} --> - {{site.country}} - {{site.city}} - {{site.address}} - {{site.contact}} - {{site.switchowner}} - {{site.name}}
       {% if user.is_staff %}
-       - <a href="{% url 'site_edit' site.id %}">Edit / Delete</a>
+       - <a href="{% url 'site_edit' site.id %}">Edit/Delete</a>
       {% endif %}
     </li>
     {% endfor %}

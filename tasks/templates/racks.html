@@ -6,9 +6,12 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    {% if user.is_staff %}
+    <li class="breadcrumb-item"><a href="/rack_create">Create</a></li>
+    {% endif %}
     <li class="breadcrumb-item active" aria-current="page">List</li>
     <li class="breadcrumb-item"><a href="/rack_table">Table</a></li>
-    <li class="breadcrumb-item"><a href="/rack_create">Create</a></li>
+    <li class="breadcrumb-item"><a href="/rack_nav/1">Nav</a></li>
   </ol>
 </nav>
 
@@ -20,7 +23,7 @@
       <a href="{% url 'rack_nav' rack.id %}">{{ rack.rackId }}</a>
       <!-- {{rack.id}} --> - {{rack.site}} - {{rack.name}}
       {% if user.is_staff %}
-       - <a href="{% url 'rack_detail' rack.id %}">Edit / Delete</a>
+       - <a href="{% url 'rack_detail' rack.id %}">Edit/Delete</a>
       {% endif %}
     </li>
     {% endfor %}

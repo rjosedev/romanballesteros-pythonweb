@@ -6,9 +6,12 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    {% if user.is_staff %}
+    <li class="breadcrumb-item"><a href="/vendor_create">Create</a></li>
+    {% endif %}
     <li class="breadcrumb-item active" aria-current="page">List</li>
     <li class="breadcrumb-item"><a href="/vendor_table">Table</a></li>
-    <li class="breadcrumb-item"><a href="/vendor_create">Create</a></li>
+    <li class="breadcrumb-item"><a href="/vendor_nav/1">Nav</a></li>
   </ol>
 </nav>
 
@@ -18,9 +21,9 @@
     {% for vendor in vendors %}
     <li>
       <a href="{% url 'vendor_nav' vendor.id %}">{{ vendor.vendorId }}</a>
-      <!-- {{vendor.id}} -->{{vendor.vendorId}} - {{vendor.name}} - {{vendor.email}} - {{vendor.contact}} - {{vendor.link}}
+      <!-- {{vendor.id}} --> - {{vendor.name}} - {{vendor.email}} - {{vendor.contact}} - {{vendor.link}}
       {% if user.is_staff %}
-       - <a href="{% url 'vendor_detail' vendor.id %}">Edit / Delete</a>
+       - <a href="{% url 'vendor_detail' vendor.id %}">Edit/Delete</a>
       {% endif %}
     </li>
     {% endfor %}

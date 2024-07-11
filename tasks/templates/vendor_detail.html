@@ -6,10 +6,14 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+
+    {% if user.is_staff %}
+    <li class="breadcrumb-item"><a href="/vendor_create">Create</a></li>
+    {% endif %}
     <li class="breadcrumb-item"><a href="/vendors">List</a></li>
     <li class="breadcrumb-item"><a href="/vendor_table">Table</a></li>
-    <li class="breadcrumb-item"><a href="/vendor_create">Create</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Edit / Delete</li>
+    <li class="breadcrumb-item"><a href="/vendor_nav/1">Nav</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit/Delete</li>
   </ol>
 </nav>
 
