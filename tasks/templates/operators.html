@@ -6,9 +6,12 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    {% if user.is_staff %}
+    <li class="breadcrumb-item"><a href="/operator_create">Create</a></li>
+    {% endif %}
     <li class="breadcrumb-item active" aria-current="page">List</li>
     <li class="breadcrumb-item"><a href="/operator_table">Table</a></li>
-    <li class="breadcrumb-item"><a href="/operator_create">Create</a></li>
+    <li class="breadcrumb-item"><a href="/operator_nav/1">Nav</a></li>
   </ol>
 </nav>
 
@@ -17,9 +20,10 @@
 
     {% for operator in operators %}
     <li>
-      <!-- {{operator.id}} -->{{operator.operatorId}} - {{operator.firstName}} {{operator.lastName}} - {{operator.email}} - {{operator.contact}} - {{operator.backOffice}} - {{operator.user.username}}
+      <a href="{% url 'operator_nav' operator.id %}">{{ operator.operatorId }}</a>
+      <!-- {{operator.id}} --> - {{operator.firstName}} {{operator.lastName}} - {{operator.email}} - {{operator.contact}} - {{operator.backOffice}} - {{operator.user.username}}
       {% if user.is_staff %}
-      - <a href="{% url 'operator_detail' operator.id %}">Edit / Delete</a>
+      - <a href="{% url 'operator_detail' operator.id %}">Edit/Delete</a>
      {% endif %}
     </li>
     {% endfor %}

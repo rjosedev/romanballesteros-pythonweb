@@ -304,7 +304,21 @@ def vendor_delete(request, vendor_id):
 
 
 
-### DEVICE ###
+### DEVICE: Create, List, Table, Nav, Edit/Delete ###
+
+@staff_member_required(login_url='/only_staff')
+def device_create(request):
+    if request.method == "GET":
+        return render(request, 'device_create.html', {"form": DeviceForm})
+    else:
+        try:
+            form = DeviceForm(request.POST, request.FILES)
+            new_device = form.save(commit=False)
+            new_device.user = request.user
+            new_device.save()
+            return redirect('devices')
+        except ValueError:
+            return render(request, 'device_create.html', {"form": DeviceForm, "error": "Error creating device."})
 
 @login_required
 def devices(request):
@@ -321,30 +335,6 @@ def device_nav(request, device_id):
     device = get_object_or_404(Device, id=device_id)
     devices = Device.objects.all()
     return render(request, 'device_nav.html', {'device': device, 'devices': devices})
-
-@staff_member_required(login_url='/only_staff')
-def device_create(request):
-    if request.method == "GET":
-        return render(request, 'device_create.html', {"form": DeviceForm})
-    else:
-        try:
-            form = DeviceForm(request.POST, request.FILES)
-            new_device = form.save(commit=False)
-            new_device.user = request.user
-            new_device.save()
-            return redirect('devices')
-        except ValueError:
-            return render(request, 'device_create.html', {"form": DeviceForm, "error": "Error creating device."})
-
-    # if request.method == 'POST':
-    #     form = DeviceForm(request.POST)
-    #     if form.is_valid():
-    #         device = form.save()
-    #         return redirect('device_create.html')
-    # else:
-    #     form = DeviceForm()
-    # 
-    # return render(request, 'device_create.html', {'form': form})
 
 @staff_member_required(login_url='/only_staff')
 def device_detail(request, device_id):
@@ -371,7 +361,21 @@ def device_delete(request, device_id):
 
 
 
-### OPERATOR ###
+### OPERATOR: Create, List, Table, Nav, Edit/Delete ###
+
+@staff_member_required(login_url='/only_staff')
+def operator_create(request):
+    if request.method == "GET":
+        return render(request, 'operator_create.html', {"form": OperatorForm})
+    else:
+        try:
+            form = OperatorForm(request.POST, request.FILES)
+            new_operator = form.save(commit=False)
+            new_operator.user = request.user
+            new_operator.save()
+            return redirect('operators')
+        except ValueError:
+            return render(request, 'operator_create.html', {"form": OperatorForm, "error": "Error creating operator."})
 
 @login_required
 def operators(request):
@@ -388,20 +392,6 @@ def operator_nav(request, operator_id):
     operator = get_object_or_404(Operator, id=operator_id)
     operators = Operator.objects.all()
     return render(request, 'operator_nav.html', {'operator': operator, 'operators': operators})
-
-@staff_member_required(login_url='/only_staff')
-def operator_create(request):
-    if request.method == "GET":
-        return render(request, 'operator_create.html', {"form": OperatorForm})
-    else:
-        try:
-            form = OperatorForm(request.POST, request.FILES)
-            new_operator = form.save(commit=False)
-            new_operator.user = request.user
-            new_operator.save()
-            return redirect('operators')
-        except ValueError:
-            return render(request, 'operator_create.html', {"form": OperatorForm, "error": "Error creating operator."})
 
 @staff_member_required(login_url='/only_staff')
 def operator_detail(request, operator_id):

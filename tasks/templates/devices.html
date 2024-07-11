@@ -6,9 +6,12 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
+    {% if user.is_staff %}
+    <li class="breadcrumb-item"><a href="/device_create">Create</a></li>
+    {% endif %}
     <li class="breadcrumb-item active" aria-current="page">List</li>
     <li class="breadcrumb-item"><a href="/device_table">Table</a></li>
-    <li class="breadcrumb-item"><a href="/device_create">Create</a></li>
+    <li class="breadcrumb-item"><a href="/device_nav/1">Nav</a></li>
   </ol>
 </nav>
 
@@ -17,9 +20,10 @@
 
     {% for device in devices %}
     <li>
-      <!-- {{device.id}} -->{{device.deviceId}} - {{device.site}} - {{device.rack}} - {{device.vendor}} - {{device.category}} - {{device.name}} - {{device.model}} - {{device.serialNumber}}
+      <a href="{% url 'device_nav' device.id %}">{{ device.deviceId }}</a>
+      <!-- {{device.id}} --> - {{device.site}} - {{device.rack}} - {{device.vendor}} - {{device.category}} - {{device.name}} - {{device.model}} - {{device.serialNumber}}
       {% if user.is_staff %}
-      - <a href="{% url 'device_detail' device.id %}">Edit / Delete</a>
+      - <a href="{% url 'device_detail' device.id %}">Edit/Delete</a>
       {% endif %}
     </li>
     {% endfor %}
