@@ -17,27 +17,31 @@ Además los usuarios pueden crear casos relacionados a los dispositivos disponib
 
 - **Tecnologías utilizadas:**
 
-- Python
-- Django
-- Bootstrap
-- DataTables
-- JQuery
-- Font Awesome
+Python
+Django
+Bootstrap
+DataTables
+JQuery
+Font Awesome
  
 - **Funcionalidades:**
 
-- Registrarse con un usuario.
-- Ingresar con un usuario.
-- Usuarios admin y staff, pueden crear instancias de todos los modelos disponibles: sitios, racks, proveedores, dispositivos, operarios, casos y tareas.
-- Usuarios oper, pueden crear solo instancias de los modelos: casos y tareas.
-- Todos los usuarios pueden consultar información de todas las instancias de todos los modelos.
+Registrarse con un usuario.
+
+Ingresar con un usuario.
+
+Usuarios admin y staff, pueden crear instancias de todos los modelos disponibles: sitios, racks, proveedores, dispositivos, operarios, casos y tareas.
+
+Usuarios oper, pueden crear solo instancias de los modelos: casos y tareas.
+
+Todos los usuarios pueden consultar información de todas las instancias de todos los modelos.
 
 - **Modelos y Vistas Disponibles:**
 
-- Modelos:
+Modelos:
     - Site, Rack, Vendor, Device, Operator, Case y Task.
 
-- Vistas:
+Vistas:
     - Main: Home, Pages, About, Sing In, Sign Out
     - User: Edit profile, Logout
     - Site: Create, List, Table, Scroll, Detail, Nav, Edit/Delete
@@ -50,16 +54,19 @@ Además los usuarios pueden crear casos relacionados a los dispositivos disponib
 
 - **Tipos de Usuarios y Permisos de Acceso:**
 
-- Administrador (admin):
+Administrador (admin):
+
 Acceso de administrador (frontend Django) para gestión de modelos, usuarios y grupos.
 Puede acceder a todas las vistas y modelos disponibles.
 Tiene permisos para crear, editar, eliminar y listar elementos en todos los modelos disponibles.
 
-- Personal (Staff)
+Personal (staff):
+
 No tiene acceso de administrador (frontend Django) para gestión de modelos, usuarios y grupos.
 Puede acceder a todas las vistas y modelos disponibles.
 Tiene permisos para crear, editar, eliminar y listar elementos en todos los modelos disponibles.
 
-- Operador (Oper)
+Operador (oper):
+
 Puede acceder a todas las vistas de los modelos caso y tarea.
 Puede acceder solo a las vistas listar, tabla, detalle de todos los modelos disponibles.
