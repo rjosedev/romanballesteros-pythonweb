@@ -156,16 +156,16 @@ class Operator(models.Model):
 
 class Case(models.Model):
   SEVERITIES = (
-    ('1', "1. Not classified"),
-    ('2', "2. Information"),
-    ('3', "3. Warning"),
-    ('4', "4. Average"),
-    ('5', "5. High"),
-    ('6', "6. Disaster")
+    ('1. Not classified', "1. Not classified"),
+    ('2. Information', "2. Information"),
+    ('3. Warning', "3. Warning"),
+    ('4. Average', "4. Average"),
+    ('5. High', "5. High"),
+    ('6. Disaster', "6. Disaster")
   )
   caseId = models.CharField(max_length=6)
   description = models.CharField(max_length=20)
-  severity = models.CharField(choices=SEVERITIES, max_length=2, null=True)
+  severity = models.CharField(choices=SEVERITIES, max_length=20, null=True)
   site = models.ForeignKey(Site, on_delete=models.CASCADE, null=True, editable=False)
   rack = models.ForeignKey(Rack, on_delete=models.CASCADE, null=True, editable=False) 
   vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, null=True, editable=False)
