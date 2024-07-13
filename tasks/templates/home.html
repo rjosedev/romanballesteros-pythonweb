@@ -17,28 +17,38 @@
     <p>
       Bienvenido a la página web <b>Follow-up</b>:
       <p>
-        Esta página web permite gestión de usuarios, para que los usuarios registrados puedan crear, consultar, modificar o eliminar información sobre: 
-        <em>Sitios, Racks, Proveedores, Dispositivos, Operadores, Casos y Tareas</em>.
+        Esta página web incluye la gestión de usuarios, para que los usuarios registrados puedan crear, consultar, modificar o eliminar 
+        información sobre diferentes elementos de tipo: <em>Sitios, Racks, Proveedores, Dispositivos, Operadores, Casos y Tareas</em>.
       </p>
       <p>
         <li>
-          Existen diferentes tipos de usuarios: <b>admin</b> (superuser), <b>staff</b> (mayor privilegio) y <b>normal</b> (menor privilegio).
+          Existen 3 tipos de usuarios con capacidades y privilegios diferentes:
+          <p>
+            - <b>admin</b> o superuser: acceso a todo, incluida la gestión de usuarios<br>
+            - <b>staff</b>: mismas capacidades que el admin, menos la gestión de usuarios<br>
+            - <b>normal</b>: menos capacidades y privilegios que el staff, con algunas funciones restringidas o accesos limitados
+          </p>
         </li>
         <li>
           Los usuarios <b>admin</b> y <b>staff</b> pueden crear, consultar, modificar y eliminar elementos de todos los tipos: 
           <em>Sitios, Racks, Proveedores, Dispositivos, Operadores, Casos y Tareas</em>, además pueden acceder a todas la páginas sin ninguna restricción.
         </li>
+        <br>
         <li>
           Los usuarios <b>normales</b> pueden consultar información de todos los elementos disponibles y además pueden 
           crear, modificar y eliminar los elementos de tipo <em>Caso y Tarea</em>.  
         </li>
+        <br>
         <li>
-          Cada <em>Operador</em> se pueden asociar a un usuario registrado.
+          Cada <em>Operador</em> se pueden asociar únicamente a un usuario registrado.
         </li>
+        <br>
         <li>
-          Cada <em>Caso</em> está directamente relacionado a un <em>Dispositivo</em> en particular, que a su vez está asociado a un <em>Sitio, Rack y Proveedor</em>, 
+          Cada <em>Caso</em> está únicamente relacionado a un <em>Dispositivo</em>, 
+          que a su vez está únicamente asociado a un <em>Sitio, Rack y Proveedor</em> en particular, 
           además el <em>Caso</em> se puede asociar a un único <em>Operador</em>.
         </li>
+        <br>
         <li>
           Las <em>Tareas</em> están únicamente asociadas al propio usuario que las crea.
         </li>
