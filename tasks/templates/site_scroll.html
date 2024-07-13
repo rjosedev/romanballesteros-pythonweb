@@ -24,7 +24,7 @@
       <div class="col-1">
         <div id="list-example" class="list-group">
           {% for site in sites %}
-          <a class="list-group-item list-group-item-action" href="#{{site.name}}">{{site.name}}</a>
+          <a class="list-group-item list-group-item-action" href="#{{site.id}}">{{site.name}}</a>
           {% endfor %}
         </div>
       </div>
@@ -36,7 +36,7 @@
           
           <div class="row">
             <div class="col-6">
-              <div id="{{site.name}}"><h4>{{site.name}}</h4></div>
+              <div id="{{site.id}}"><h4>{{site.name}}</h4></div>
             </div>
             <div class="col-6">
               {% if user.is_staff %}

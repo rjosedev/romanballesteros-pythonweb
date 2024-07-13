@@ -37,7 +37,7 @@
                 <td>{{ vendor.name }}</td>
                 <td>{{ vendor.email }}</td>
                 <td>{{ vendor.contact }}</td>
-                <td>{{ vendor.link }}</a></td>
+                <td><a href={{vendor.link}}>{{vendor.link}}</a></td>
                 {% if user.is_staff %}
                 <td><a href="{% url 'vendor_detail' vendor.id %}">Edit/Delete</a></td>
                 {% endif %}
