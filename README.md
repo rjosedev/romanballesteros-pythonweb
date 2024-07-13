@@ -4,6 +4,10 @@
 
 Follow-up por Roman Jose Ballesteros
 
+- **Video presentación del proyecto:**
+ 
+Proximamente!
+
 - **Descripción:**
 
 Bienvenido a la página web Follow-up
@@ -22,7 +26,7 @@ Bootstrap
 DataTables
 JQuery
 Font Awesome
- 
+
 - **Funcionalidades:**
 
 Registrarse con un usuario.
