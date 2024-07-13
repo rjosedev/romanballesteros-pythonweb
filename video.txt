@@ -1,15 +1,15 @@
-Curso de Python Web en Coderhouse
+Presentación proyecto final
+Curso de Python Web de Coderhouse
+Roman Jose Ballesteros
 
-Presentación, Roman Jose Ballesteros
-
-Breve recorrido por pantallas
+Breve recorrido por las pantallas y funciones de la aplicación
 
 Gestión de usuarios
 Registrar usuarios, ingresar con usuario
 Tipos de usuario:
 - admin
 - staff
-- normal, común > oper
+- normal > oper
 
 Crear, consultar, modificar y eliminar
 
@@ -20,7 +20,7 @@ admin y staff:
 - Crear dispositivo
 - Crear operario
 
-oper:
+normal:
 - Consultar info sobre sitios, racks, proveedores, dispositivos, operarios, casos y tareas
 - Crear, modificar y eliminar una tarea asociada al propio usuario
 - Crear, modificar y eliminar un caso asociado a un dispositivo
