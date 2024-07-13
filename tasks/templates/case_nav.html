@@ -40,13 +40,11 @@
         <li>Device: {{case.device}}</li>
         <li>Severity: {{case.severity}}</li>
         <li>Description: {{case.description}}</li>
-        <li>Operator: {{case.user.username}}</li>
+        <li>Operator: {{case.operator}}</li>
       </div>
       <div class="col-6">
         <div class="row">
-          {% if user.is_staff %}
           <td><a class="text-end" href="{% url 'case_detail' case.id %}">Edit/Delete</a></td>
-          {% endif %}
         </div>
         <div class="row">
           <section>

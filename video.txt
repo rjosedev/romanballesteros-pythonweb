@@ -1,29 +1,34 @@
-Coderhouse
+Curso de Python Web en Coderhouse
 
-Python web
+Presentación, Roman Jose Ballesteros
 
-Presentación, nombre y apellido
+Breve recorrido por pantallas
 
-Recorrido por pantallas
+Gestión de usuarios
+Registrar usuarios, ingresar con usuario
+Tipos de usuario:
+- admin
+- staff
+- normal, común > oper
 
-Registrar usuario
-Ingresar con usuario
+Crear, consultar, modificar y eliminar
 
-admin
-Crear sitio
-Crear rack
-Crear proveedor
-Crear dispositivo
-Crear operario
+admin y staff:
+- Crear sitio
+- Crear rack
+- Crear proveedor
+- Crear dispositivo
+- Crear operario
 
-oper
-Crear una tarea > Crear caso
-Crear caso
-Completar tarea
+oper:
+- Consultar info sobre sitios, racks, proveedores, dispositivos, operarios, casos y tareas
+- Crear, modificar y eliminar una tarea asociada al propio usuario
+- Crear, modificar y eliminar un caso asociado a un dispositivo
 
 Test
 Crear usuario repetido
 Cambiar contraseña
+Oper no puede acceder a contenido admin/staff
 
 
 
