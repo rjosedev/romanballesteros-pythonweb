@@ -78,7 +78,7 @@ def editprofile(request):
             user.email = data['email']
             user.set_password(data['password2'])
             user.save()
-            return render(request, 'home.html', {"message": "User profile successfully updated."})
+            return render(request, 'edit_profile.html', {"message": "User profile successfully updated."})
         else:
             return render(request, 'edit_profile.html', {"form": form})
     else:

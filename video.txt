@@ -28,8 +28,9 @@ normal:
 - Crear, modificar y eliminar un caso asociado a un dispositivo
 
 Test
-Crear usuario repetido
+
 Cambiar contraseña
+Crear usuario repetido
 Oper no puede acceder a contenido admin/staff
 
 
