@@ -6,7 +6,7 @@ Follow-up por Roman Jose Ballesteros
 
 - **Video presentación del proyecto:**
  
-Proximamente!
+Proximamente! 14/7/2024
 
 - **Descripción:**
 

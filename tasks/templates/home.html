@@ -15,23 +15,31 @@
 <div class="card mb-4">
   <div class="card-body">
     <p>
-      Bienvenido a la página web <b>Follow-up</b>:
+      Bienvenido a la página web <b>Follow-up</b> (seguimiento):
       <p>
-        Esta página web incluye la gestión de usuarios, para que los usuarios registrados puedan crear, consultar, modificar o eliminar 
-        información sobre diferentes elementos de tipo: <em>Sitios, Racks, Proveedores, Dispositivos, Operadores, Casos y Tareas</em>.
+        Esta página web está creada en lenguaje Python y utiliza el framework Django, el cual incluye un sistema de gestión de usuarios.
       </p>
       <p>
+        Básicamente, el proyecto consiste en un sistema que permite darle seguimiento a <em>Casos</em> asociados a <em>Dispositivos</em> y <em>Tareas</em> asociadas a <em>Operadores</em> (usuarios registrados).
+      </p>
+      <p>
+        <li>
+          Los usuarios registrados una vez que ingresan al sistema, pueden crear, consultar, modificar o eliminar elementos de diferentes tipos: 
+          <em>Sitios, Racks, Proveedores, Dispositivos, Operadores, Casos y Tareas</em>.
+        </li>
+        <br>
         <li>
           Existen 3 tipos de usuarios con capacidades y privilegios diferentes:
           <p>
             - <b>admin</b> o superuser: acceso a todo, incluida la gestión de usuarios<br>
             - <b>staff</b>: mismas capacidades que el admin, menos la gestión de usuarios<br>
-            - <b>normal</b>: menos capacidades y privilegios que el staff, con algunas funciones restringidas o accesos limitados
+            - <b>normal</b>: menos capacidades y privilegios que el staff, algunas funciones y accesos están restringidos o limitados
           </p>
         </li>
         <li>
           Los usuarios <b>admin</b> y <b>staff</b> pueden crear, consultar, modificar y eliminar elementos de todos los tipos: 
-          <em>Sitios, Racks, Proveedores, Dispositivos, Operadores, Casos y Tareas</em>, además pueden acceder a todas la páginas sin ninguna restricción.
+          <em>Sitios, Racks, Proveedores, Dispositivos, Operadores, Casos y Tareas</em>, 
+          además pueden acceder a todas la páginas sin ninguna restricción.
         </li>
         <br>
         <li>

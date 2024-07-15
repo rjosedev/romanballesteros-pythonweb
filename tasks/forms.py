@@ -38,24 +38,6 @@ class DeviceForm(ModelForm):
         model = Device
         fields = ['deviceId', 'site', 'rack', 'vendor', 'category', 'name', 'model', 'serialNumber', 'deviceImage']
 
-    # def __init__(self, site_id, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.fields['rack'].queryset = Rack.objects.filter(site_id=site_id)
-
-    #def __init__(self, *args, **kwargs):
-    #    super().__init__(*args, **kwargs)
-    #    self.fields['rack'].queryset = Rack.objects.all()
-    #
-    #    if 'site' in self.data:
-    #        try:
-    #            site_id = int(self.data.get('site'))
-    #            self.fields['rack'].queryset = Rack.objects.filter(site_id=site_id)
-    #        except (ValueError, TypeError):
-    #            pass  # Handle the error as you need
-#
-    #    elif self.instance.pk:
-    #        self.fields['rack'].queryset = self.instance.rack.site.racks('name')
-
 class OperatorForm(ModelForm):
     class Meta:
         model = Operator

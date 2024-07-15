@@ -1,8 +1,10 @@
 Presentación proyecto final
-Curso de Python Web de Coderhouse
+Curso de Python de Coderhouse
 Roman Jose Ballesteros
 
-Breve recorrido por las pantallas y funciones de la aplicación
+El proyecto es una página web.
+
+Breve recorrido mostrando las diferentes funciones de la aplicación.
 
 Gestión de usuarios
 Registrar usuarios, ingresar con usuario
