@@ -24,7 +24,7 @@
         <!-- {{task.id}} -->{{task.title}}
         {% endif %}
       </a>
-       - {{task.description}} <b style="background-color:lightgreen;">{{task.completed|date:'M j Y:i'}}</b>
+       - {{task.description}} <b style="background-color:lightgreen;">{{task.completed|date:'D M j G:i:s T Y'}}</b>
     </li>
     {% empty %}
     

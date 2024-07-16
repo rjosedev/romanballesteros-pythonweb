@@ -20,7 +20,7 @@
     {% for vendor in vendors %}
     <li>
       <a href="{% url 'vendor_nav' vendor.id %}">{{ vendor.vendorId }}</a>
-      <!-- {{vendor.id}} --> - {{vendor.name}} - {{vendor.email}} - {{vendor.contact}} - 
+      <!-- {{vendor.id}}  --> - {{vendor.name}} - {{vendor.email}} - {{vendor.contact}} - 
       <a href={{vendor.link}}>{{vendor.link}}</a>
       {% if user.is_staff %}
        - <a href="{% url 'vendor_detail' vendor.id %}">Edit/Delete</a>

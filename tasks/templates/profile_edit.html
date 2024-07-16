@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h2 class="mt-4">Edit profile</h2>
+<h2 class="mt-4">Profile edit</h2>
 
 <p>
   {{error}}
@@ -10,7 +10,7 @@
 
 <div class="card mb-4">
   <div class="card-body">
-    <form action="/edit_profile/" method="POST">
+    <form action="/profile_edit/" method="POST">
       {% csrf_token %}
       {{form.as_p}}
       

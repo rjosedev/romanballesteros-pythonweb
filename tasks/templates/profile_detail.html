@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+{% block content %}
+
+<h2 class="mt-4">Profile detail</h2>
+
+<p>
+  {{error}}
+</p>
+
+<div class="card mb-4">
+  <div class="card-body">
+    
+    {% if user.is_authenticated %}
+    <p>
+      {{ user.username }} welcome to your profile page
+      {{ user.userprofile.first_name }}
+      {{ user.userprofile.last_name }}
+      {{ user.userprofile.email }}
+    </p>
+    {% endif %}
+
+    {% if user.is_staff %}
+    - <a href="{% url 'profile_edit' user.id %}">Edit/Delete</a>
+    {% endif %}
+    
+    <!-- <img src="{{ user.userprofile.profile_picture.url }}" width = "150" height = "150"  />  -->
+
+  </div>
+</div>
+
+{% endblock %}

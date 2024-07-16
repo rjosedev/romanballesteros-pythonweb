@@ -32,7 +32,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('signin/', views.signin, name='signin'),
     path('signup/', views.signup, name='signup'),
-    path('edit_profile/', views.editprofile, name='edit_profile'),
+    path('profile_edit/', views.profile_edit, name='profile_edit'),
     path('logout/', views.signout, name='logout'),
 
     ### TASK ###

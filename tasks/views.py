@@ -67,7 +67,11 @@ def signup(request):
         return render(request, 'signup.html', {"form": UserCreationForm, "error": "Passwords did not match."})
 
 @login_required
-def editprofile(request):
+def profile_detail(request):
+    return render(request, 'profile_detail.html')
+
+@login_required
+def profile_edit(request):
     user = request.user
     if request.method == 'POST':
         form = UserEditForm(request.POST, instance=request.user)
@@ -78,12 +82,12 @@ def editprofile(request):
             user.email = data['email']
             user.set_password(data['password2'])
             user.save()
-            return render(request, 'edit_profile.html', {"message": "User profile successfully updated."})
+            return render(request, 'profile_edit.html', {"message": "User profile successfully updated."})
         else:
-            return render(request, 'edit_profile.html', {"form": form})
+            return render(request, 'profile_edit.html', {"form": form})
     else:
         form = UserEditForm(instance=request.user)
-        return render(request, 'edit_profile.html', {"form": form})
+        return render(request, 'profile_edit.html', {"form": form})
 
 @login_required
 def signout(request):
