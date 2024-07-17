@@ -465,7 +465,7 @@ def case_detail(request, case_id):
             case = get_object_or_404(Case, pk=case_id)
             form = CaseForm(request.POST, request.FILES, instance=case)
             form.save()
-            return redirect('case_table')
+            return redirect('cases')
         except ValueError:
             return render(request, 'case_detail.html', {'case': case, 'form': form, 'error': 'Error updating case.'})
 
@@ -474,7 +474,7 @@ def case_delete(request, case_id):
     case = get_object_or_404(Case, pk=case_id)
     if request.method == 'POST':
         case.delete()
-        return redirect('case_table')
+        return redirect('cases')
 
 
 

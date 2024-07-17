@@ -35,26 +35,28 @@ Las Tareas están únicamente asociadas al propio usuario que las crea.
 
 - **Tecnologías utilizadas:**
 
-Python
-Django
-Bootstrap
-DataTables
-JQuery
-Font Awesome
+Software:
+- Python
+- Django
+- Bootstrap
+- DataTables
+- JQuery
+- Font Awesome
 
 - **requirements.txt**
 
-asgiref==3.8.1
-certifi==2024.6.2
-charset-normalizer==3.3.2
-Django==5.0.6
-django-smart-selects==1.6.0
-et-xmlfile==1.1.0
-idna==3.7
-openpyxl==3.1.5
-pillow==10.3.0
-requests==2.32.3
-setuptools==70.2.0
-sqlparse==0.5.0
-tzdata==2024.1
-urllib3==2.2.2
+Software:
+- asgiref==3.8.1
+- certifi==2024.6.2
+- charset-normalizer==3.3.2
+- Django==5.0.6
+- django-smart-selects==1.6.0
+- et-xmlfile==1.1.0
+- idna==3.7
+- openpyxl==3.1.5
+- pillow==10.3.0
+- requests==2.32.3
+- setuptools==70.2.0
+- sqlparse==0.5.0
+- tzdata==2024.1
+- urllib3==2.2.2
