@@ -16,52 +16,44 @@
   <div class="card-body">
     <p>
       Bienvenido a la página web y aplicación <b>Follow-up</b> (Seguimiento).
+      <br>
+      <br>
+      Esta página web y aplicación están creadas en lenguaje Python y utilizan el framework Django, el cual incluye una interfaz para administrar
+      y gestionar usuarios, grupos y diferentes modelos que vayamos creando en la aplicación.
+      <br>
+      <br>
+      Básicamente, el proyecto consiste en una página web con una aplicación que permite darle seguimiento a <em>Casos</em> asociados a <em>Dispositivos</em> y a <em>Tareas</em> asociadas a <em>Operadores</em> (usuarios registrados).
+      <br>
+      <br>
+      Los usuarios registrados una vez que ingresan al sistema, pueden crear, consultar, modificar o eliminar elementos de diferentes tipos: 
+      <em>Sitios, Racks, Proveedores, Dispositivos, Operadores, Casos y Tareas</em>.
+      <br>
+      <br>
       <p>
-        Esta página web y aplicación están creadas en lenguaje Python y utilizan el framework Django, el cual incluye una interfaz para administrar
-        y gestionar usuarios, grupos y diferentes modelos que vayamos creando en la aplicación.
+      Existen 3 tipos de usuarios con capacidades y privilegios diferentes:
+      <br>
+        - <b>admin</b> o superuser: acceso a todo, incluida la gestión de usuarios y grupos<br>
+        - <b>staff</b>: similar al admin, menos la gestión de usuarios y grupos<br>
+        - <b>normal</b>: similar al staff, pero algunas páginas, contenidos y funciones están restringidos o limitados
       </p>
-      <p>
-        Básicamente, el proyecto consiste en una página web con una aplicación que permite darle seguimiento a <em>Casos</em> asociados a <em>Dispositivos</em> y a <em>Tareas</em> asociadas a <em>Operadores</em> (usuarios registrados).
-      </p>
-      <p>
-        <li>
-          Los usuarios registrados una vez que ingresan al sistema, pueden crear, consultar, modificar o eliminar elementos de diferentes tipos: 
-          <em>Sitios, Racks, Proveedores, Dispositivos, Operadores, Casos y Tareas</em>.
-        </li>
-        <br>
-        <li>
-          Existen 3 tipos de usuarios con capacidades y privilegios diferentes:
-          <p>
-            - <b>admin</b> o superuser: acceso a todo, incluida la gestión de usuarios y grupos<br>
-            - <b>staff</b>: similar al admin, menos la gestión de usuarios y grupos<br>
-            - <b>normal</b>: similar al staff, pero algunas páginas, contenidos y funciones están restringidos o limitados
-          </p>
-        </li>
-        <li>
-          Los usuarios <b>admin</b> y <b>staff</b> pueden crear, consultar, modificar y eliminar elementos de todos los tipos: 
-          <em>Sitios, Racks, Proveedores, Dispositivos, Operadores, Casos y Tareas</em>, 
-          además pueden acceder a todas la páginas sin ninguna restricción.
-        </li>
-        <br>
-        <li>
-          Los usuarios <b>normales</b> pueden consultar información de todos los elementos disponibles y además pueden 
-          crear, modificar y eliminar los elementos de tipo <em>Caso y Tarea</em>.  
-        </li>
-        <br>
-        <li>
-          Cada <em>Operador</em> se puede asociar únicamente a un usuario registrado.
-        </li>
-        <br>
-        <li>
-          Cada <em>Caso</em> está únicamente relacionado a un <em>Dispositivo</em>, 
-          que a su vez está asociado a un <em>Sitio, Rack y Proveedor</em> en particular, 
-          además el <em>Caso</em> se puede asociar a un único <em>Operador</em>.
-        </li>
-        <br>
-        <li>
-          Las <em>Tareas</em> están únicamente asociadas al propio usuario que las crea.
-        </li>
-      </p>
+      Los usuarios <b>admin</b> y <b>staff</b> pueden crear, consultar, modificar y eliminar elementos de todos los tipos: 
+      <em>Sitios, Racks, Proveedores, Dispositivos, Operadores, Casos y Tareas</em>, 
+      además pueden acceder a todas la páginas sin ninguna restricción.
+      <br>
+      <br>
+      Los usuarios <b>normales</b> pueden consultar información de todos los elementos disponibles y además pueden 
+      crear, modificar y eliminar los elementos de tipo <em>Caso y Tarea</em>.
+      <br>
+      <br>
+      Cada <em>Operador</em> se puede asociar únicamente a un usuario registrado.
+      <br>
+      <br>
+      Cada <em>Caso</em> está únicamente relacionado a un <em>Dispositivo</em>, 
+      que a su vez está asociado a un <em>Sitio, Rack y Proveedor</em> en particular, 
+      además el <em>Caso</em> se puede asociar a un único <em>Operador</em>.
+      <br>
+      <br>
+      Las <em>Tareas</em> están únicamente asociadas al propio usuario que las crea.
     </p>
   </div>
 </div>
