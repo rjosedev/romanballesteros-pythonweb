@@ -35,13 +35,7 @@ Las Tareas están únicamente asociadas al propio usuario que las crea.
 
 - **Tecnologías utilizadas:**
 
-Software:
-- Python
-- Django
-- Bootstrap
-- DataTables
-- JQuery
-- Font Awesome
+Python, Django, Bootstrap, DataTables, JQuery y Font Awesome
 
 - **requirements.txt**
 
