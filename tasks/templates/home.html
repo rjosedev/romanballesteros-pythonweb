@@ -15,12 +15,13 @@
 <div class="card mb-4">
   <div class="card-body">
     <p>
-      Bienvenido a la página web <b>Follow-up</b> (seguimiento).
+      Bienvenido a la página web y aplicación <b>Follow-up</b> (Seguimiento).
       <p>
-        Esta página web está creada en lenguaje Python y utiliza el framework Django, el cual incluye un sistema de administración y gestión de grupos, usuarios y contenidos.
+        Esta página web y aplicación están creadas en lenguaje Python y utilizan el framework Django, el cual incluye una interfaz para administrar
+        y gestionar usuarios, grupos y diferentes modelos que vayamos creando en la aplicación.
       </p>
       <p>
-        Básicamente, el proyecto consiste en una aplicación que permite darle seguimiento a <em>Casos</em> asociados a <em>Dispositivos</em> y <em>Tareas</em> asociadas a <em>Operadores</em> (usuarios registrados).
+        Básicamente, el proyecto consiste en una página web con una aplicación que permite darle seguimiento a <em>Casos</em> asociados a <em>Dispositivos</em> y a <em>Tareas</em> asociadas a <em>Operadores</em> (usuarios registrados).
       </p>
       <p>
         <li>
@@ -31,9 +32,9 @@
         <li>
           Existen 3 tipos de usuarios con capacidades y privilegios diferentes:
           <p>
-            - <b>admin</b> o superuser: acceso a todo, incluida la gestión de usuarios<br>
-            - <b>staff</b>: similar al admin, menos la gestión de usuarios<br>
-            - <b>normal</b>: similar al staff, pero algunos accesos, contenidos y funciones están restringidos o limitados
+            - <b>admin</b> o superuser: acceso a todo, incluida la gestión de usuarios y grupos<br>
+            - <b>staff</b>: similar al admin, menos la gestión de usuarios y grupos<br>
+            - <b>normal</b>: similar al staff, pero algunas páginas, contenidos y funciones están restringidos o limitados
           </p>
         </li>
         <li>
@@ -48,12 +49,12 @@
         </li>
         <br>
         <li>
-          Cada <em>Operador</em> se pueden asociar únicamente a un usuario registrado.
+          Cada <em>Operador</em> se puede asociar únicamente a un usuario registrado.
         </li>
         <br>
         <li>
           Cada <em>Caso</em> está únicamente relacionado a un <em>Dispositivo</em>, 
-          que a su vez está únicamente asociado a un <em>Sitio, Rack y Proveedor</em> en particular, 
+          que a su vez está asociado a un <em>Sitio, Rack y Proveedor</em> en particular, 
           además el <em>Caso</em> se puede asociar a un único <em>Operador</em>.
         </li>
         <br>

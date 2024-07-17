@@ -1,37 +1,44 @@
-Presentación proyecto final
+Presentación
+Proyecto final
 Curso de Python de Coderhouse
 Roman Jose Ballesteros
 
-El proyecto es una página web.
+Breve recorrido por el proyecto...
 
-Breve recorrido mostrando las diferentes funciones de la aplicación.
+El proyecto es una página web creada en lenguaje Python y framework Django, el cual incluye una aplicación para administrar
+y gestionar los usuarios, grupos y diferentes modelos que vayamos creando en la aplicación
 
-Gestión de usuarios
-Registrar usuarios, ingresar con usuario
-Tipos de usuario:
-- admin
-- staff
-- normal > oper
+Tipos de usuarios: admin, staff y normal
 
-Crear, consultar, modificar y eliminar
+Usuario admin (superuser) y staff (similar a admin):
+- Crear, consultar, modificar y eliminar todos los elementos de tipo Sitios, Racks, Proveedores, Dispositivos, Operarios, Casos y Tareas
+Admin administración y gestión de grupos y usuarios
+Staff no tiene administración y gestión de grupos y usuarios
 
-admin y staff:
-- Crear sitio
-- Crear rack
-- Crear proveedor
-- Crear dispositivo
-- Crear operario
+Usuario normal:
+- Consultar información sobre todos los elementos de tipo Sitios, Racks, Proveedores, Dispositivos, Operarios, Casos y Tareas
+- Crear, modificar y eliminar una Tarea asociada al propio usuario
+- Crear, modificar y eliminar un Caso asociado a un Dispositivo
+Algunos accesos y funciones limitadas
 
-normal:
-- Consultar info sobre sitios, racks, proveedores, dispositivos, operarios, casos y tareas
-- Crear, modificar y eliminar una tarea asociada al propio usuario
-- Crear, modificar y eliminar un caso asociado a un dispositivo
+Demo 1:
+Usuario staff (staff1)
+Crear Tarea
+Crear Dispositivo
+Crear Operador asignado a usuario oper2
+Completar tarea
+Elimina Tarea
 
-Test
+Demo 2:
+Usuario normal (oper2)
+Crear Tarea
+Crear Caso asociado al nuevo Dispositivo
 
-Cambiar contraseña
+Tests:
+Cambiar contraseña > Bug logout
 Crear usuario repetido
 Oper no puede acceder a contenido admin/staff
+Eliminar Sitio > elimina Racks, Dispositivos y Casos asociados
 
 
 
